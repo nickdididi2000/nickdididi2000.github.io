@@ -9,6 +9,9 @@ output:
     self_contained: false
 runtime: shiny
 ---
+**About** 
+
+This is a project for my introduction to Data Science class. I worked with Jianyang Li and Zefan Qian. Shiney App is still in progress! 
 
 ```{r}
 library(shiny)
@@ -226,7 +229,5 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
-
 ```
 
-Visit the website! @ [Here](http://127.0.0.1:5380/)

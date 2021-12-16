@@ -4,13 +4,5 @@ description: |
   Some additional details about the website
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-
-This is my project
-```{r}
-data(cars)
-head(cars)
-```
+This website is intended to share my experiences and projects regarding Applied Mathematics and Statistics! 
 
