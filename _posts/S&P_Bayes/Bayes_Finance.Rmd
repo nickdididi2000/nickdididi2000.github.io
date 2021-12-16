@@ -2,7 +2,7 @@
 title: "Bayes Finance Project"
 description: | 
   Using Bayes Methods to predict future earnings!
-preview: https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6.jpg
+preview: https://wealthface.com/blog/wp-content/uploads/2021/05/SP500.jpg
 date: 012-11-2021
 output:
   distill::distill_article:
