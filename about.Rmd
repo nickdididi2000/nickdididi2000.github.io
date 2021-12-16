@@ -1,7 +1,7 @@
 ---
 title: "About this site"
 description: |
-  Some additional details about the website
+  Nick Di's projects!
 ---
 
 This website is intended to share my experiences and projects regarding Applied Mathematics and Statistics! 
