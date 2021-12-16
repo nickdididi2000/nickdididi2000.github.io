@@ -1,0 +1,16 @@
+---
+title: "Bayes Finance Project"
+description: | 
+  Using Bayes Methods to predict future earnings!
+preview: https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6.jpg
+date: 012-11-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+**Project**
+
+Here is our project! 
+
+[Project Link]( https://nolan-meyer.github.io/bayesian-finance/)

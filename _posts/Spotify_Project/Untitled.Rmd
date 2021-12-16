@@ -1,0 +1,685 @@
+---
+title: "Machine Learning Semester Project"
+description: | 
+  We analyzed data from Spotify with the goal of predicting song popularity!
+preview: https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png
+date: 05-01-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Project Work
+
+## Data Context
+
+We selected the dataset “Top Spotify songs from 2010-2019 - BY YEAR” from Kaggle, which consists of the top songs by year in the world on Spotify, and the data is based on Billboard. The dataset contains 13 variables to be explored, including information about the songs such as the song’s title, the song’s artist, the genre of the track, the year in which the song was in the Billboard rankings, its duration and acousticness. There are also variables describing the music, such as beats per minute (which characterizes the tempo of the song), energy (the higher the value, the more energetic the song is), danceability (the higher the value, the easier it is to dance to this song), loudness (measured in dB), liveness (the higher the value, the more likely the song is a live recording), valence (the higher the value, the more positive the mood is for the song), and speechiness (the higher the value, the more spoken words the song contains). The outcome variable in this dataset is popularity, where the higher the value, the more popular the song is.
+
+The data were extracted from: http://organizeyourmusic.playlistmachinery.com/, and the dataset was constructed by Leonardo Henrique, updated in 2020. He was interested in what we could know about the specific music genre based on the popularity of the songs, and what elements would contribute to this popularity.
+
+## Research questions
+
+Regression: How can we predict the energy level of a song based on all other predictors?
+Classification: How can we predict whether the song is amongst the most popular based on all other predictors?
+
+```{r, warning=FALSE}
+# Load data and required packages
+library(caret)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(ISLR)
+library(splines)
+library(caret)
+library(stats)
+library(lattice)
+library(leaps)
+library(gam)
+top_spotify <- read_csv('https://www.dropbox.com/s/fi22whryueo4q85/top10s.csv?dl=1')
+```
+
+```{r}
+# Any code to clean the data
+top_spotify_new <- top_spotify %>% select(-artist,-'top genre',-title,-...1)
+#There seems to be an outlier 
+top_spotify_new <- filter(top_spotify_new, bpm > 1)
+```
+
+## Initial investigation 1: ignoring nonlinearity (for now)
+
+Use ordinary least squares (OLS) regression, forward and/or backward selection, and LASSO to build initial models for your quantitative outcome as a function of the predictors of interest. (As part of data cleaning, exclude any variables that you don't want to consider as predictors.)
+
+- These models should not include any transformations to deal with nonlinearity. You'll explore this in the next investigation.
+- Note: If you have highly collinear/redundant variables, you might see the message "Reordering variables and trying again" and associated `warning()`s about linear dependencies being found. Sometimes stepwise selection is able to handle the collinearity/redundancy by modifying the order of the variables tried. If collinearity/redundancy cannot be handled and causes an error, try reducing `nvmax`.
+
+### OLS Model
+
+Fit the ordinary least squares (OLS) regression model:
+
+```{r}
+OLS <- lm(nrgy ~ year + acous + bpm + pop + dnce + live + spch + dur, data = top_spotify_new)
+summary(OLS)
+set.seed(253)
+OLS_cv <- train(
+    nrgy ~ year + acous + bpm + pop + dnce + live + spch + dur,
+    data = top_spotify_new,
+    method = "lm",
+    trControl = trainControl(method = "cv", number = 9),
+    na.action = na.omit)
+```
+
+### Backward Stepwise Selection Model
+
+Fit the Backward Stepwise Selection model:
+
+```{r}
+full_model <- lm(nrgy ~ ., data = top_spotify_new)
+summary(full_model)
+
+set.seed(253)
+back_step_mod <- train(
+    nrgy ~ .,
+    data = top_spotify_new,
+    method = 'leapBackward',
+    tuneGrid = data.frame(nvmax = 1:10),
+    trControl = trainControl(method = 'cv',number = 9),
+    metric = 'MAE',
+    na.action = na.omit
+)
+```
+
+### Forward Stepwise Selection Model
+
+Fit the Forward Stepwise Selection model:
+
+```{r}
+set.seed(253)
+for_step_mod <- train(
+    nrgy ~ .,
+    data = top_spotify_new,
+    method = 'leapForward',
+    tuneGrid = data.frame(nvmax = 1:10),
+    trControl = trainControl(method = 'cv',number = 9),
+    metric = 'MAE',
+    na.action = na.omit
+)
+```
+
+### LASSO Model
+
+Fit the LASSO model:
+
+```{r}
+set.seed(253)
+lasso_mod <- train(
+    nrgy ~ .,
+    data = top_spotify_new,
+    method = "glmnet",
+    tuneGrid = data.frame(alpha = 1, lambda = seq(0, 10, length.out = 100)),
+    trControl = trainControl(method = "cv", number = 9, selectionFunction = 'oneSE'),
+    metric = "MAE",
+    na.action = na.omit)
+```
+
+### Compare performances of different models:
+
+Estimate test performance of the models from these different methods. Report and interpret (with units) these estimates along with a measure of uncertainty in the estimate (SD is most readily available from `caret`).
+
+Examine OLS model outputs:
+
+```{r}
+summary(OLS_cv)
+OLS_cv$results
+```
+
+On average, we’re off in top song energy predictions by about 10.13206 points. 
+
+Residual plot for OLS model:
+
+```{r}
+OLS_mod_output <- broom::augment(OLS, newdata = top_spotify_new)
+
+ggplot(OLS_mod_output, aes(x = .fitted, y = .resid)) +
+    geom_point() +
+    geom_smooth() +
+    geom_hline(yintercept = 0, color = "red")
+```
+
+Examine Backward Stepwise Selection model output:
+
+```{r}
+summary(back_step_mod)
+plot(back_step_mod)
+back_step_mod$bestTune
+```
+We chose the model with 6 predictors. Although all 10 yields better model metrics, we believe that we will run into problems of over-fitting.
+
+On average, we’re off in top song energy predictions by about 8.286 percentage points, if we use the model with 6 predictors.  
+
+```{r}
+coef(back_step_mod$finalModel, id = 6)
+back_step_mod$results %>% filter(nvmax==6)
+
+back_step_mod_eq <- lm(nrgy ~ dnce + dB + live + val + acous + spch, data =top_spotify_new)
+```
+
+Residual plot for Backward Step-wise Selection model:
+
+```{r}
+back_step_mod_out <- top_spotify_new %>%
+    mutate(
+        fitted = predict(back_step_mod_eq, newdata = top_spotify_new),
+        resid = nrgy - fitted
+    )
+
+ggplot(back_step_mod_out, aes(x = fitted, y = resid)) +
+    geom_point() +
+    geom_smooth() +
+    geom_hline(yintercept = 0, color = "red") +
+    theme_classic() +
+    labs(x = "Fitted values", y = "Residuals")
+```
+
+For Loop looking at all predictors in the Backward Stepwise Selection model:
+
+```{r}
+predictors <- setdiff(colnames(top_spotify_new), c("year","bpm","nrgy","dur","spch"))
+for (pred in predictors) {
+    p <- ggplot(back_step_mod_out, aes(x = .data[[pred]], y = resid)) +
+        geom_point() +
+        geom_smooth() +
+        geom_hline(yintercept = 0, color = "red") +
+        theme_classic() +
+        labs(x = pred, y = "Residuals")
+    print(p)
+}
+```
+
+Examine Forward Stepwise Selection model output:
+
+```{r}
+summary(for_step_mod)
+plot(for_step_mod)
+for_step_mod$results
+```
+
+Using Forward selection, we chose the model with 5 predictors. The five predictors being acous, dB, live, spch, and val. 
+
+On average, we’re off in top song energy predictions by about 8.383712 percentage points. 
+
+```{r}
+coef(for_step_mod$finalModel, id = 5)
+for_step_mod$results %>% filter(nvmax==5)
+for_step_mod_eq <- lm(nrgy ~ acous + dB + val + spch + live, data =top_spotify_new)
+```
+
+Residual plot for Forward Stepwise Selection model:
+
+```{r}
+for_step_mod_out <- top_spotify_new %>%
+    mutate(
+        fitted = predict(for_step_mod_eq, newdata = top_spotify_new),
+        resid = nrgy - fitted
+    )
+
+ggplot(for_step_mod_out, aes(x = fitted, y = resid)) +
+    geom_point() +
+    geom_smooth() +
+    geom_hline(yintercept = 0, color = "red") +
+    theme_classic() +
+    labs(x = "Fitted values", y = "Residuals")
+```
+
+For Loop looking at all predictors in the Forward Stepwise Selection model:
+
+```{r}
+predictors <- setdiff(colnames(top_spotify_new), c("year","bpm","nrgy","dur","pop", "dnce"))
+for (pred in predictors) {
+    p <- ggplot(for_step_mod_out, aes(x = .data[[pred]], y = resid)) +
+        geom_point() +
+        geom_smooth() +
+        geom_hline(yintercept = 0, color = "red") +
+        theme_classic() +
+        labs(x = pred, y = "Residuals")
+    print(p)
+}
+```
+
+Examine LASSO model output:
+
+```{r}
+plot(lasso_mod$finalModel, xvar = "lambda", label = TRUE, col = rainbow(20))
+lasso_mod$bestTune
+# lasso_mod$results
+rownames(lasso_mod$finalModel$beta)[c(4,8)]
+```
+
+We chose a lambda value of 1.010101, dB and acous seem to be two of the strongest/persistent predictors when it comes to energy-level.
+
+```{r}
+coef(lasso_mod$finalModel, 1.010101)
+lasso_mod$results[11,]
+```
+
+On average, we’re off in top song energy predictions by about 8.32769 percentage points using LASSO with a lambda of 1.010101.
+
+Residual plot for LASSO model:
+
+```{r}
+lasso_mod_out <- top_spotify_new %>%
+    mutate(
+        fitted = predict(lasso_mod, newdata = top_spotify_new),
+        resid = nrgy - fitted)
+ggplot(lasso_mod_out, aes(x = fitted, y = resid)) +
+    geom_point() +
+    geom_smooth() +
+    geom_hline(yintercept = 0, color = "red") +
+    theme_classic() +
+    labs(x = "Fitted values", y = "Residuals")
+```
+
+There does not seem to be any noticable patterns of over and underpredicting here! 
+
+For Loop for LASSO model: 
+
+```{r}
+predictors <- setdiff(colnames(top_spotify_new), "Top Spotify")
+for (pred in predictors) {
+    p <- ggplot(lasso_mod_out, aes(x = .data[[pred]], y = resid)) +
+        geom_point() +
+        geom_smooth() +
+        geom_hline(yintercept = 0, color = "red") +
+        theme_classic() +
+        labs(x = pred, y = "Residuals")
+    print(p)
+}
+```
+
+- Compare estimated test performance across methods. Which method(s) might you prefer?
+
+ Model         Training MAE         MAESD
+------------ ---------------- -----------------
+`OLS Model`      10.13206	       0.83748
+`Backward`       8.286481        0.825095
+`Forward`        8.383712        0.7669223
+`LASSO`          8.32769         0.7932597
+
+Comparing the four models, LASSO and Backward Stepwise Selection models seem to be yielding the best results as the predictions for top song energy level are closest to the test value. 
+
+Compare insights from variable importance analyses from the different methods (stepwise and LASSO, but not OLS). Are there variables for which the methods reach consensus? What insights are expected? Surprising?
+
+Across all models, the "top" 3 predictors for song energy level are acous (Acousticness- the higher the value the more acoustic the song is), dB(Loudness, the higher the value, the louder the song), and val(Valence, the higher the value, the more positive mood for the song). This is mostly consistent with our expectation, as when the song is louder, and more positive, the song has a higher energy level. It is a bit surprising that when a song is more acoustic, it is less energetic.
+
+- Note that if some (but not all) of the indicator terms for a categorical predictor are selected in the final models, the whole predictor should be treated as selected.
+
+## Investigation 2: Accounting for nonlinearity
+
+Update your stepwise selection model(s) and LASSO model to use natural splines for the quantitative predictors.
+
+- You'll need to update the model formula from `y ~ .` to something like `y ~ cat_var1 + ns(quant_var1, df) + ...`.
+- It's recommended to use few knots (e.g., 2 knots = 3 degrees of freedom).
+- Note that `ns(x,3)` replaces `x` with 3 transformations of `x`. Keep this in mind when setting `nvmax` in stepwise selection.
+
+```{r}
+ggplot(top_spotify_new, aes(x = val, y = nrgy)) +
+    geom_point(alpha = 0.25) +
+    geom_smooth(color = "blue", se = FALSE) +
+    geom_smooth(method = "lm", color = "red", se = FALSE)
+ggplot(top_spotify_new, aes(x = dB, y = nrgy)) +
+    geom_point(alpha = 0.25) +
+    geom_smooth(color = "blue", se = FALSE) +
+    geom_smooth(method = "lm", color = "red", se = FALSE)
+ggplot(top_spotify_new, aes(x = acous, y = nrgy)) +
+    geom_point(alpha = 0.25) +
+    geom_smooth(color = "blue", se = FALSE) +
+    geom_smooth(method = "lm", color = "red", se = FALSE)
+ggplot(top_spotify_new, aes(x = year, y = nrgy)) +
+    geom_point(alpha = 0.25) +
+    geom_smooth(color = "blue", se = FALSE) +
+    geom_smooth(method = "lm", color = "red", se = FALSE)
+```
+
+### Backward Stepwise Selection model with natural splines
+
+Update the Backward Stepwise Selection model to use natural splines for the quantitative predictors:
+
+```{r}
+set.seed(253)
+back_spline_mod <- train(
+    nrgy ~ ns(acous, 3) + ns(pop, 3) + ns(dnce, 3) + ns(live, 3) + ns(dB, 3) + ns(val, 3),
+    data = top_spotify_new,
+    method = "leapBackward",
+    trControl = trainControl(method = "cv", number = 9, selectionFunction = "oneSE"),
+    metric = "MAE",
+    na.action = na.omit
+)
+```
+
+### Forward Stepwise Selection model with natural splines
+
+Update the Forward Stepwise Selection model to use natural splines for the quantitative predictors:
+
+```{r}
+set.seed(253)
+for_spline_mod <- train(
+    nrgy ~ ns(year, 3) + ns(acous, 3) + ns(bpm, 3) + ns(pop, 3) + ns(dnce, 3) + ns(live, 3) + ns(spch, 3) + ns(dur, 3),
+    data = top_spotify_new,
+    method = "leapForward",
+    trControl = trainControl(method = "cv", number = 9, selectionFunction = "oneSE"),
+    metric = "MAE",
+    na.action = na.omit
+)
+```
+
+### LASSO model with natural splines
+
+Update the LASSO model to use natural splines for the quantitative predictors:
+
+```{r, warning=FALSE}
+set.seed(253)
+LASSO_spline_mod <- train(
+    nrgy ~ ns(year, 3) + ns(acous, 3) + ns(bpm, 3) + ns(pop, 3) + ns(dnce, 3) + ns(live, 3) + ns(spch, 3) + ns(dur, 3),
+    data = top_spotify_new,
+    method = "glmnet",
+    tuneGrid = data.frame(alpha = 1, lambda = seq(0, 10, length.out = 100)),
+    trControl = trainControl(method = "cv", number = 9, selectionFunction = "oneSE"),
+    metric = "MAE",
+    na.action = na.omit
+)
+
+```
+
+### Compare insights from variable importance analyses
+
+Compare insights from variable importance analyses here and the corresponding results from Investigation 1. Now after having accounted for nonlinearity, have the most relevant predictors changed?
+
+- Note that if some (but not all) of the spline terms are selected in the final models, the whole predictor should be treated as selected.
+
+Examine Backward Stepwise Selection model with natural splines output:
+
+```{r}
+summary(back_spline_mod)
+plot(back_spline_mod)
+back_spline_mod$bestTune
+back_spline_mod$results
+```
+
+According to the Backward Stepwise Selection model with natural splines, the top predictors for song energy level are acous and dB.
+
+Examine Forward Stepwise Selection model output:
+
+```{r}
+summary(for_spline_mod)
+plot(for_spline_mod)
+for_spline_mod$bestTune
+for_spline_mod$results
+```
+According to the Forward Stepwise Selection model with natural splines, the top predictor for song energy level is acous.
+
+Examine LASSO model with natural splines output:
+
+```{r}
+summary(LASSO_spline_mod)
+plot(LASSO_spline_mod)
+LASSO_spline_mod$bestTune
+# LASSO_spline_mod$results
+```
+The lambda value provided by the LASSO model with splines is 0.5050505.
+
+### GAM with LOESS terms
+
+Fit a GAM using LOESS terms using the set of variables deemed to be most relevant based on your investigations so far.
+
+- How does test performance of the GAM compare to other models you explored?
+- Do you gain any insights from the GAM output plots for each predictor?
+
+```{r, warning=FALSE}
+set.seed(253)
+gam_mod <- train(
+    nrgy ~ acous + val + dB,
+    data = top_spotify_new,
+    method = "gamLoess",
+    tuneGrid = data.frame(degree = 1, span = seq(0.1, 0.9, by = 0.1)),
+    trControl = trainControl(method = "cv", number = 9, selectionFunction = "best"),
+    metric = "MAE",
+    na.action = na.omit
+)
+```
+
+Examine GAM with LOESS output:
+
+```{r}
+gam_mod$results[3,]
+```
+
+```{r}
+plot(gam_mod)
+#Metrics for the best model 
+gam_mod$results %>%
+    filter(span==gam_mod$bestTune$span)
+#Graphing Each Predictor 
+par(mfrow = c(3,4)) # Sets up a grid of plots
+plot(gam_mod$finalModel, se = TRUE) # Dashed lines are +/- 2 SEs
+```
+
+GAM with a span of 0.3 offers a MAE of 8.252745, indicating that we our predictions for top song energy level would be off by 8.368585 percentage points in this case. This result is actually better than all four previous models fitted in the first section.
+
+## Summarize investigations
+
+Decide on an overall best model based on your investigations so far. To do this, make clear your analysis goals. Predictive accuracy? Interpretability? A combination of both?
+
+Overall, based on the output given by all of the models we fitted above, it seems that a GAM with LOESS model achieves the lowest MAE for our dataset. For our analysis, since we want to correctly predict the energy level of a popular song, we care about the predictive accuracy of the model. We are also interested in knowing what contributes to an energetic song, thus interpretability is also essential for the model. Therefore splines doesn't seem the most straightforward choice for us, whereas either GAM with LOESS or LASSO seems like a better option. 
+
+## Societal impact
+
+Are there any harms that may come from your analyses and/or how the data were collected? What cautions do you want to keep in mind when communicating your work?
+
+Our models takes a harmless look at the deciding elements of an energetic song, as under the environment of a global pandemic where social interactions are limited, it is important to look for means to maintain a positive mood, and it seems that listening to uplifting pop music is a favorable way to do so. Given our dataset, though, since the source is Spotify and Billboard, our scope of pop music is limited and may result in a certain pattern in our predictions. We want to caution that good music choice should by no means be limited, and it should always be optimal to listen to whatever one's heart desires.
+
+## Classification analysis (Methods)
+
+We used logistic regression and random forest for building classification models.
+
+### Logistic Regression
+
+We converted the predictor "pop" to categorical, assigning the observations with value above 75 to be top songs.
+
+```{r, results='hide', message=FALSE}
+top_spotify_new$IsPop <- "NO"
+top_spotify_new$IsPop[top_spotify_new$pop >= 75] <- "YES"
+table(top_spotify_new$IsPop)
+table(top_spotify_new$pop)
+top_spotify_new$IsPop <- factor(top_spotify_new$IsPop)
+```
+
+We then fit the logistic regression model predicting whether a given song is a popular song with all other predictors. We selected the metrics Accuracy so that the model we fit would prioritize making the most accurate predictions. 
+
+```{r}
+set.seed(253)
+logistic_mod <- train(
+    IsPop ~ .-pop,
+    data = top_spotify_new,
+    method = "glm",
+    family = "binomial",
+    trControl = trainControl(method = "cv", number = 10),
+    metric = "Accuracy",
+    na.action = na.omit
+)
+summary(logistic_mod$results)
+coefficients(logistic_mod$finalModel) %>% exp()
+```
+
+We also fit the LASSO logistic regression, gaining insight about variable importance.
+
+```{r}
+twoClassSummaryCustom <- function (data, lev = NULL, model = NULL) {
+    if (length(lev) > 2) {
+        stop(paste("Your outcome has", length(lev), "levels. The twoClassSummary() function isn't appropriate."))
+    }
+    caret:::requireNamespaceQuietStop("pROC")
+    if (!all(levels(data[, "pred"]) == lev)) {
+        stop("levels of observed and predicted data do not match")
+    }
+    rocObject <- try(pROC::roc(data$obs, data[, lev[1]], direction = ">", 
+        quiet = TRUE), silent = TRUE)
+    rocAUC <- if (inherits(rocObject, "try-error")) 
+        NA
+    else rocObject$auc
+    out <- c(rocAUC, sensitivity(data[, "pred"], data[, "obs"], 
+        lev[1]), specificity(data[, "pred"], data[, "obs"], lev[2]))
+    out2 <- postResample(data[, "pred"], data[, "obs"])
+    out <- c(out, out2[1])
+    names(out) <- c("AUC", "Sens", "Spec", "Accuracy")
+    out
+}
+set.seed(253)
+lasso_logistic_mod <- train(
+    IsPop ~ .-pop,
+    data = top_spotify_new,
+    method = "glmnet",
+    family = "binomial",
+    tuneGrid = data.frame(alpha = 1, lambda = seq(0, 1, length.out = 100)),
+    trControl = trainControl(method = "cv", number = 10, selectionFunction = "oneSE", classProbs = TRUE, summaryFunction = twoClassSummaryCustom),
+    metric = "AUC",
+    na.action = na.omit
+)
+
+lasso_logistic_mod
+
+plot(lasso_logistic_mod)
+```
+```{r}
+lasso_logistic_mod$bestTune
+lasso_logistic_mod$results
+lasso_logistic_mod$results %>%
+    filter(lambda==lasso_logistic_mod$bestTune$lambda)
+plot(lasso_logistic_mod$finalModel, xvar = "lambda", label = TRUE, col = rainbow(20), ylim = c(-0.5,7))
+
+rownames(lasso_logistic_mod$finalModel$beta)[c(5,3,1)]
+
+```
+
+### Trees and Random Forest
+
+We fit trees and random forest to make predictions as well, using all other predictors to predict whether an observation is a popular song or not. The metrics we selected is Accuracy, so that the model would prioritize making accurate predictions. 
+```{r}
+set.seed(253)
+tree_mod <- train(
+    IsPop ~ .-pop,
+    data = top_spotify_new,
+    method = "rpart",
+    tuneGrid = data.frame(cp = seq(0, 0.5, length.out = 50)),
+    trControl = trainControl(method = "cv", number = 10, selectionFunction = "oneSE"),
+    metric = "Accuracy",
+    na.action = na.omit
+)
+
+plot(tree_mod)
+tree_mod$results %>%
+    filter(cp==tree_mod$bestTune$cp)
+```
+
+```{r}
+rf_mod <- train(
+    IsPop ~ .-pop,
+    data = top_spotify_new,
+    method = "rf",
+    tuneGrid = data.frame(mtry = c(2,3,4,5,6,7,8)),
+    trControl = trainControl(method = "oob", selectionFunction = "best"),
+    metric = "Accuracy",
+    ntree = 750, # To force fitting 1000 trees (can help with stability of results)
+    na.action = na.omit
+)
+plot(rf_mod)
+rf_mod$results
+rf_mod$finalModel
+```
+
+Our model is better at identifying songs that are not popular. In our context, it helps us avoid bad songs, which is preferable than the more lenient alternative which is more likely to falsely categorize a song as popular. 
+
+```{r}
+var_imp_rf <- randomForest::importance(rf_mod$finalModel)
+
+# Sort by importance with dplyr's arrange()
+var_imp_rf <- data.frame(
+        predictor = rownames(var_imp_rf),
+        MeanDecreaseGini = var_imp_rf[,"MeanDecreaseGini"]
+    ) %>%
+    arrange(desc(MeanDecreaseGini))
+
+# Top 10
+head(var_imp_rf, 10)
+```
+
+It seems that the most important predictor, given contributions to decreasing the Gini index, is year, which is pretty interesting. This tells us that knowing what year the song is released would offer us much insight into whether the song is likely to be popular. 
+
+
+## Classification Analysis (Results- Variable Importance)
+
+For our logistic regression model, we utilized a LASSO logistic regression to gain insight on variable importance. The results demonstrate that dnce, and bpm are the most important variables for predicting the popularity of a song. These results are sensible because it is plausible that more upbeat songs that you can dance to will be valuable traits that may lead a song to be more popular. 
+
+In our random forest model, it shows that year is by far the most important variable for predicting song popularity, which also corresponds to the most important variable as determined by the variable importance measure of a single decision tree. This is because it lowers to Gini index the most on average for all the trees. Year is not very insightful, though, because it is possible that the popular songs featured in this dataset came more from particular years than others. It doesn't really help us predict the future popularity of a song. More interestingly, the energy displayed by a song has the second most meaningful mean decrease in the Gini index. Again, this is sensible because the goal of a song often times is to portray energy to its listener, so it makes sense that songs that accomplish this goal would be more popular. 22
+
+## Classification analysis (Summary)
+
+### Compare models
+
+Compare the 2 different classification models tried in light of evaluation metrics, variable importance, and data context:
+
+We have compared a logistic regression and a decision tree model. To complement the models, we have ran a LASSO logistic regression and a random forest. We are trying to predict whether a song will be relatively popular. We have created our own binary variable with a threshold of > 75 in pop to be considered popular (IsPop = YES). In all models, the most important variable seemed to be year. In this context, songs released in a certain year seem to be the most popular. Other important variables were energy levels and dance-ibility, both of which intuitively make sense as they would be more commonly enjoyed among music listeners. 
+
+### Evaluation metrics
+
+Display evaluation metrics for different models in a clean, organized way. This display should include both the estimated metric as well as its standard deviation. (This won’t be available from OOB error estimation. If using OOB, don’t worry about reporting the SD.):
+
+Logistic Regression Accuracy:           0.7124414
+Logistic Regression Accuracy SD:        0.0291491
+
+Lasso Logistic Regression Accuracy:     0.6860489
+Lasso Logistic Regression Accuracy SD:  0.003961554
+Lasso Logistic Regression AUC:          0.6715804
+Lasso Logistic Regression AUC SD:       0.07519223
+
+Decision Tree Accuracy:                 0.7143012
+Decision Tree Accuracy SD:              0.03461561
+
+Random Forest Accuracy:                 0.7524917
+Random Forest Confusion Matrix: 
+    
+    PREDICTED
+      NO YES class.error
+NO  380  33  0.07990315
+YES 122  67  0.64550265
+
+NIR: (413)/(413+189) = 68.6%
+The NIR is calculated using the whole training set. 
+
+Broadly summarize conclusions from looking at these evaluation metrics and their measures of uncertainty:
+
+We can see that the model that gives us the least amount of variance is lasso logistic regression. However, we note that we are not trying to build the model with the smallest variance, as the variance is just a way to look at the uncertainty of in estimation of test performance, which is not so high when using lasso logistic regression. Random Forest seems to have the highest accuracy. With an OOB estimate error rate of 25.75%, this is reflective of our accuracy. 
+
+### Overall most preferable model
+
+The overall most preferable model would be our random forest model. The accuracy in this model far outweighs all other models at an accuracy of 75.25% Random forests also provide out of bag error estimations, which give us an accountable measurement of error in our model. 
+
+Interpretion of evaluation metric(s) for the final model in context. Does the model show an acceptable amount of error:
+
+With an overall accuracy of 75.2%, and a NIR of 68.6%, we believe this model shows an acceptable amount of error. 
+
+If using OOB error estimation, display the test (OOB) confusion matrix, and use it to interpret the strengths and weaknesses of the final model:
+
+We can see that we have a sensitivity of (67)/(67+112) = 37.43% and a specificity of (380)/(380+33) = 92.01%. Our model is good at correctly predicting songs that won't be as popular. However, our model is bad at correctly predicting songs that won't be popular. 
+
+```{r}
+PopularSongs <- top_spotify_new[top_spotify_new$pop >= 75, ]
+table(PopularSongs$year)
+table(top_spotify_new$year)
+```
+
+We can see that although years are fairly balanced, the years when looking at popular songs seem to be skewed towards later years. This means makes sense as the more "popular" songs seem to be the more recent ones. 
+
+

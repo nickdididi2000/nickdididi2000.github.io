@@ -1,0 +1,3625 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+<title>: Machine Learning Semester Project</title>
+
+<meta property="description" itemprop="description" content="We analyzed data from Spotify with the goal of predicting song popularity!"/>
+
+
+<!--  https://schema.org/Article -->
+<meta property="article:published" itemprop="datePublished" content="2020-05-01"/>
+<meta property="article:created" itemprop="dateCreated" content="2020-05-01"/>
+
+<!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+<meta property="og:title" content=": Machine Learning Semester Project"/>
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="We analyzed data from Spotify with the goal of predicting song popularity!"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:site_name" content=""/>
+
+<!--  https://dev.twitter.com/cards/types/summary -->
+<meta property="twitter:card" content="summary"/>
+<meta property="twitter:title" content=": Machine Learning Semester Project"/>
+<meta property="twitter:description" content="We analyzed data from Spotify with the goal of predicting song popularity!"/>
+
+<!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+<script type="text/json" id="radix-rmarkdown-metadata">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","preview","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Machine Learning Semester Project"]},{"type":"character","attributes":{},"value":["We analyzed data from Spotify with the goal of predicting song popularity!"]},{"type":"character","attributes":{},"value":["https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"]},{"type":"character","attributes":{},"value":["05-01-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+</script>
+<!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["Untitled_files/figure-html5/unnamed-chunk-11-1.png","Untitled_files/figure-html5/unnamed-chunk-12-1.png","Untitled_files/figure-html5/unnamed-chunk-12-2.png","Untitled_files/figure-html5/unnamed-chunk-12-3.png","Untitled_files/figure-html5/unnamed-chunk-12-4.png","Untitled_files/figure-html5/unnamed-chunk-12-5.png","Untitled_files/figure-html5/unnamed-chunk-12-6.png","Untitled_files/figure-html5/unnamed-chunk-13-1.png","Untitled_files/figure-html5/unnamed-chunk-15-1.png","Untitled_files/figure-html5/unnamed-chunk-16-1.png","Untitled_files/figure-html5/unnamed-chunk-16-2.png","Untitled_files/figure-html5/unnamed-chunk-16-3.png","Untitled_files/figure-html5/unnamed-chunk-16-4.png","Untitled_files/figure-html5/unnamed-chunk-16-5.png","Untitled_files/figure-html5/unnamed-chunk-17-1.png","Untitled_files/figure-html5/unnamed-chunk-19-1.png","Untitled_files/figure-html5/unnamed-chunk-20-1.png","Untitled_files/figure-html5/unnamed-chunk-20-10.png","Untitled_files/figure-html5/unnamed-chunk-20-11.png","Untitled_files/figure-html5/unnamed-chunk-20-2.png","Untitled_files/figure-html5/unnamed-chunk-20-3.png","Untitled_files/figure-html5/unnamed-chunk-20-4.png","Untitled_files/figure-html5/unnamed-chunk-20-5.png","Untitled_files/figure-html5/unnamed-chunk-20-6.png","Untitled_files/figure-html5/unnamed-chunk-20-7.png","Untitled_files/figure-html5/unnamed-chunk-20-8.png","Untitled_files/figure-html5/unnamed-chunk-20-9.png","Untitled_files/figure-html5/unnamed-chunk-21-1.png","Untitled_files/figure-html5/unnamed-chunk-21-2.png","Untitled_files/figure-html5/unnamed-chunk-21-3.png","Untitled_files/figure-html5/unnamed-chunk-21-4.png","Untitled_files/figure-html5/unnamed-chunk-25-1.png","Untitled_files/figure-html5/unnamed-chunk-26-1.png","Untitled_files/figure-html5/unnamed-chunk-27-1.png","Untitled_files/figure-html5/unnamed-chunk-30-1.png","Untitled_files/figure-html5/unnamed-chunk-30-2.png","Untitled_files/figure-html5/unnamed-chunk-33-1.png","Untitled_files/figure-html5/unnamed-chunk-34-1.png","Untitled_files/figure-html5/unnamed-chunk-35-1.png","Untitled_files/figure-html5/unnamed-chunk-36-1.png","Untitled_files/figure-html5/unnamed-chunk-8-1.png","Untitled_files/figure-html5/unnamed-chunk-9-1.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+<meta name="distill:offset" content="../.."/>
+
+<script type="application/javascript">
+
+  window.headroom_prevent_pin = false;
+
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+
+    // initialize headroom for banner
+    var header = $('header').get(0);
+    var headerHeight = header.offsetHeight;
+    var headroom = new Headroom(header, {
+      tolerance: 5,
+      onPin : function() {
+        if (window.headroom_prevent_pin) {
+          window.headroom_prevent_pin = false;
+          headroom.unpin();
+        }
+      }
+    });
+    headroom.init();
+    if(window.location.hash)
+      headroom.unpin();
+    $(header).addClass('headroom--transition');
+
+    // offset scroll location for banner on hash change
+    // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+    window.addEventListener("hashchange", function(event) {
+      window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+    });
+
+    // responsive menu
+    $('.distill-site-header').each(function(i, val) {
+      var topnav = $(this);
+      var toggle = topnav.find('.nav-toggle');
+      toggle.on('click', function() {
+        topnav.toggleClass('responsive');
+      });
+    });
+
+    // nav dropdowns
+    $('.nav-dropbtn').click(function(e) {
+      $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+      $(this).parent().siblings('.nav-dropdown')
+         .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $("body").click(function(e){
+      $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $(".nav-dropdown").click(function(e){
+      e.stopPropagation();
+    });
+  });
+</script>
+
+<style type="text/css">
+
+/* Theme (user-documented overrideables for nav appearance) */
+
+.distill-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #0F2E3D;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+
+.distill-site-header {
+
+}
+
+.distill-site-footer {
+
+}
+
+
+/* Site Header */
+
+.distill-site-header {
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.distill-site-header .nav-left {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header .nav-left {
+    margin-left: 0;
+  }
+}
+
+
+.distill-site-header .nav-right {
+  float: right;
+  margin-right: 8px;
+}
+
+.distill-site-header a,
+.distill-site-header .title {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 10px 14px 10px;
+}
+
+.distill-site-header .title {
+  font-size: 18px;
+  min-width: 150px;
+}
+
+.distill-site-header .logo {
+  padding: 0;
+}
+
+.distill-site-header .logo img {
+  display: none;
+  max-height: 20px;
+  width: auto;
+  margin-bottom: -4px;
+}
+
+.distill-site-header .nav-image img {
+  max-height: 18px;
+  width: auto;
+  display: inline-block;
+  margin-bottom: -3px;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+  .distill-site-header .logo img {
+    display: inline-block;
+  }
+  .distill-site-header .nav-left {
+    margin-left: 20px;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 20px;
+  }
+  .distill-site-header .title {
+    padding-left: 12px;
+  }
+}
+
+
+.distill-site-header .nav-toggle {
+  display: none;
+}
+
+.nav-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-dropdown .nav-dropbtn {
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 16px 10px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  margin-top: 1px;
+  z-index: 2;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.nav-dropdown-content hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-dropdown-active {
+  display: block;
+}
+
+.nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+  color: black;
+  padding: 6px 24px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.nav-dropdown-content .nav-dropdown-header {
+  display: block;
+  padding: 5px 24px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #999999;
+  white-space: nowrap;
+}
+
+.nav-dropdown:hover .nav-dropbtn {
+  color: white;
+}
+
+.nav-dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-right .nav-dropdown-content {
+  margin-left: -45%;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+  .distill-site-header a.nav-toggle {
+    float: right;
+    display: block;
+  }
+  .distill-site-header .title {
+    margin-left: 0;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 0;
+  }
+  .distill-site-header {
+    overflow: hidden;
+  }
+  .nav-right .nav-dropdown-content {
+    margin-left: 0;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-header.responsive {position: relative; min-height: 500px; }
+  .distill-site-header.responsive a.nav-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .distill-site-header.responsive a,
+  .distill-site-header.responsive .nav-dropdown {
+    display: block;
+    text-align: left;
+  }
+  .distill-site-header.responsive .nav-left,
+  .distill-site-header.responsive .nav-right {
+    width: 100%;
+  }
+  .distill-site-header.responsive .nav-dropdown {float: none;}
+  .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+  .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Site Footer */
+
+.distill-site-footer {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 3;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+/* Headroom */
+
+d-title {
+  padding-top: 6rem;
+}
+
+@media print {
+  d-title {
+    padding-top: 4rem;
+  }
+}
+
+.headroom {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headroom--transition {
+  transition: all .4s ease-in-out;
+}
+
+.headroom--unpinned {
+  top: -100px;
+}
+
+.headroom--pinned {
+  top: 0;
+}
+
+/* adjust viewport for navbar height */
+/* helps vertically center bootstrap (non-distill) content */
+.min-vh-100 {
+  min-height: calc(100vh - 100px) !important;
+}
+
+</style>
+
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
+<link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+<script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
+<script src="../../site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
+<script src="../../site_libs/fuse-6.4.1/fuse.min.js"></script>
+
+<script type="application/javascript">
+
+function getMeta(metaName) {
+  var metas = document.getElementsByTagName('meta');
+  for (let i = 0; i < metas.length; i++) {
+    if (metas[i].getAttribute('name') === metaName) {
+      return metas[i].getAttribute('content');
+    }
+  }
+  return '';
+}
+
+function offsetURL(url) {
+  var offset = getMeta('distill:offset');
+  return offset ? offset + '/' + url : url;
+}
+
+function createFuseIndex() {
+
+  // create fuse index
+  var options = {
+    keys: [
+      { name: 'title', weight: 20 },
+      { name: 'categories', weight: 15 },
+      { name: 'description', weight: 10 },
+      { name: 'contents', weight: 5 },
+    ],
+    ignoreLocation: true,
+    threshold: 0
+  };
+  var fuse = new window.Fuse([], options);
+
+  // fetch the main search.json
+  return fetch(offsetURL('search.json'))
+    .then(function(response) {
+      if (response.status == 200) {
+        return response.json().then(function(json) {
+          // index main articles
+          json.articles.forEach(function(article) {
+            fuse.add(article);
+          });
+          // download collections and index their articles
+          return Promise.all(json.collections.map(function(collection) {
+            return fetch(offsetURL(collection)).then(function(response) {
+              if (response.status === 200) {
+                return response.json().then(function(articles) {
+                  articles.forEach(function(article) {
+                    fuse.add(article);
+                  });
+                })
+              } else {
+                return Promise.reject(
+                  new Error('Unexpected status from search index request: ' +
+                            response.status)
+                );
+              }
+            });
+          })).then(function() {
+            return fuse;
+          });
+        });
+
+      } else {
+        return Promise.reject(
+          new Error('Unexpected status from search index request: ' +
+                      response.status)
+        );
+      }
+    });
+}
+
+window.document.addEventListener("DOMContentLoaded", function (event) {
+
+  // get search element (bail if we don't have one)
+  var searchEl = window.document.getElementById('distill-search');
+  if (!searchEl)
+    return;
+
+  createFuseIndex()
+    .then(function(fuse) {
+
+      // make search box visible
+      searchEl.classList.remove('hidden');
+
+      // initialize autocomplete
+      var options = {
+        autoselect: true,
+        hint: false,
+        minLength: 2,
+      };
+      window.autocomplete(searchEl, options, [{
+        source: function(query, callback) {
+          const searchOptions = {
+            isCaseSensitive: false,
+            shouldSort: true,
+            minMatchCharLength: 2,
+            limit: 10,
+          };
+          var results = fuse.search(query, searchOptions);
+          callback(results
+            .map(function(result) { return result.item; })
+          );
+        },
+        templates: {
+          suggestion: function(suggestion) {
+            var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+              ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+              : '';
+            var html = `
+              <div class="search-item">
+                <h3>${suggestion.title}</h3>
+                <div class="search-item-description">
+                  ${suggestion.description || ''}
+                </div>
+                <div class="search-item-preview">
+                  ${img}
+                </div>
+              </div>
+            `;
+            return html;
+          }
+        }
+      }]).on('autocomplete:selected', function(event, suggestion) {
+        window.location.href = offsetURL(suggestion.path);
+      });
+      // remove inline display style on autocompleter (we want to
+      // manage responsive display via css)
+      $('.algolia-autocomplete').css("display", "");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+});
+
+</script>
+
+<style type="text/css">
+
+.nav-search {
+  font-size: x-small;
+}
+
+/* Algolioa Autocomplete */
+
+.algolia-autocomplete {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: sub;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  padding-top: 8px;
+  padding-bottom: 0;
+  border-radius: 6px;
+  border: 1px #0F2E3D solid;
+  width: 180px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-nav .algolia-autocomplete {
+    display: none;
+    visibility: hidden;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete {
+    display: inline-block;
+    visibility: visible;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
+    margin-left: 0;
+    width: 400px;
+    max-height: 400px;
+  }
+}
+
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 90%;
+  outline: none;
+  border: none;
+}
+
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 550px;
+  max-height: 70vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+  padding: 5px;
+  margin-top: 3px;
+  margin-left: -150px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #999;
+  border-top: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
+  border-bottom: none;
+  margin-bottom: 2px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
+  overflow: hidden;
+  font-size: 0.8em;
+  line-height: 1.4em;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+  font-size: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 5px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
+  display: inline-block;
+  overflow: hidden;
+  height: 2.8em;
+  width: 80%;
+  margin-right: 4%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
+  display: inline-block;
+  width: 15%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
+  height: 3em;
+  width: auto;
+  display: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
+  display: initial;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #eee;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+</style>
+
+
+<!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+<style type="text/css">
+
+body {
+  background-color: white;
+}
+
+.pandoc-table {
+  width: 100%;
+}
+
+.pandoc-table>caption {
+  margin-bottom: 10px;
+}
+
+.pandoc-table th:not([align]) {
+  text-align: left;
+}
+
+.pagedtable-footer {
+  font-size: 15px;
+}
+
+d-byline .byline {
+  grid-template-columns: 2fr 2fr;
+}
+
+d-byline .byline h3 {
+  margin-block-start: 1.5em;
+}
+
+d-byline .byline .authors-affiliations h3 {
+  margin-block-start: 0.5em;
+}
+
+.authors-affiliations .orcid-id {
+  width: 16px;
+  height:16px;
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+
+d-title .dt-tags {
+  margin-top: 1em;
+  grid-column: text;
+}
+
+.dt-tags .dt-tag {
+  text-decoration: none;
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0em 0.4em;
+  margin-right: 0.5em;
+  margin-bottom: 0.4em;
+  font-size: 70%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+d-article table.gt_table td,
+d-article table.gt_table th {
+  border-bottom: none;
+}
+
+.html-widget {
+  margin-bottom: 2.0em;
+}
+
+.l-screen-inset {
+  padding-right: 16px;
+}
+
+.l-screen .caption {
+  margin-left: 10px;
+}
+
+.shaded {
+  background: rgb(247, 247, 247);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .html-widget {
+  margin-bottom: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .shaded-content {
+  background: white;
+}
+
+.text-output {
+  margin-top: 0;
+  line-height: 1.5em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+d-article {
+  padding-top: 2.5rem;
+  padding-bottom: 30px;
+}
+
+d-appendix {
+  padding-top: 30px;
+}
+
+d-article>p>img {
+  width: 100%;
+}
+
+d-article h2 {
+  margin: 1rem 0 1.5rem 0;
+}
+
+d-article h3 {
+  margin-top: 1.5rem;
+}
+
+d-article iframe {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.0em;
+  width: 100%;
+}
+
+/* Tweak code blocks */
+
+d-article div.sourceCode code,
+d-article pre code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: auto;
+}
+
+d-article div.sourceCode {
+  background-color: white;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 10px;
+  font-size: 12px;
+  border-left: 2px solid rgba(0,0,0,0.1);
+}
+
+d-article pre {
+  font-size: 12px;
+  color: black;
+  background: none;
+  margin-top: 0;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+d-article pre a {
+  border-bottom: none;
+}
+
+d-article pre a:hover {
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+d-article details {
+  grid-column: text;
+  margin-bottom: 0.8em;
+}
+
+@media(min-width: 768px) {
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: visible !important;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+d-article pre {
+  font-size: 14px;
+}
+
+}
+
+figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+/* CSS for d-contents */
+
+.d-contents {
+  grid-column: text;
+  color: rgba(0,0,0,0.8);
+  font-size: 0.9em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding-left: 0.25em;
+  justify-self: start;
+}
+
+@media(min-width: 1000px) {
+  .d-contents.d-contents-float {
+    height: 0;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-self: center;
+    padding-right: 3em;
+    padding-left: 2em;
+  }
+}
+
+.d-contents nav h3 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.d-contents li {
+  list-style-type: none
+}
+
+.d-contents nav > ul {
+  padding-left: 0;
+}
+
+.d-contents ul {
+  padding-left: 1em
+}
+
+.d-contents nav ul li {
+  margin-top: 0.6em;
+  margin-bottom: 0.2em;
+}
+
+.d-contents nav a {
+  font-size: 13px;
+  border-bottom: none;
+  text-decoration: none
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.d-contents nav a:hover {
+  text-decoration: underline solid rgba(0, 0, 0, 0.6)
+}
+
+.d-contents nav > ul > li > a {
+  font-weight: 600;
+}
+
+.d-contents nav > ul > li > ul {
+  font-weight: inherit;
+}
+
+.d-contents nav > ul > li > ul > li {
+  margin-top: 0.2em;
+}
+
+
+.d-contents nav ul {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.d-article-with-toc h2:nth-child(2) {
+  margin-top: 0;
+}
+
+
+/* Figure */
+
+.figure {
+  position: relative;
+  margin-bottom: 2.5em;
+  margin-top: 1.5em;
+}
+
+.figure img {
+  width: 100%;
+}
+
+.figure .caption {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+.figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.figure .caption a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.figure .caption b,
+.figure .caption strong, {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1.0);
+}
+
+/* Citations */
+
+d-article .citation {
+  color: inherit;
+  cursor: inherit;
+}
+
+div.hanging-indent{
+  margin-left: 1em; text-indent: -1em;
+}
+
+/* Citation hover box */
+
+.tippy-box[data-theme~=light-border] {
+  background-color: rgba(250, 250, 250, 0.95);
+}
+
+.tippy-content > p {
+  margin-bottom: 0;
+  padding: 2px;
+}
+
+
+/* Tweak 1000px media break to show more text */
+
+@media(min-width: 1000px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+
+  d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+  }
+  figure .caption, .figure .caption, figure figcaption {
+    font-size: 13px;
+  }
+}
+
+@media(min-width: 1180px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
+
+/* Get the citation styles for the appendix (not auto-injected on render since
+   we do our own rendering of the citation appendix) */
+
+d-appendix .citation-appendix,
+.d-appendix .citation-appendix {
+  font-size: 11px;
+  line-height: 15px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 18px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.02);
+  padding: 10px 18px;
+  border-radius: 3px;
+  color: rgba(150, 150, 150, 1);
+  overflow: hidden;
+  margin-top: -12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Include appendix styles here so they can be overridden */
+
+d-appendix {
+  contain: layout style;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-top: 60px;
+  margin-bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0,0,0,0.5);
+  padding-top: 60px;
+  padding-bottom: 48px;
+}
+
+d-appendix h3 {
+  grid-column: page-start / text-start;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.65);
+}
+
+d-appendix h3 + * {
+  margin-top: 1em;
+}
+
+d-appendix ol {
+  padding: 0 0 0 15px;
+}
+
+@media (min-width: 768px) {
+  d-appendix ol {
+    padding: 0 0 0 30px;
+    margin-left: -30px;
+  }
+}
+
+d-appendix li {
+  margin-bottom: 1em;
+}
+
+d-appendix a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+d-appendix > * {
+  grid-column: text;
+}
+
+d-appendix > d-footnote-list,
+d-appendix > d-citation-list,
+d-appendix > distill-appendix {
+  grid-column: screen;
+}
+
+/* Include footnote styles here so they can be overridden */
+
+d-footnote-list {
+  contain: layout style;
+}
+
+d-footnote-list > * {
+  grid-column: text;
+}
+
+d-footnote-list a.footnote-backlink {
+  color: rgba(0,0,0,0.3);
+  padding-left: 0.5em;
+}
+
+
+
+/* Anchor.js */
+
+.anchorjs-link {
+  /*transition: all .25s linear; */
+  text-decoration: none;
+  border-bottom: none;
+}
+*:hover > .anchorjs-link {
+  margin-left: -1.125em !important;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* Social footer */
+
+.social_footer {
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.67);
+}
+
+.disqus-comments {
+  margin-right: 30px;
+}
+
+.disqus-comment-count {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+#disqus_thread {
+  margin-top: 30px;
+}
+
+.article-sharing a {
+  border-bottom: none;
+  margin-right: 8px;
+}
+
+.article-sharing a:hover {
+  border-bottom: none;
+}
+
+.sidebar-section.subscribe {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.subscribe p {
+  margin-bottom: 0.5em;
+}
+
+
+.article-footer .subscribe {
+  font-size: 15px;
+  margin-top: 45px;
+}
+
+
+.sidebar-section.custom {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.custom p {
+  margin-bottom: 0.5em;
+}
+
+/* Styles for listing layout (hide title) */
+.layout-listing d-title, .layout-listing .d-title {
+  display: none;
+}
+
+/* Styles for posts lists (not auto-injected) */
+
+
+.posts-with-sidebar {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.posts-list .description h2,
+.posts-list .description p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.posts-list .description h2 {
+  font-weight: 700;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.posts-list h2.post-tag {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 12px;
+}
+.posts-list {
+  margin-top: 60px;
+  margin-bottom: 24px;
+}
+
+.posts-list .post-preview {
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 24px 0;
+}
+
+.post-preview-last {
+  border-bottom: none !important;
+}
+
+.posts-list .posts-list-caption {
+  grid-column: screen;
+  font-weight: 400;
+}
+
+.posts-list .post-preview h2 {
+  margin: 0 0 6px 0;
+  line-height: 1.2em;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.posts-list .post-preview p {
+  margin: 0 0 12px 0;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+
+.posts-list .post-preview .thumbnail {
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  position: relative;
+  max-width: 500px;
+}
+.posts-list .post-preview img {
+  width: 100%;
+  display: block;
+}
+
+.posts-list .metadata {
+  font-size: 12px;
+  line-height: 1.4em;
+  margin-bottom: 18px;
+}
+
+.posts-list .metadata > * {
+  display: inline-block;
+}
+
+.posts-list .metadata .publishedDate {
+  margin-right: 2em;
+}
+
+.posts-list .metadata .dt-authors {
+  display: block;
+  margin-top: 0.3em;
+  margin-right: 2em;
+}
+
+.posts-list .dt-tags {
+  display: block;
+  line-height: 1em;
+}
+
+.posts-list .dt-tags .dt-tag {
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0.3em 0.4em;
+  margin-right: 0.2em;
+  margin-bottom: 0.4em;
+  font-size: 60%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.posts-list img {
+  opacity: 1;
+}
+
+.posts-list img[data-src] {
+  opacity: 0;
+}
+
+.posts-more {
+  clear: both;
+}
+
+
+.posts-sidebar {
+  font-size: 16px;
+}
+
+.posts-sidebar h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.categories ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories li {
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0;
+}
+
+.categories li>a {
+  border-bottom: none;
+}
+
+.categories li>a:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.categories .active {
+  font-weight: 600;
+}
+
+.categories .category-count {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+@media(min-width: 768px) {
+  .posts-list .post-preview h2 {
+    font-size: 26px;
+  }
+  .posts-list .post-preview .thumbnail {
+    float: right;
+    width: 30%;
+    margin-bottom: 0;
+  }
+  .posts-list .post-preview .description {
+    float: left;
+    width: 45%;
+  }
+  .posts-list .post-preview .metadata {
+    float: left;
+    width: 20%;
+    margin-top: 8px;
+  }
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.5em;
+    font-size: 16px;
+  }
+  .posts-with-sidebar .posts-list {
+    float: left;
+    width: 75%;
+  }
+  .posts-with-sidebar .posts-sidebar {
+    float: right;
+    width: 20%;
+    margin-top: 60px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+
+/* Improve display for browsers without grid (IE/Edge <= 15) */
+
+.downlevel {
+  line-height: 1.6em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.downlevel .d-title {
+  padding-top: 6rem;
+  padding-bottom: 1.5rem;
+}
+
+.downlevel .d-title h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.1em;
+  margin: 0 0 0.5rem;
+}
+
+.downlevel .d-title p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.55em;
+  margin-top: 0;
+}
+
+.downlevel .d-byline {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  font-size: 0.8rem;
+  line-height: 1.8em;
+}
+
+.downlevel .section-separator {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.downlevel .d-article {
+  font-size: 1.06rem;
+  line-height: 1.7em;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+
+.downlevel .d-appendix {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.5);
+  padding-top: 40px;
+  padding-bottom: 48px;
+}
+
+.downlevel .footnotes ol {
+  padding-left: 13px;
+}
+
+.downlevel .base-grid,
+.downlevel .distill-header,
+.downlevel .d-title,
+.downlevel .d-abstract,
+.downlevel .d-article,
+.downlevel .d-appendix,
+.downlevel .distill-appendix,
+.downlevel .d-byline,
+.downlevel .d-footnote-list,
+.downlevel .d-citation-list,
+.downlevel .distill-footer,
+.downlevel .appendix-bottom,
+.downlevel .posts-container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media(min-width: 768px) {
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+  padding-left: 150px;
+  padding-right: 150px;
+  max-width: 900px;
+}
+}
+
+.downlevel pre code {
+  display: block;
+  border-left: 2px solid rgba(0, 0, 0, .1);
+  padding: 0 0 0 20px;
+  font-size: 14px;
+}
+
+.downlevel code, .downlevel pre {
+  color: black;
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.downlevel .posts-list .post-preview {
+  color: inherit;
+}
+
+
+
+</style>
+
+<script type="application/javascript">
+
+function is_downlevel_browser() {
+  if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                 window.navigator.userAgent)) {
+    return true;
+  } else {
+    return window.load_distill_framework === undefined;
+  }
+}
+
+// show body when load is complete
+function on_load_complete() {
+
+  // add anchors
+  if (window.anchors) {
+    window.anchors.options.placement = 'left';
+    window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+  }
+
+
+  // set body to visible
+  document.body.style.visibility = 'visible';
+
+  // force redraw for leaflet widgets
+  if (window.HTMLWidgets) {
+    var maps = window.HTMLWidgets.findAll(".leaflet");
+    $.each(maps, function(i, el) {
+      var map = this.getMap();
+      map.invalidateSize();
+      map.eachLayer(function(layer) {
+        if (layer instanceof L.TileLayer)
+          layer.redraw();
+      });
+    });
+  }
+
+  // trigger 'shown' so htmlwidgets resize
+  $('d-article').trigger('shown');
+}
+
+function init_distill() {
+
+  init_common();
+
+  // create front matter
+  var front_matter = $('<d-front-matter></d-front-matter>');
+  $('#distill-front-matter').wrap(front_matter);
+
+  // create d-title
+  $('.d-title').changeElementType('d-title');
+
+  // create d-byline
+  var byline = $('<d-byline></d-byline>');
+  $('.d-byline').replaceWith(byline);
+
+  // create d-article
+  var article = $('<d-article></d-article>');
+  $('.d-article').wrap(article).children().unwrap();
+
+  // move posts container into article
+  $('.posts-container').appendTo($('d-article'));
+
+  // create d-appendix
+  $('.d-appendix').changeElementType('d-appendix');
+
+  // flag indicating that we have appendix items
+  var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+  // replace footnotes with <d-footnote>
+  $('.footnote-ref').each(function(i, val) {
+    appendix = true;
+    var href = $(this).attr('href');
+    var id = href.replace('#', '');
+    var fn = $('#' + id);
+    var fn_p = $('#' + id + '>p');
+    fn_p.find('.footnote-back').remove();
+    var text = fn_p.html();
+    var dtfn = $('<d-footnote></d-footnote>');
+    dtfn.html(text);
+    $(this).replaceWith(dtfn);
+  });
+  // remove footnotes
+  $('.footnotes').remove();
+
+  // move refs into #references-listing
+  $('#references-listing').replaceWith($('#refs'));
+
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    var id = $(this).attr('id');
+    $('.d-contents a[href="#' + id + '"]').parent().remove();
+    appendix = true;
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+  });
+
+  // show d-appendix if we have appendix content
+  $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+  // localize layout chunks to just output
+  $('.layout-chunk').each(function(i, val) {
+
+    // capture layout
+    var layout = $(this).attr('data-layout');
+
+    // apply layout to markdown level block elements
+    var elements = $(this).children().not('details, div.sourceCode, pre, script');
+    elements.each(function(i, el) {
+      var layout_div = $('<div class="' + layout + '"></div>');
+      if (layout_div.hasClass('shaded')) {
+        var shaded_content = $('<div class="shaded-content"></div>');
+        $(this).wrap(shaded_content);
+        $(this).parent().wrap(layout_div);
+      } else {
+        $(this).wrap(layout_div);
+      }
+    });
+
+
+    // unwrap the layout-chunk div
+    $(this).children().unwrap();
+  });
+
+  // remove code block used to force  highlighting css
+  $('.distill-force-highlighting-css').parent().remove();
+
+  // remove empty line numbers inserted by pandoc when using a
+  // custom syntax highlighting theme
+  $('code.sourceCode a:empty').remove();
+
+  // load distill framework
+  load_distill_framework();
+
+  // wait for window.distillRunlevel == 4 to do post processing
+  function distill_post_process() {
+
+    if (!window.distillRunlevel || window.distillRunlevel < 4)
+      return;
+
+    // hide author/affiliations entirely if we have no authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+    if (!have_authors)
+      $('d-byline').addClass('hidden');
+
+    // article with toc class
+    $('.d-contents').parent().addClass('d-article-with-toc');
+
+    // strip links that point to #
+    $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+    // add orcid ids
+    $('.authors-affiliations').find('.author').each(function(i, el) {
+      var orcid_id = front_matter.authors[i].orcidID;
+      if (orcid_id) {
+        var a = $('<a></a>');
+        a.attr('href', 'https://orcid.org/' + orcid_id);
+        var img = $('<img></img>');
+        img.addClass('orcid-id');
+        img.attr('alt', 'ORCID ID');
+        img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+        a.append(img);
+        $(this).append(a);
+      }
+    });
+
+    // hide elements of author/affiliations grid that have no value
+    function hide_byline_column(caption) {
+      $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+    }
+
+    // affiliations
+    var have_affiliations = false;
+    for (var i = 0; i<front_matter.authors.length; ++i) {
+      var author = front_matter.authors[i];
+      if (author.affiliation !== "&nbsp;") {
+        have_affiliations = true;
+        break;
+      }
+    }
+    if (!have_affiliations)
+      $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+    // published date
+    if (!front_matter.publishedDate)
+      hide_byline_column("Published");
+
+    // document object identifier
+    var doi = $('d-byline').find('h3:contains("DOI")');
+    var doi_p = doi.next().empty();
+    if (!front_matter.doi) {
+      // if we have a citation and valid citationText then link to that
+      if ($('#citation').length > 0 && front_matter.citationText) {
+        doi.html('Citation');
+        $('<a href="#citation"></a>')
+          .text(front_matter.citationText)
+          .appendTo(doi_p);
+      } else {
+        hide_byline_column("DOI");
+      }
+    } else {
+      $('<a></a>')
+         .attr('href', "https://doi.org/" + front_matter.doi)
+         .html(front_matter.doi)
+         .appendTo(doi_p);
+    }
+
+     // change plural form of authors/affiliations
+    if (front_matter.authors.length === 1) {
+      var grid = $('.authors-affiliations');
+      grid.children('h3:contains("Authors")').text('Author');
+      grid.children('h3:contains("Affiliations")').text('Affiliation');
+    }
+
+    // remove d-appendix and d-footnote-list local styles
+    $('d-appendix > style:first-child').remove();
+    $('d-footnote-list > style:first-child').remove();
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // hoverable references
+    $('span.citation[data-cites]').each(function() {
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
+      window.tippy(this, {
+        allowHTML: true,
+        content: refHtml,
+        maxWidth: 500,
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start'
+      });
+    });
+
+    // clear polling timer
+    clearInterval(tid);
+
+    // show body now that everything is ready
+    on_load_complete();
+  }
+
+  var tid = setInterval(distill_post_process, 50);
+  distill_post_process();
+
+}
+
+function init_downlevel() {
+
+  init_common();
+
+   // insert hr after d-title
+  $('.d-title').after($('<hr class="section-separator"/>'));
+
+  // check if we have authors
+  var front_matter = JSON.parse($("#distill-front-matter").html());
+  var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+  // manage byline/border
+  if (!have_authors)
+    $('.d-byline').remove();
+  $('.d-byline').after($('<hr class="section-separator"/>'));
+  $('.d-byline a').remove();
+
+  // remove toc
+  $('.d-contents').remove();
+
+  // move appendix elements
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+  });
+
+
+  // inject headers into references and footnotes
+  var refs_header = $('<h3></h3>');
+  refs_header.text('References');
+  $('#refs').prepend(refs_header);
+
+  var footnotes_header = $('<h3></h3');
+  footnotes_header.text('Footnotes');
+  $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+  // move appendix-bottom entries to the bottom
+  $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+  $('.appendix-bottom').remove();
+
+  // remove appendix if it's empty
+  if ($('.d-appendix').children().length === 0)
+    $('.d-appendix').remove();
+
+  // prepend separator above appendix
+  $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+  // trim code
+  $('pre>code').each(function(i, val) {
+    $(this).html($.trim($(this).html()));
+  });
+
+  // move posts-container right before article
+  $('.posts-container').insertBefore($('.d-article'));
+
+  $('body').addClass('downlevel');
+
+  on_load_complete();
+}
+
+
+function init_common() {
+
+  // jquery plugin to change element types
+  (function($) {
+    $.fn.changeElementType = function(newType) {
+      var attrs = {};
+
+      $.each(this[0].attributes, function(idx, attr) {
+        attrs[attr.nodeName] = attr.nodeValue;
+      });
+
+      this.replaceWith(function() {
+        return $("<" + newType + "/>", attrs).append($(this).contents());
+      });
+    };
+  })(jQuery);
+
+  // prevent underline for linked images
+  $('a > img').parent().css({'border-bottom' : 'none'});
+
+  // mark non-body figures created by knitr chunks as 100% width
+  $('.layout-chunk').each(function(i, val) {
+    var figures = $(this).find('img, .html-widget');
+    if ($(this).attr('data-layout') !== "l-body") {
+      figures.css('width', '100%');
+    } else {
+      figures.css('max-width', '100%');
+      figures.filter("[width]").each(function(i, val) {
+        var fig = $(this);
+        fig.css('width', fig.attr('width') + 'px');
+      });
+
+    }
+  });
+
+  // auto-append index.html to post-preview links in file: protocol
+  // and in rstudio ide preview
+  $('.post-preview').each(function(i, val) {
+    if (window.location.protocol === "file:")
+      $(this).attr('href', $(this).attr('href') + "index.html");
+  });
+
+  // get rid of index.html references in header
+  if (window.location.protocol !== "file:") {
+    $('.distill-site-header a[href]').each(function(i,val) {
+      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+    });
+  }
+
+  // add class to pandoc style tables
+  $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+  $('.kable-table').children('table').addClass('pandoc-table');
+
+  // add figcaption style to table captions
+  $('caption').parent('table').addClass("figcaption");
+
+  // initialize posts list
+  if (window.init_posts_list)
+    window.init_posts_list();
+
+  // implmement disqus comment link
+  $('.disqus-comment-count').click(function() {
+    window.headroom_prevent_pin = true;
+    $('#disqus_thread').toggleClass('hidden');
+    if (!$('#disqus_thread').hasClass('hidden')) {
+      var offset = $(this).offset();
+      $(window).resize();
+      $('html, body').animate({
+        scrollTop: offset.top - 35
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (is_downlevel_browser())
+    init_downlevel();
+  else
+    window.addEventListener('WebComponentsReady', init_distill);
+});
+
+</script>
+
+<!--/radix_placeholder_distill-->
+  <script src="../../site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+<!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Machine Learning Semester Project","description":"We analyzed data from Spotify with the goal of predicting song popularity!","authors":[],"publishedDate":"2020-05-01T00:00:00.000-05:00"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<header class="header header--fixed" role="banner">
+<nav class="distill-site-nav distill-site-header">
+<div class="nav-left">
+<a href="../../index.html" class="title"></a>
+<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
+</div>
+<div class="nav-right">
+<a href="../../index.html">Home</a>
+<a href="../../about.html">About</a>
+<a href="../../projects.html">Projects</a>
+<a href="https://www.linkedin.com/in/nicholas-di-96322a170/">
+<i class="fa fa-linkedin" aria-hidden="true"></i>
+</a>
+<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+</div>
+</nav>
+</header>
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Machine Learning Semester Project</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>We analyzed data from Spotify with the goal of predicting song popularity!</p></p>
+</div>
+
+
+<div class="d-article">
+<h1 id="project-work">Project Work</h1>
+<h2 id="data-context">Data Context</h2>
+<p>We selected the dataset “Top Spotify songs from 2010-2019 - BY YEAR” from Kaggle, which consists of the top songs by year in the world on Spotify, and the data is based on Billboard. The dataset contains 13 variables to be explored, including information about the songs such as the song’s title, the song’s artist, the genre of the track, the year in which the song was in the Billboard rankings, its duration and acousticness. There are also variables describing the music, such as beats per minute (which characterizes the tempo of the song), energy (the higher the value, the more energetic the song is), danceability (the higher the value, the easier it is to dance to this song), loudness (measured in dB), liveness (the higher the value, the more likely the song is a live recording), valence (the higher the value, the more positive the mood is for the song), and speechiness (the higher the value, the more spoken words the song contains). The outcome variable in this dataset is popularity, where the higher the value, the more popular the song is.</p>
+<p>The data were extracted from: <a href="http://organizeyourmusic.playlistmachinery.com/" class="uri">http://organizeyourmusic.playlistmachinery.com/</a>, and the dataset was constructed by Leonardo Henrique, updated in 2020. He was interested in what we could know about the specific music genre based on the popularity of the songs, and what elements would contribute to this popularity.</p>
+<h2 id="research-questions">Research questions</h2>
+<p>Regression: How can we predict the energy level of a song based on all other predictors? Classification: How can we predict whether the song is amongst the most popular based on all other predictors?</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Load data and required packages</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/topepo/caret/'>caret</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://www.statlearning.com'>ISLR</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>splines</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/topepo/caret/'>caret</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>stats</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://lattice.r-forge.r-project.org/'>lattice</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>leaps</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>gam</span><span class='op'>)</span>
+<span class='va'>top_spotify</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>'https://www.dropbox.com/s/fi22whryueo4q85/top10s.csv?dl=1'</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Any code to clean the data</span>
+<span class='va'>top_spotify_new</span> <span class='op'>&lt;-</span> <span class='va'>top_spotify</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>artist</span>,<span class='op'>-</span><span class='st'>'top genre'</span>,<span class='op'>-</span><span class='va'>title</span>,<span class='op'>-</span><span class='va'>...1</span><span class='op'>)</span>
+<span class='co'>#There seems to be an outlier </span>
+<span class='va'>top_spotify_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span>, <span class='va'>bpm</span> <span class='op'>&gt;</span> <span class='fl'>1</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="initial-investigation-1-ignoring-nonlinearity-for-now">Initial investigation 1: ignoring nonlinearity (for now)</h2>
+<p>Use ordinary least squares (OLS) regression, forward and/or backward selection, and LASSO to build initial models for your quantitative outcome as a function of the predictors of interest. (As part of data cleaning, exclude any variables that you don’t want to consider as predictors.)</p>
+<ul>
+<li>These models should not include any transformations to deal with nonlinearity. You’ll explore this in the next investigation.</li>
+<li>Note: If you have highly collinear/redundant variables, you might see the message “Reordering variables and trying again” and associated <code>warning()</code>s about linear dependencies being found. Sometimes stepwise selection is able to handle the collinearity/redundancy by modifying the order of the variables tried. If collinearity/redundancy cannot be handled and causes an error, try reducing <code>nvmax</code>.</li>
+</ul>
+<h3 id="ols-model">OLS Model</h3>
+<p>Fit the ordinary least squares (OLS) regression model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>OLS</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>nrgy</span> <span class='op'>~</span> <span class='va'>year</span> <span class='op'>+</span> <span class='va'>acous</span> <span class='op'>+</span> <span class='va'>bpm</span> <span class='op'>+</span> <span class='va'>pop</span> <span class='op'>+</span> <span class='va'>dnce</span> <span class='op'>+</span> <span class='va'>live</span> <span class='op'>+</span> <span class='va'>spch</span> <span class='op'>+</span> <span class='va'>dur</span>, data <span class='op'>=</span> <span class='va'>top_spotify_new</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>OLS</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = nrgy ~ year + acous + bpm + pop + dnce + live + 
+    spch + dur, data = top_spotify_new)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-43.223  -8.030   1.092   8.540  31.239 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  2.347e+03  4.228e+02   5.552 4.26e-08 ***
+year        -1.119e+00  2.097e-01  -5.337 1.34e-07 ***
+acous       -4.123e-01  2.611e-02 -15.790  &lt; 2e-16 ***
+bpm         -3.427e-03  2.178e-02  -0.157  0.87504    
+pop         -4.448e-02  3.713e-02  -1.198  0.23131    
+dnce         1.833e-03  4.190e-02   0.044  0.96511    
+live         1.239e-01  4.012e-02   3.087  0.00212 ** 
+spch         2.046e-01  6.916e-02   2.958  0.00322 ** 
+dur         -7.281e-02  1.568e-02  -4.644 4.20e-06 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 12.51 on 593 degrees of freedom
+Multiple R-squared:  0.402, Adjusted R-squared:  0.3939 
+F-statistic: 49.83 on 8 and 593 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>OLS_cv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>nrgy</span> <span class='op'>~</span> <span class='va'>year</span> <span class='op'>+</span> <span class='va'>acous</span> <span class='op'>+</span> <span class='va'>bpm</span> <span class='op'>+</span> <span class='va'>pop</span> <span class='op'>+</span> <span class='va'>dnce</span> <span class='op'>+</span> <span class='va'>live</span> <span class='op'>+</span> <span class='va'>spch</span> <span class='op'>+</span> <span class='va'>dur</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"lm"</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="backward-stepwise-selection-model">Backward Stepwise Selection Model</h3>
+<p>Fit the Backward Stepwise Selection model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>full_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>nrgy</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>top_spotify_new</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>full_model</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = nrgy ~ ., data = top_spotify_new)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-28.7877  -6.2817   0.6035   6.8994  27.0338 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 812.704006 344.864487   2.357 0.018769 *  
+year         -0.350636   0.171100  -2.049 0.040874 *  
+bpm          -0.004972   0.017149  -0.290 0.771957    
+dnce         -0.106738   0.037418  -2.853 0.004488 ** 
+dB            4.479083   0.268874  16.659  &lt; 2e-16 ***
+live          0.103313   0.031586   3.271 0.001135 ** 
+val           0.113503   0.022958   4.944 9.99e-07 ***
+dur          -0.017890   0.012827  -1.395 0.163629    
+acous        -0.289294   0.021547 -13.426  &lt; 2e-16 ***
+spch          0.206303   0.055593   3.711 0.000226 ***
+pop          -0.074613   0.029247  -2.551 0.010988 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 9.84 on 591 degrees of freedom
+Multiple R-squared:  0.6312,    Adjusted R-squared:  0.625 
+F-statistic: 101.2 on 10 and 591 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>back_step_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>nrgy</span> <span class='op'>~</span> <span class='va'>.</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>'leapBackward'</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>nvmax <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'cv'</span>,number <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>'MAE'</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="forward-stepwise-selection-model">Forward Stepwise Selection Model</h3>
+<p>Fit the Forward Stepwise Selection model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>for_step_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>nrgy</span> <span class='op'>~</span> <span class='va'>.</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>'leapForward'</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>nvmax <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'cv'</span>,number <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>'MAE'</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="lasso-model">LASSO Model</h3>
+<p>Fit the LASSO model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>lasso_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>nrgy</span> <span class='op'>~</span> <span class='va'>.</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"glmnet"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>1</span>, lambda <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>10</span>, length.out <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>9</span>, selectionFunction <span class='op'>=</span> <span class='st'>'oneSE'</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="compare-performances-of-different-models">Compare performances of different models:</h3>
+<p>Estimate test performance of the models from these different methods. Report and interpret (with units) these estimates along with a measure of uncertainty in the estimate (SD is most readily available from <code>caret</code>).</p>
+<p>Examine OLS model outputs:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>OLS_cv</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = .outcome ~ ., data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-43.223  -8.030   1.092   8.540  31.239 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  2.347e+03  4.228e+02   5.552 4.26e-08 ***
+year        -1.119e+00  2.097e-01  -5.337 1.34e-07 ***
+acous       -4.123e-01  2.611e-02 -15.790  &lt; 2e-16 ***
+bpm         -3.427e-03  2.178e-02  -0.157  0.87504    
+pop         -4.448e-02  3.713e-02  -1.198  0.23131    
+dnce         1.833e-03  4.190e-02   0.044  0.96511    
+live         1.239e-01  4.012e-02   3.087  0.00212 ** 
+spch         2.046e-01  6.916e-02   2.958  0.00322 ** 
+dur         -7.281e-02  1.568e-02  -4.644 4.20e-06 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 12.51 on 593 degrees of freedom
+Multiple R-squared:  0.402, Adjusted R-squared:  0.3939 
+F-statistic: 49.83 on 8 and 593 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>OLS_cv</span><span class='op'>$</span><span class='va'>results</span>
+</code></pre>
+</div>
+<pre><code>  intercept     RMSE  Rsquared      MAE   RMSESD RsquaredSD   MAESD
+1      TRUE 12.62445 0.3880631 10.13206 1.140868  0.1381483 0.83748</code></pre>
+</div>
+<p>On average, we’re off in top song energy predictions by about 10.13206 points.</p>
+<p>Residual plot for OLS model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>OLS_mod_output</span> <span class='op'>&lt;-</span> <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>OLS</span>, newdata <span class='op'>=</span> <span class='va'>top_spotify_new</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>OLS_mod_output</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>.fitted</span>, y <span class='op'>=</span> <span class='va'>.resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<p>Examine Backward Stepwise Selection model output:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>back_step_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Subset selection object
+10 Variables  (and intercept)
+      Forced in Forced out
+year      FALSE      FALSE
+bpm       FALSE      FALSE
+dnce      FALSE      FALSE
+dB        FALSE      FALSE
+live      FALSE      FALSE
+val       FALSE      FALSE
+dur       FALSE      FALSE
+acous     FALSE      FALSE
+spch      FALSE      FALSE
+pop       FALSE      FALSE
+1 subsets of each size up to 9
+Selection Algorithm: backward
+         year bpm dnce dB  live val dur acous spch pop
+1  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot; &quot;  &quot; &quot; &quot; &quot; &quot; &quot;   &quot; &quot;  &quot; &quot;
+2  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot; &quot;  &quot; &quot; &quot; &quot; &quot;*&quot;   &quot; &quot;  &quot; &quot;
+3  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot; &quot;  &quot; &quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot; &quot;
+4  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot; &quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot; &quot;
+5  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot; &quot;
+6  ( 1 ) &quot; &quot;  &quot; &quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot; &quot;
+7  ( 1 ) &quot; &quot;  &quot; &quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot;*&quot;
+8  ( 1 ) &quot;*&quot;  &quot; &quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot;*&quot;
+9  ( 1 ) &quot;*&quot;  &quot; &quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot; &quot;*&quot;   &quot;*&quot;  &quot;*&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>back_step_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-9-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>back_step_mod</span><span class='op'>$</span><span class='va'>bestTune</span>
+</code></pre>
+</div>
+<pre><code>  nvmax
+9     9</code></pre>
+</div>
+<p>We chose the model with 6 predictors. Although all 10 yields better model metrics, we believe that we will run into problems of over-fitting.</p>
+<p>On average, we’re off in top song energy predictions by about 8.286 percentage points, if we use the model with 6 predictors.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>back_step_mod</span><span class='op'>$</span><span class='va'>finalModel</span>, id <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>(Intercept)        dnce          dB        live         val 
+ 97.4672886  -0.1228588   4.5587752   0.1128596   0.1264183 
+      acous        spch 
+ -0.2930557   0.2006552 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>back_step_mod</span><span class='op'>$</span><span class='va'>results</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>nvmax</span><span class='op'>==</span><span class='fl'>6</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  nvmax     RMSE  Rsquared      MAE    RMSESD RsquaredSD    MAESD
+1     6 10.18581 0.5910122 8.286481 0.9244708  0.1070956 0.825095</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>back_step_mod_eq</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>nrgy</span> <span class='op'>~</span> <span class='va'>dnce</span> <span class='op'>+</span> <span class='va'>dB</span> <span class='op'>+</span> <span class='va'>live</span> <span class='op'>+</span> <span class='va'>val</span> <span class='op'>+</span> <span class='va'>acous</span> <span class='op'>+</span> <span class='va'>spch</span>, data <span class='op'>=</span><span class='va'>top_spotify_new</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Residual plot for Backward Step-wise Selection model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>back_step_mod_out</span> <span class='op'>&lt;-</span> <span class='va'>top_spotify_new</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+        fitted <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>back_step_mod_eq</span>, newdata <span class='op'>=</span> <span class='va'>top_spotify_new</span><span class='op'>)</span>,
+        resid <span class='op'>=</span> <span class='va'>nrgy</span> <span class='op'>-</span> <span class='va'>fitted</span>
+    <span class='op'>)</span>
+
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>back_step_mod_out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>fitted</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<p>For Loop looking at all predictors in the Backward Stepwise Selection model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>predictors</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/setops.html'>setdiff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"year"</span>,<span class='st'>"bpm"</span>,<span class='st'>"nrgy"</span>,<span class='st'>"dur"</span>,<span class='st'>"spch"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>pred</span> <span class='kw'>in</span> <span class='va'>predictors</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>back_step_mod_out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>.data</span><span class='op'>[[</span><span class='va'>pred</span><span class='op'>]</span><span class='op'>]</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pred</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-12-1.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-12-2.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-12-3.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-12-4.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-12-5.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-12-6.png" width="624" /></p>
+</div>
+<p>Examine Forward Stepwise Selection model output:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>for_step_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Subset selection object
+10 Variables  (and intercept)
+      Forced in Forced out
+year      FALSE      FALSE
+bpm       FALSE      FALSE
+dnce      FALSE      FALSE
+dB        FALSE      FALSE
+live      FALSE      FALSE
+val       FALSE      FALSE
+dur       FALSE      FALSE
+acous     FALSE      FALSE
+spch      FALSE      FALSE
+pop       FALSE      FALSE
+1 subsets of each size up to 9
+Selection Algorithm: forward
+         year bpm dnce dB  live val dur acous spch pop
+1  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot; &quot;  &quot; &quot; &quot; &quot; &quot; &quot;   &quot; &quot;  &quot; &quot;
+2  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot; &quot;  &quot; &quot; &quot; &quot; &quot;*&quot;   &quot; &quot;  &quot; &quot;
+3  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot; &quot;  &quot; &quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot; &quot;
+4  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot; &quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot; &quot;
+5  ( 1 ) &quot; &quot;  &quot; &quot; &quot; &quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot; &quot;
+6  ( 1 ) &quot; &quot;  &quot; &quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot; &quot;
+7  ( 1 ) &quot; &quot;  &quot; &quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot;*&quot;
+8  ( 1 ) &quot;*&quot;  &quot; &quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot; &quot; &quot;*&quot;   &quot;*&quot;  &quot;*&quot;
+9  ( 1 ) &quot;*&quot;  &quot; &quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot;  &quot;*&quot; &quot;*&quot; &quot;*&quot;   &quot;*&quot;  &quot;*&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>for_step_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-13-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>for_step_mod</span><span class='op'>$</span><span class='va'>results</span>
+</code></pre>
+</div>
+<pre><code>   nvmax      RMSE  Rsquared      MAE    RMSESD RsquaredSD     MAESD
+1      1 11.993192 0.4404595 9.440092 1.1663410 0.08326330 0.7602086
+2      2 10.477550 0.5683678 8.533998 0.6892741 0.09392739 0.6832649
+3      3 10.421451 0.5699856 8.442041 0.8481219 0.10845490 0.7918324
+4      4 10.333804 0.5765861 8.412541 0.8391433 0.11095779 0.7986408
+5      5 10.260625 0.5846211 8.383712 0.8495003 0.11238655 0.7669223
+6      6 10.142928 0.5941810 8.277152 0.8950607 0.10739226 0.8186073
+7      7  9.950075 0.6082421 8.067531 0.9987578 0.11136222 0.8886527
+8      8  9.940663 0.6092391 8.072114 0.9905555 0.10712761 0.9066449
+9      9  9.902507 0.6120420 8.049632 0.9827727 0.10630862 0.9021970
+10    10  9.915936 0.6110377 8.062302 0.9829506 0.10702524 0.9087888</code></pre>
+</div>
+<p>Using Forward selection, we chose the model with 5 predictors. The five predictors being acous, dB, live, spch, and val.</p>
+<p>On average, we’re off in top song energy predictions by about 8.383712 percentage points.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>for_step_mod</span><span class='op'>$</span><span class='va'>finalModel</span>, id <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>(Intercept)          dB        live         val       acous 
+91.50592402  4.65576857  0.11831750  0.09041016 -0.28031999 
+       spch 
+ 0.22151861 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>for_step_mod</span><span class='op'>$</span><span class='va'>results</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>nvmax</span><span class='op'>==</span><span class='fl'>5</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  nvmax     RMSE  Rsquared      MAE    RMSESD RsquaredSD     MAESD
+1     5 10.26063 0.5846211 8.383712 0.8495003  0.1123866 0.7669223</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>for_step_mod_eq</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>nrgy</span> <span class='op'>~</span> <span class='va'>acous</span> <span class='op'>+</span> <span class='va'>dB</span> <span class='op'>+</span> <span class='va'>val</span> <span class='op'>+</span> <span class='va'>spch</span> <span class='op'>+</span> <span class='va'>live</span>, data <span class='op'>=</span><span class='va'>top_spotify_new</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Residual plot for Forward Stepwise Selection model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>for_step_mod_out</span> <span class='op'>&lt;-</span> <span class='va'>top_spotify_new</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+        fitted <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>for_step_mod_eq</span>, newdata <span class='op'>=</span> <span class='va'>top_spotify_new</span><span class='op'>)</span>,
+        resid <span class='op'>=</span> <span class='va'>nrgy</span> <span class='op'>-</span> <span class='va'>fitted</span>
+    <span class='op'>)</span>
+
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>for_step_mod_out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>fitted</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
+</div>
+<p>For Loop looking at all predictors in the Forward Stepwise Selection model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>predictors</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/setops.html'>setdiff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"year"</span>,<span class='st'>"bpm"</span>,<span class='st'>"nrgy"</span>,<span class='st'>"dur"</span>,<span class='st'>"pop"</span>, <span class='st'>"dnce"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>pred</span> <span class='kw'>in</span> <span class='va'>predictors</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>for_step_mod_out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>.data</span><span class='op'>[[</span><span class='va'>pred</span><span class='op'>]</span><span class='op'>]</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pred</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-16-1.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-16-2.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-16-3.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-16-4.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-16-5.png" width="624" /></p>
+</div>
+<p>Examine LASSO model output:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lasso_mod</span><span class='op'>$</span><span class='va'>finalModel</span>, xvar <span class='op'>=</span> <span class='st'>"lambda"</span>, label <span class='op'>=</span> <span class='cn'>TRUE</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>rainbow</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-17-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_mod</span><span class='op'>$</span><span class='va'>bestTune</span>
+</code></pre>
+</div>
+<pre><code>   alpha   lambda
+11     1 1.010101</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># lasso_mod$results</span>
+<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='va'>lasso_mod</span><span class='op'>$</span><span class='va'>finalModel</span><span class='op'>$</span><span class='va'>beta</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>8</span><span class='op'>)</span><span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;dB&quot;    &quot;acous&quot;</code></pre>
+</div>
+<p>We chose a lambda value of 1.010101, dB and acous seem to be two of the strongest/persistent predictors when it comes to energy-level.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>lasso_mod</span><span class='op'>$</span><span class='va'>finalModel</span>, <span class='fl'>1.010101</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>11 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+                      s1
+(Intercept) 427.22094252
+year         -0.16551620
+bpm           .         
+dnce          .         
+dB            4.25384058
+live          0.05257947
+val           0.06575686
+dur           .         
+acous        -0.25154488
+spch          0.10397394
+pop          -0.02164891</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_mod</span><span class='op'>$</span><span class='va'>results</span><span class='op'>[</span><span class='fl'>11</span>,<span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code>   alpha   lambda     RMSE Rsquared     MAE    RMSESD RsquaredSD
+11     1 1.010101 10.17634 0.597547 8.32769 0.8552498  0.1057273
+       MAESD
+11 0.7932597</code></pre>
+</div>
+<p>On average, we’re off in top song energy predictions by about 8.32769 percentage points using LASSO with a lambda of 1.010101.</p>
+<p>Residual plot for LASSO model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_mod_out</span> <span class='op'>&lt;-</span> <span class='va'>top_spotify_new</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+        fitted <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>lasso_mod</span>, newdata <span class='op'>=</span> <span class='va'>top_spotify_new</span><span class='op'>)</span>,
+        resid <span class='op'>=</span> <span class='va'>nrgy</span> <span class='op'>-</span> <span class='va'>fitted</span><span class='op'>)</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lasso_mod_out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>fitted</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Fitted values"</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
+</div>
+<p>There does not seem to be any noticable patterns of over and underpredicting here!</p>
+<p>For Loop for LASSO model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>predictors</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/setops.html'>setdiff</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span><span class='op'>)</span>, <span class='st'>"Top Spotify"</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>pred</span> <span class='kw'>in</span> <span class='va'>predictors</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>lasso_mod_out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>.data</span><span class='op'>[[</span><span class='va'>pred</span><span class='op'>]</span><span class='op'>]</span>, y <span class='op'>=</span> <span class='va'>resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pred</span>, y <span class='op'>=</span> <span class='st'>"Residuals"</span><span class='op'>)</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-20-1.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-2.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-3.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-4.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-5.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-6.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-7.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-8.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-9.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-10.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-11.png" width="624" /></p>
+</div>
+<ul>
+<li>Compare estimated test performance across methods. Which method(s) might you prefer?</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Model</th>
+<th style="text-align: center;">Training MAE</th>
+<th style="text-align: center;">MAESD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>OLS Model</code></td>
+<td style="text-align: center;">10.13206</td>
+<td style="text-align: center;">0.83748</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>Backward</code></td>
+<td style="text-align: center;">8.286481</td>
+<td style="text-align: center;">0.825095</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>Forward</code></td>
+<td style="text-align: center;">8.383712</td>
+<td style="text-align: center;">0.7669223</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>LASSO</code></td>
+<td style="text-align: center;">8.32769</td>
+<td style="text-align: center;">0.7932597</td>
+</tr>
+</tbody>
+</table>
+<p>Comparing the four models, LASSO and Backward Stepwise Selection models seem to be yielding the best results as the predictions for top song energy level are closest to the test value.</p>
+<p>Compare insights from variable importance analyses from the different methods (stepwise and LASSO, but not OLS). Are there variables for which the methods reach consensus? What insights are expected? Surprising?</p>
+<p>Across all models, the “top” 3 predictors for song energy level are acous (Acousticness- the higher the value the more acoustic the song is), dB(Loudness, the higher the value, the louder the song), and val(Valence, the higher the value, the more positive mood for the song). This is mostly consistent with our expectation, as when the song is louder, and more positive, the song has a higher energy level. It is a bit surprising that when a song is more acoustic, it is less energetic.</p>
+<ul>
+<li>Note that if some (but not all) of the indicator terms for a categorical predictor are selected in the final models, the whole predictor should be treated as selected.</li>
+</ul>
+<h2 id="investigation-2-accounting-for-nonlinearity">Investigation 2: Accounting for nonlinearity</h2>
+<p>Update your stepwise selection model(s) and LASSO model to use natural splines for the quantitative predictors.</p>
+<ul>
+<li>You’ll need to update the model formula from <code>y ~ .</code> to something like <code>y ~ cat_var1 + ns(quant_var1, df) + ...</code>.</li>
+<li>It’s recommended to use few knots (e.g., 2 knots = 3 degrees of freedom).</li>
+<li>Note that <code>ns(x,3)</code> replaces <code>x</code> with 3 transformations of <code>x</code>. Keep this in mind when setting <code>nvmax</code> in stepwise selection.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>val</span>, y <span class='op'>=</span> <span class='va'>nrgy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"blue"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, color <span class='op'>=</span> <span class='st'>"red"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-21-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>dB</span>, y <span class='op'>=</span> <span class='va'>nrgy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"blue"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, color <span class='op'>=</span> <span class='st'>"red"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-21-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>acous</span>, y <span class='op'>=</span> <span class='va'>nrgy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"blue"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, color <span class='op'>=</span> <span class='st'>"red"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-21-3.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, y <span class='op'>=</span> <span class='va'>nrgy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"blue"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, color <span class='op'>=</span> <span class='st'>"red"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-21-4.png" width="624" /></p>
+</div>
+<h3 id="backward-stepwise-selection-model-with-natural-splines">Backward Stepwise Selection model with natural splines</h3>
+<p>Update the Backward Stepwise Selection model to use natural splines for the quantitative predictors:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>back_spline_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>nrgy</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>acous</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>pop</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>dnce</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>live</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>dB</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>val</span>, <span class='fl'>3</span><span class='op'>)</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"leapBackward"</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>9</span>, selectionFunction <span class='op'>=</span> <span class='st'>"oneSE"</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="forward-stepwise-selection-model-with-natural-splines">Forward Stepwise Selection model with natural splines</h3>
+<p>Update the Forward Stepwise Selection model to use natural splines for the quantitative predictors:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>for_spline_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>nrgy</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>year</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>acous</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>bpm</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>pop</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>dnce</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>live</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>spch</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>dur</span>, <span class='fl'>3</span><span class='op'>)</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"leapForward"</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>9</span>, selectionFunction <span class='op'>=</span> <span class='st'>"oneSE"</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="lasso-model-with-natural-splines">LASSO model with natural splines</h3>
+<p>Update the LASSO model to use natural splines for the quantitative predictors:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>LASSO_spline_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>nrgy</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>year</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>acous</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>bpm</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>pop</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>dnce</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>live</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>spch</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/splines/ns.html'>ns</a></span><span class='op'>(</span><span class='va'>dur</span>, <span class='fl'>3</span><span class='op'>)</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"glmnet"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>1</span>, lambda <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>10</span>, length.out <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>9</span>, selectionFunction <span class='op'>=</span> <span class='st'>"oneSE"</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="compare-insights-from-variable-importance-analyses">Compare insights from variable importance analyses</h3>
+<p>Compare insights from variable importance analyses here and the corresponding results from Investigation 1. Now after having accounted for nonlinearity, have the most relevant predictors changed?</p>
+<ul>
+<li>Note that if some (but not all) of the spline terms are selected in the final models, the whole predictor should be treated as selected.</li>
+</ul>
+<p>Examine Backward Stepwise Selection model with natural splines output:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>back_spline_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Subset selection object
+18 Variables  (and intercept)
+              Forced in Forced out
+ns(acous, 3)1     FALSE      FALSE
+ns(acous, 3)2     FALSE      FALSE
+ns(acous, 3)3     FALSE      FALSE
+ns(pop, 3)1       FALSE      FALSE
+ns(pop, 3)2       FALSE      FALSE
+ns(pop, 3)3       FALSE      FALSE
+ns(dnce, 3)1      FALSE      FALSE
+ns(dnce, 3)2      FALSE      FALSE
+ns(dnce, 3)3      FALSE      FALSE
+ns(live, 3)1      FALSE      FALSE
+ns(live, 3)2      FALSE      FALSE
+ns(live, 3)3      FALSE      FALSE
+ns(dB, 3)1        FALSE      FALSE
+ns(dB, 3)2        FALSE      FALSE
+ns(dB, 3)3        FALSE      FALSE
+ns(val, 3)1       FALSE      FALSE
+ns(val, 3)2       FALSE      FALSE
+ns(val, 3)3       FALSE      FALSE
+1 subsets of each size up to 4
+Selection Algorithm: backward
+         ns(acous, 3)1 ns(acous, 3)2 ns(acous, 3)3 ns(pop, 3)1
+1  ( 1 ) &quot; &quot;           &quot; &quot;           &quot; &quot;           &quot; &quot;        
+2  ( 1 ) &quot; &quot;           &quot; &quot;           &quot;*&quot;           &quot; &quot;        
+3  ( 1 ) &quot; &quot;           &quot;*&quot;           &quot;*&quot;           &quot; &quot;        
+4  ( 1 ) &quot; &quot;           &quot;*&quot;           &quot;*&quot;           &quot; &quot;        
+         ns(pop, 3)2 ns(pop, 3)3 ns(dnce, 3)1 ns(dnce, 3)2
+1  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;          &quot; &quot;         
+2  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;          &quot; &quot;         
+3  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;          &quot; &quot;         
+4  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;          &quot; &quot;         
+         ns(dnce, 3)3 ns(live, 3)1 ns(live, 3)2 ns(live, 3)3
+1  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;         
+2  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;         
+3  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;         
+4  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;         
+         ns(dB, 3)1 ns(dB, 3)2 ns(dB, 3)3 ns(val, 3)1 ns(val, 3)2
+1  ( 1 ) &quot; &quot;        &quot; &quot;        &quot;*&quot;        &quot; &quot;         &quot; &quot;        
+2  ( 1 ) &quot; &quot;        &quot; &quot;        &quot;*&quot;        &quot; &quot;         &quot; &quot;        
+3  ( 1 ) &quot; &quot;        &quot; &quot;        &quot;*&quot;        &quot; &quot;         &quot; &quot;        
+4  ( 1 ) &quot;*&quot;        &quot; &quot;        &quot;*&quot;        &quot; &quot;         &quot; &quot;        
+         ns(val, 3)3
+1  ( 1 ) &quot; &quot;        
+2  ( 1 ) &quot; &quot;        
+3  ( 1 ) &quot; &quot;        
+4  ( 1 ) &quot; &quot;        </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>back_spline_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-25-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>back_spline_mod</span><span class='op'>$</span><span class='va'>bestTune</span>
+</code></pre>
+</div>
+<pre><code>  nvmax
+3     4</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>back_spline_mod</span><span class='op'>$</span><span class='va'>results</span>
+</code></pre>
+</div>
+<pre><code>  nvmax     RMSE  Rsquared       MAE    RMSESD RsquaredSD     MAESD
+1     2 12.94073 0.3520225 10.551403 1.0723596 0.09809830 0.7221742
+2     3 11.21314 0.5103530  9.152245 0.9208166 0.07104034 0.7258275
+3     4 10.28440 0.5900269  8.392090 0.8083434 0.09138549 0.7327469</code></pre>
+</div>
+<p>According to the Backward Stepwise Selection model with natural splines, the top predictors for song energy level are acous and dB.</p>
+<p>Examine Forward Stepwise Selection model output:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>for_spline_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Subset selection object
+24 Variables  (and intercept)
+              Forced in Forced out
+ns(year, 3)1      FALSE      FALSE
+ns(year, 3)2      FALSE      FALSE
+ns(year, 3)3      FALSE      FALSE
+ns(acous, 3)1     FALSE      FALSE
+ns(acous, 3)2     FALSE      FALSE
+ns(acous, 3)3     FALSE      FALSE
+ns(bpm, 3)1       FALSE      FALSE
+ns(bpm, 3)2       FALSE      FALSE
+ns(bpm, 3)3       FALSE      FALSE
+ns(pop, 3)1       FALSE      FALSE
+ns(pop, 3)2       FALSE      FALSE
+ns(pop, 3)3       FALSE      FALSE
+ns(dnce, 3)1      FALSE      FALSE
+ns(dnce, 3)2      FALSE      FALSE
+ns(dnce, 3)3      FALSE      FALSE
+ns(live, 3)1      FALSE      FALSE
+ns(live, 3)2      FALSE      FALSE
+ns(live, 3)3      FALSE      FALSE
+ns(spch, 3)1      FALSE      FALSE
+ns(spch, 3)2      FALSE      FALSE
+ns(spch, 3)3      FALSE      FALSE
+ns(dur, 3)1       FALSE      FALSE
+ns(dur, 3)2       FALSE      FALSE
+ns(dur, 3)3       FALSE      FALSE
+1 subsets of each size up to 3
+Selection Algorithm: forward
+         ns(year, 3)1 ns(year, 3)2 ns(year, 3)3 ns(acous, 3)1
+1  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;          
+2  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;          
+3  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;          
+         ns(acous, 3)2 ns(acous, 3)3 ns(bpm, 3)1 ns(bpm, 3)2
+1  ( 1 ) &quot; &quot;           &quot;*&quot;           &quot; &quot;         &quot; &quot;        
+2  ( 1 ) &quot;*&quot;           &quot;*&quot;           &quot; &quot;         &quot; &quot;        
+3  ( 1 ) &quot;*&quot;           &quot;*&quot;           &quot; &quot;         &quot; &quot;        
+         ns(bpm, 3)3 ns(pop, 3)1 ns(pop, 3)2 ns(pop, 3)3 ns(dnce, 3)1
+1  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;         &quot; &quot;         &quot; &quot;         
+2  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;         &quot; &quot;         &quot; &quot;         
+3  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;         &quot; &quot;         &quot; &quot;         
+         ns(dnce, 3)2 ns(dnce, 3)3 ns(live, 3)1 ns(live, 3)2
+1  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;         
+2  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;         
+3  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;         
+         ns(live, 3)3 ns(spch, 3)1 ns(spch, 3)2 ns(spch, 3)3
+1  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;         
+2  ( 1 ) &quot; &quot;          &quot; &quot;          &quot; &quot;          &quot; &quot;         
+3  ( 1 ) &quot; &quot;          &quot; &quot;          &quot;*&quot;          &quot; &quot;         
+         ns(dur, 3)1 ns(dur, 3)2 ns(dur, 3)3
+1  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;        
+2  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;        
+3  ( 1 ) &quot; &quot;         &quot; &quot;         &quot; &quot;        </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>for_spline_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-26-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>for_spline_mod</span><span class='op'>$</span><span class='va'>bestTune</span>
+</code></pre>
+</div>
+<pre><code>  nvmax
+2     3</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>for_spline_mod</span><span class='op'>$</span><span class='va'>results</span>
+</code></pre>
+</div>
+<pre><code>  nvmax     RMSE  Rsquared      MAE    RMSESD RsquaredSD     MAESD
+1     2 12.86781 0.3498257 10.55154 0.9235936 0.10765745 0.6993457
+2     3 12.92971 0.3449085 10.51615 0.9716964 0.09693563 0.6348611
+3     4 12.69644 0.3685762 10.30346 0.8366573 0.10280846 0.6553263</code></pre>
+</div>
+<p>According to the Forward Stepwise Selection model with natural splines, the top predictor for song energy level is acous.</p>
+<p>Examine LASSO model with natural splines output:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>LASSO_spline_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>            Length Class      Mode     
+a0            72   -none-     numeric  
+beta        1728   dgCMatrix  S4       
+df            72   -none-     numeric  
+dim            2   -none-     numeric  
+lambda        72   -none-     numeric  
+dev.ratio     72   -none-     numeric  
+nulldev        1   -none-     numeric  
+npasses        1   -none-     numeric  
+jerr           1   -none-     numeric  
+offset         1   -none-     logical  
+call           5   -none-     call     
+nobs           1   -none-     numeric  
+lambdaOpt      1   -none-     numeric  
+xNames        24   -none-     character
+problemType    1   -none-     character
+tuneValue      2   data.frame list     
+obsLevels      1   -none-     logical  
+param          0   -none-     list     </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>LASSO_spline_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-27-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>LASSO_spline_mod</span><span class='op'>$</span><span class='va'>bestTune</span>
+</code></pre>
+</div>
+<pre><code>  alpha    lambda
+6     1 0.5050505</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># LASSO_spline_mod$results</span>
+</code></pre>
+</div>
+</div>
+<p>The lambda value provided by the LASSO model with splines is 0.5050505.</p>
+<h3 id="gam-with-loess-terms">GAM with LOESS terms</h3>
+<p>Fit a GAM using LOESS terms using the set of variables deemed to be most relevant based on your investigations so far.</p>
+<ul>
+<li>How does test performance of the GAM compare to other models you explored?</li>
+<li>Do you gain any insights from the GAM output plots for each predictor?</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>gam_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>nrgy</span> <span class='op'>~</span> <span class='va'>acous</span> <span class='op'>+</span> <span class='va'>val</span> <span class='op'>+</span> <span class='va'>dB</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"gamLoess"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>degree <span class='op'>=</span> <span class='fl'>1</span>, span <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0.1</span>, <span class='fl'>0.9</span>, by <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>9</span>, selectionFunction <span class='op'>=</span> <span class='st'>"best"</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"MAE"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Examine GAM with LOESS output:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gam_mod</span><span class='op'>$</span><span class='va'>results</span><span class='op'>[</span><span class='fl'>3</span>,<span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code>  degree span     RMSE  Rsquared      MAE   RMSESD RsquaredSD
+3      1  0.3 10.20914 0.5906928 8.252745 0.892152  0.1020878
+      MAESD
+3 0.8103724</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>gam_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-30-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#Metrics for the best model </span>
+<span class='va'>gam_mod</span><span class='op'>$</span><span class='va'>results</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>span</span><span class='op'>==</span><span class='va'>gam_mod</span><span class='op'>$</span><span class='va'>bestTune</span><span class='op'>$</span><span class='va'>span</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  degree span     RMSE  Rsquared      MAE   RMSESD RsquaredSD
+1      1  0.3 10.20914 0.5906928 8.252745 0.892152  0.1020878
+      MAESD
+1 0.8103724</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#Graphing Each Predictor </span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Sets up a grid of plots</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>gam_mod</span><span class='op'>$</span><span class='va'>finalModel</span>, se <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='co'># Dashed lines are +/- 2 SEs</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-30-2.png" width="624" /></p>
+</div>
+<p>GAM with a span of 0.3 offers a MAE of 8.252745, indicating that we our predictions for top song energy level would be off by 8.368585 percentage points in this case. This result is actually better than all four previous models fitted in the first section.</p>
+<h2 id="summarize-investigations">Summarize investigations</h2>
+<p>Decide on an overall best model based on your investigations so far. To do this, make clear your analysis goals. Predictive accuracy? Interpretability? A combination of both?</p>
+<p>Overall, based on the output given by all of the models we fitted above, it seems that a GAM with LOESS model achieves the lowest MAE for our dataset. For our analysis, since we want to correctly predict the energy level of a popular song, we care about the predictive accuracy of the model. We are also interested in knowing what contributes to an energetic song, thus interpretability is also essential for the model. Therefore splines doesn’t seem the most straightforward choice for us, whereas either GAM with LOESS or LASSO seems like a better option.</p>
+<h2 id="societal-impact">Societal impact</h2>
+<p>Are there any harms that may come from your analyses and/or how the data were collected? What cautions do you want to keep in mind when communicating your work?</p>
+<p>Our models takes a harmless look at the deciding elements of an energetic song, as under the environment of a global pandemic where social interactions are limited, it is important to look for means to maintain a positive mood, and it seems that listening to uplifting pop music is a favorable way to do so. Given our dataset, though, since the source is Spotify and Billboard, our scope of pop music is limited and may result in a certain pattern in our predictions. We want to caution that good music choice should by no means be limited, and it should always be optimal to listen to whatever one’s heart desires.</p>
+<h2 id="classification-analysis-methods">Classification analysis (Methods)</h2>
+<p>We used logistic regression and random forest for building classification models.</p>
+<h3 id="logistic-regression">Logistic Regression</h3>
+<p>We converted the predictor “pop” to categorical, assigning the observations with value above 75 to be top songs.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>top_spotify_new</span><span class='op'>$</span><span class='va'>IsPop</span> <span class='op'>&lt;-</span> <span class='st'>"NO"</span>
+<span class='va'>top_spotify_new</span><span class='op'>$</span><span class='va'>IsPop</span><span class='op'>[</span><span class='va'>top_spotify_new</span><span class='op'>$</span><span class='va'>pop</span> <span class='op'>&gt;=</span> <span class='fl'>75</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='st'>"YES"</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span><span class='op'>$</span><span class='va'>IsPop</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span><span class='op'>$</span><span class='va'>pop</span><span class='op'>)</span>
+<span class='va'>top_spotify_new</span><span class='op'>$</span><span class='va'>IsPop</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span><span class='op'>$</span><span class='va'>IsPop</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>We then fit the logistic regression model predicting whether a given song is a popular song with all other predictors. We selected the metrics Accuracy so that the model we fit would prioritize making the most accurate predictions.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>logistic_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>IsPop</span> <span class='op'>~</span> <span class='va'>.</span><span class='op'>-</span><span class='va'>pop</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"glm"</span>,
+    family <span class='op'>=</span> <span class='st'>"binomial"</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"Accuracy"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>logistic_mod</span><span class='op'>$</span><span class='va'>results</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  parameter            Accuracy          Kappa       
+ Length:1           Min.   :0.7124   Min.   :0.2109  
+ Class :character   1st Qu.:0.7124   1st Qu.:0.2109  
+ Mode  :character   Median :0.7124   Median :0.2109  
+                    Mean   :0.7124   Mean   :0.2109  
+                    3rd Qu.:0.7124   3rd Qu.:0.2109  
+                    Max.   :0.7124   Max.   :0.2109  
+   AccuracySD         KappaSD       
+ Min.   :0.02915   Min.   :0.07924  
+ 1st Qu.:0.02915   1st Qu.:0.07924  
+ Median :0.02915   Median :0.07924  
+ Mean   :0.02915   Mean   :0.07924  
+ 3rd Qu.:0.02915   3rd Qu.:0.07924  
+ Max.   :0.02915   Max.   :0.07924  </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coefficients</a></span><span class='op'>(</span><span class='va'>logistic_mod</span><span class='op'>$</span><span class='va'>finalModel</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  (Intercept)          year           bpm          nrgy          dnce 
+1.508016e-192  1.246311e+00  1.000621e+00  9.717299e-01  1.007890e+00 
+           dB          live           val           dur         acous 
+ 1.147383e+00  9.915256e-01  1.006670e+00  9.968091e-01  1.001887e+00 
+         spch 
+ 9.881283e-01 </code></pre>
+</div>
+<p>We also fit the LASSO logistic regression, gaining insight about variable importance.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>twoClassSummaryCustom</span> <span class='op'>&lt;-</span> <span class='kw'>function</span> <span class='op'>(</span><span class='va'>data</span>, <span class='va'>lev</span> <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>model</span> <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>lev</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>{</span>
+        <span class='kw'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"Your outcome has"</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>lev</span><span class='op'>)</span>, <span class='st'>"levels. The twoClassSummary() function isn't appropriate."</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='op'>}</span>
+    <span class='fu'>caret</span><span class='fu'>:::</span><span class='fu'>requireNamespaceQuietStop</span><span class='op'>(</span><span class='st'>"pROC"</span><span class='op'>)</span>
+    <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>[</span>, <span class='st'>"pred"</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>==</span> <span class='va'>lev</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+        <span class='kw'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span><span class='op'>(</span><span class='st'>"levels of observed and predicted data do not match"</span><span class='op'>)</span>
+    <span class='op'>}</span>
+    <span class='va'>rocObject</span> <span class='op'>&lt;-</span> <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'>pROC</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pROC/man/roc.html'>roc</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>$</span><span class='va'>obs</span>, <span class='va'>data</span><span class='op'>[</span>, <span class='va'>lev</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, direction <span class='op'>=</span> <span class='st'>"&gt;"</span>, 
+        quiet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>, silent <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+    <span class='va'>rocAUC</span> <span class='op'>&lt;-</span> <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>inherits</a></span><span class='op'>(</span><span class='va'>rocObject</span>, <span class='st'>"try-error"</span><span class='op'>)</span><span class='op'>)</span> 
+        <span class='cn'>NA</span>
+    <span class='kw'>else</span> <span class='va'>rocObject</span><span class='op'>$</span><span class='va'>auc</span>
+    <span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>rocAUC</span>, <span class='fu'><a href='https://rdrr.io/pkg/caret/man/sensitivity.html'>sensitivity</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>[</span>, <span class='st'>"pred"</span><span class='op'>]</span>, <span class='va'>data</span><span class='op'>[</span>, <span class='st'>"obs"</span><span class='op'>]</span>, 
+        <span class='va'>lev</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/pkg/caret/man/sensitivity.html'>specificity</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>[</span>, <span class='st'>"pred"</span><span class='op'>]</span>, <span class='va'>data</span><span class='op'>[</span>, <span class='st'>"obs"</span><span class='op'>]</span>, <span class='va'>lev</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='va'>out2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/postResample.html'>postResample</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>[</span>, <span class='st'>"pred"</span><span class='op'>]</span>, <span class='va'>data</span><span class='op'>[</span>, <span class='st'>"obs"</span><span class='op'>]</span><span class='op'>)</span>
+    <span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>out</span>, <span class='va'>out2</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>out</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"AUC"</span>, <span class='st'>"Sens"</span>, <span class='st'>"Spec"</span>, <span class='st'>"Accuracy"</span><span class='op'>)</span>
+    <span class='va'>out</span>
+<span class='op'>}</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>lasso_logistic_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>IsPop</span> <span class='op'>~</span> <span class='va'>.</span><span class='op'>-</span><span class='va'>pop</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"glmnet"</span>,
+    family <span class='op'>=</span> <span class='st'>"binomial"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>1</span>, lambda <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, length.out <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>10</span>, selectionFunction <span class='op'>=</span> <span class='st'>"oneSE"</span>, classProbs <span class='op'>=</span> <span class='cn'>TRUE</span>, summaryFunction <span class='op'>=</span> <span class='va'>twoClassSummaryCustom</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"AUC"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+
+<span class='va'>lasso_logistic_mod</span>
+</code></pre>
+</div>
+<pre><code>glmnet 
+
+602 samples
+ 11 predictor
+  2 classes: &#39;NO&#39;, &#39;YES&#39; 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold) 
+Summary of sample sizes: 542, 542, 542, 542, 541, 543, ... 
+Resampling results across tuning parameters:
+
+  lambda      AUC        Sens       Spec        Accuracy 
+  0.00000000  0.6749598  0.9271196  0.25380117  0.7157748
+  0.01010101  0.6752695  0.9513937  0.20087719  0.7158850
+  0.02020202  0.6746745  0.9610918  0.12690058  0.6991901
+  0.03030303  0.6774243  0.9951220  0.06374269  0.7027174
+  0.04040404  0.6853205  0.9975610  0.02105263  0.6909943
+  0.05050505  0.6883566  1.0000000  0.00000000  0.6860489
+  0.06060606  0.6818036  1.0000000  0.00000000  0.6860489
+  0.07070707  0.6777676  1.0000000  0.00000000  0.6860489
+  0.08080808  0.6753102  1.0000000  0.00000000  0.6860489
+  0.09090909  0.6753102  1.0000000  0.00000000  0.6860489
+  0.10101010  0.6753102  1.0000000  0.00000000  0.6860489
+  0.11111111  0.6753102  1.0000000  0.00000000  0.6860489
+  0.12121212  0.6463629  1.0000000  0.00000000  0.6860489
+  0.13131313  0.5172520  1.0000000  0.00000000  0.6860489
+  0.14141414  0.5000000  1.0000000  0.00000000  0.6860489
+  0.15151515  0.5000000  1.0000000  0.00000000  0.6860489
+  0.16161616  0.5000000  1.0000000  0.00000000  0.6860489
+  0.17171717  0.5000000  1.0000000  0.00000000  0.6860489
+  0.18181818  0.5000000  1.0000000  0.00000000  0.6860489
+  0.19191919  0.5000000  1.0000000  0.00000000  0.6860489
+  0.20202020  0.5000000  1.0000000  0.00000000  0.6860489
+  0.21212121  0.5000000  1.0000000  0.00000000  0.6860489
+  0.22222222  0.5000000  1.0000000  0.00000000  0.6860489
+  0.23232323  0.5000000  1.0000000  0.00000000  0.6860489
+  0.24242424  0.5000000  1.0000000  0.00000000  0.6860489
+  0.25252525  0.5000000  1.0000000  0.00000000  0.6860489
+  0.26262626  0.5000000  1.0000000  0.00000000  0.6860489
+  0.27272727  0.5000000  1.0000000  0.00000000  0.6860489
+  0.28282828  0.5000000  1.0000000  0.00000000  0.6860489
+  0.29292929  0.5000000  1.0000000  0.00000000  0.6860489
+  0.30303030  0.5000000  1.0000000  0.00000000  0.6860489
+  0.31313131  0.5000000  1.0000000  0.00000000  0.6860489
+  0.32323232  0.5000000  1.0000000  0.00000000  0.6860489
+  0.33333333  0.5000000  1.0000000  0.00000000  0.6860489
+  0.34343434  0.5000000  1.0000000  0.00000000  0.6860489
+  0.35353535  0.5000000  1.0000000  0.00000000  0.6860489
+  0.36363636  0.5000000  1.0000000  0.00000000  0.6860489
+  0.37373737  0.5000000  1.0000000  0.00000000  0.6860489
+  0.38383838  0.5000000  1.0000000  0.00000000  0.6860489
+  0.39393939  0.5000000  1.0000000  0.00000000  0.6860489
+  0.40404040  0.5000000  1.0000000  0.00000000  0.6860489
+  0.41414141  0.5000000  1.0000000  0.00000000  0.6860489
+  0.42424242  0.5000000  1.0000000  0.00000000  0.6860489
+  0.43434343  0.5000000  1.0000000  0.00000000  0.6860489
+  0.44444444  0.5000000  1.0000000  0.00000000  0.6860489
+  0.45454545  0.5000000  1.0000000  0.00000000  0.6860489
+  0.46464646  0.5000000  1.0000000  0.00000000  0.6860489
+  0.47474747  0.5000000  1.0000000  0.00000000  0.6860489
+  0.48484848  0.5000000  1.0000000  0.00000000  0.6860489
+  0.49494949  0.5000000  1.0000000  0.00000000  0.6860489
+  0.50505051  0.5000000  1.0000000  0.00000000  0.6860489
+  0.51515152  0.5000000  1.0000000  0.00000000  0.6860489
+  0.52525253  0.5000000  1.0000000  0.00000000  0.6860489
+  0.53535354  0.5000000  1.0000000  0.00000000  0.6860489
+  0.54545455  0.5000000  1.0000000  0.00000000  0.6860489
+  0.55555556  0.5000000  1.0000000  0.00000000  0.6860489
+  0.56565657  0.5000000  1.0000000  0.00000000  0.6860489
+  0.57575758  0.5000000  1.0000000  0.00000000  0.6860489
+  0.58585859  0.5000000  1.0000000  0.00000000  0.6860489
+  0.59595960  0.5000000  1.0000000  0.00000000  0.6860489
+  0.60606061  0.5000000  1.0000000  0.00000000  0.6860489
+  0.61616162  0.5000000  1.0000000  0.00000000  0.6860489
+  0.62626263  0.5000000  1.0000000  0.00000000  0.6860489
+  0.63636364  0.5000000  1.0000000  0.00000000  0.6860489
+  0.64646465  0.5000000  1.0000000  0.00000000  0.6860489
+  0.65656566  0.5000000  1.0000000  0.00000000  0.6860489
+  0.66666667  0.5000000  1.0000000  0.00000000  0.6860489
+  0.67676768  0.5000000  1.0000000  0.00000000  0.6860489
+  0.68686869  0.5000000  1.0000000  0.00000000  0.6860489
+  0.69696970  0.5000000  1.0000000  0.00000000  0.6860489
+  0.70707071  0.5000000  1.0000000  0.00000000  0.6860489
+  0.71717172  0.5000000  1.0000000  0.00000000  0.6860489
+  0.72727273  0.5000000  1.0000000  0.00000000  0.6860489
+  0.73737374  0.5000000  1.0000000  0.00000000  0.6860489
+  0.74747475  0.5000000  1.0000000  0.00000000  0.6860489
+  0.75757576  0.5000000  1.0000000  0.00000000  0.6860489
+  0.76767677  0.5000000  1.0000000  0.00000000  0.6860489
+  0.77777778  0.5000000  1.0000000  0.00000000  0.6860489
+  0.78787879  0.5000000  1.0000000  0.00000000  0.6860489
+  0.79797980  0.5000000  1.0000000  0.00000000  0.6860489
+  0.80808081  0.5000000  1.0000000  0.00000000  0.6860489
+  0.81818182  0.5000000  1.0000000  0.00000000  0.6860489
+  0.82828283  0.5000000  1.0000000  0.00000000  0.6860489
+  0.83838384  0.5000000  1.0000000  0.00000000  0.6860489
+  0.84848485  0.5000000  1.0000000  0.00000000  0.6860489
+  0.85858586  0.5000000  1.0000000  0.00000000  0.6860489
+  0.86868687  0.5000000  1.0000000  0.00000000  0.6860489
+  0.87878788  0.5000000  1.0000000  0.00000000  0.6860489
+  0.88888889  0.5000000  1.0000000  0.00000000  0.6860489
+  0.89898990  0.5000000  1.0000000  0.00000000  0.6860489
+  0.90909091  0.5000000  1.0000000  0.00000000  0.6860489
+  0.91919192  0.5000000  1.0000000  0.00000000  0.6860489
+  0.92929293  0.5000000  1.0000000  0.00000000  0.6860489
+  0.93939394  0.5000000  1.0000000  0.00000000  0.6860489
+  0.94949495  0.5000000  1.0000000  0.00000000  0.6860489
+  0.95959596  0.5000000  1.0000000  0.00000000  0.6860489
+  0.96969697  0.5000000  1.0000000  0.00000000  0.6860489
+  0.97979798  0.5000000  1.0000000  0.00000000  0.6860489
+  0.98989899  0.5000000  1.0000000  0.00000000  0.6860489
+  1.00000000  0.5000000  1.0000000  0.00000000  0.6860489
+
+Tuning parameter &#39;alpha&#39; was held constant at a value of 1
+AUC was used to select the optimal model using  the one SE rule.
+The final values used for the model were alpha = 1 and lambda
+ = 0.1111111.</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lasso_logistic_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Untitled_files/figure-html5/unnamed-chunk-33-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_logistic_mod</span><span class='op'>$</span><span class='va'>bestTune</span>
+</code></pre>
+</div>
+<pre><code>   alpha    lambda
+12     1 0.1111111</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_logistic_mod</span><span class='op'>$</span><span class='va'>results</span>
+</code></pre>
+</div>
+<pre><code>    alpha     lambda       AUC      Sens       Spec  Accuracy
+1       1 0.00000000 0.6749598 0.9271196 0.25380117 0.7157748
+2       1 0.01010101 0.6752695 0.9513937 0.20087719 0.7158850
+3       1 0.02020202 0.6746745 0.9610918 0.12690058 0.6991901
+4       1 0.03030303 0.6774243 0.9951220 0.06374269 0.7027174
+5       1 0.04040404 0.6853205 0.9975610 0.02105263 0.6909943
+6       1 0.05050505 0.6883566 1.0000000 0.00000000 0.6860489
+7       1 0.06060606 0.6818036 1.0000000 0.00000000 0.6860489
+8       1 0.07070707 0.6777676 1.0000000 0.00000000 0.6860489
+9       1 0.08080808 0.6753102 1.0000000 0.00000000 0.6860489
+10      1 0.09090909 0.6753102 1.0000000 0.00000000 0.6860489
+11      1 0.10101010 0.6753102 1.0000000 0.00000000 0.6860489
+12      1 0.11111111 0.6753102 1.0000000 0.00000000 0.6860489
+13      1 0.12121212 0.6463629 1.0000000 0.00000000 0.6860489
+14      1 0.13131313 0.5172520 1.0000000 0.00000000 0.6860489
+15      1 0.14141414 0.5000000 1.0000000 0.00000000 0.6860489
+16      1 0.15151515 0.5000000 1.0000000 0.00000000 0.6860489
+17      1 0.16161616 0.5000000 1.0000000 0.00000000 0.6860489
+18      1 0.17171717 0.5000000 1.0000000 0.00000000 0.6860489
+19      1 0.18181818 0.5000000 1.0000000 0.00000000 0.6860489
+20      1 0.19191919 0.5000000 1.0000000 0.00000000 0.6860489
+21      1 0.20202020 0.5000000 1.0000000 0.00000000 0.6860489
+22      1 0.21212121 0.5000000 1.0000000 0.00000000 0.6860489
+23      1 0.22222222 0.5000000 1.0000000 0.00000000 0.6860489
+24      1 0.23232323 0.5000000 1.0000000 0.00000000 0.6860489
+25      1 0.24242424 0.5000000 1.0000000 0.00000000 0.6860489
+26      1 0.25252525 0.5000000 1.0000000 0.00000000 0.6860489
+27      1 0.26262626 0.5000000 1.0000000 0.00000000 0.6860489
+28      1 0.27272727 0.5000000 1.0000000 0.00000000 0.6860489
+29      1 0.28282828 0.5000000 1.0000000 0.00000000 0.6860489
+30      1 0.29292929 0.5000000 1.0000000 0.00000000 0.6860489
+31      1 0.30303030 0.5000000 1.0000000 0.00000000 0.6860489
+32      1 0.31313131 0.5000000 1.0000000 0.00000000 0.6860489
+33      1 0.32323232 0.5000000 1.0000000 0.00000000 0.6860489
+34      1 0.33333333 0.5000000 1.0000000 0.00000000 0.6860489
+35      1 0.34343434 0.5000000 1.0000000 0.00000000 0.6860489
+36      1 0.35353535 0.5000000 1.0000000 0.00000000 0.6860489
+37      1 0.36363636 0.5000000 1.0000000 0.00000000 0.6860489
+38      1 0.37373737 0.5000000 1.0000000 0.00000000 0.6860489
+39      1 0.38383838 0.5000000 1.0000000 0.00000000 0.6860489
+40      1 0.39393939 0.5000000 1.0000000 0.00000000 0.6860489
+41      1 0.40404040 0.5000000 1.0000000 0.00000000 0.6860489
+42      1 0.41414141 0.5000000 1.0000000 0.00000000 0.6860489
+43      1 0.42424242 0.5000000 1.0000000 0.00000000 0.6860489
+44      1 0.43434343 0.5000000 1.0000000 0.00000000 0.6860489
+45      1 0.44444444 0.5000000 1.0000000 0.00000000 0.6860489
+46      1 0.45454545 0.5000000 1.0000000 0.00000000 0.6860489
+47      1 0.46464646 0.5000000 1.0000000 0.00000000 0.6860489
+48      1 0.47474747 0.5000000 1.0000000 0.00000000 0.6860489
+49      1 0.48484848 0.5000000 1.0000000 0.00000000 0.6860489
+50      1 0.49494949 0.5000000 1.0000000 0.00000000 0.6860489
+51      1 0.50505051 0.5000000 1.0000000 0.00000000 0.6860489
+52      1 0.51515152 0.5000000 1.0000000 0.00000000 0.6860489
+53      1 0.52525253 0.5000000 1.0000000 0.00000000 0.6860489
+54      1 0.53535354 0.5000000 1.0000000 0.00000000 0.6860489
+55      1 0.54545455 0.5000000 1.0000000 0.00000000 0.6860489
+56      1 0.55555556 0.5000000 1.0000000 0.00000000 0.6860489
+57      1 0.56565657 0.5000000 1.0000000 0.00000000 0.6860489
+58      1 0.57575758 0.5000000 1.0000000 0.00000000 0.6860489
+59      1 0.58585859 0.5000000 1.0000000 0.00000000 0.6860489
+60      1 0.59595960 0.5000000 1.0000000 0.00000000 0.6860489
+61      1 0.60606061 0.5000000 1.0000000 0.00000000 0.6860489
+62      1 0.61616162 0.5000000 1.0000000 0.00000000 0.6860489
+63      1 0.62626263 0.5000000 1.0000000 0.00000000 0.6860489
+64      1 0.63636364 0.5000000 1.0000000 0.00000000 0.6860489
+65      1 0.64646465 0.5000000 1.0000000 0.00000000 0.6860489
+66      1 0.65656566 0.5000000 1.0000000 0.00000000 0.6860489
+67      1 0.66666667 0.5000000 1.0000000 0.00000000 0.6860489
+68      1 0.67676768 0.5000000 1.0000000 0.00000000 0.6860489
+69      1 0.68686869 0.5000000 1.0000000 0.00000000 0.6860489
+70      1 0.69696970 0.5000000 1.0000000 0.00000000 0.6860489
+71      1 0.70707071 0.5000000 1.0000000 0.00000000 0.6860489
+72      1 0.71717172 0.5000000 1.0000000 0.00000000 0.6860489
+73      1 0.72727273 0.5000000 1.0000000 0.00000000 0.6860489
+74      1 0.73737374 0.5000000 1.0000000 0.00000000 0.6860489
+75      1 0.74747475 0.5000000 1.0000000 0.00000000 0.6860489
+76      1 0.75757576 0.5000000 1.0000000 0.00000000 0.6860489
+77      1 0.76767677 0.5000000 1.0000000 0.00000000 0.6860489
+78      1 0.77777778 0.5000000 1.0000000 0.00000000 0.6860489
+79      1 0.78787879 0.5000000 1.0000000 0.00000000 0.6860489
+80      1 0.79797980 0.5000000 1.0000000 0.00000000 0.6860489
+81      1 0.80808081 0.5000000 1.0000000 0.00000000 0.6860489
+82      1 0.81818182 0.5000000 1.0000000 0.00000000 0.6860489
+83      1 0.82828283 0.5000000 1.0000000 0.00000000 0.6860489
+84      1 0.83838384 0.5000000 1.0000000 0.00000000 0.6860489
+85      1 0.84848485 0.5000000 1.0000000 0.00000000 0.6860489
+86      1 0.85858586 0.5000000 1.0000000 0.00000000 0.6860489
+87      1 0.86868687 0.5000000 1.0000000 0.00000000 0.6860489
+88      1 0.87878788 0.5000000 1.0000000 0.00000000 0.6860489
+89      1 0.88888889 0.5000000 1.0000000 0.00000000 0.6860489
+90      1 0.89898990 0.5000000 1.0000000 0.00000000 0.6860489
+91      1 0.90909091 0.5000000 1.0000000 0.00000000 0.6860489
+92      1 0.91919192 0.5000000 1.0000000 0.00000000 0.6860489
+93      1 0.92929293 0.5000000 1.0000000 0.00000000 0.6860489
+94      1 0.93939394 0.5000000 1.0000000 0.00000000 0.6860489
+95      1 0.94949495 0.5000000 1.0000000 0.00000000 0.6860489
+96      1 0.95959596 0.5000000 1.0000000 0.00000000 0.6860489
+97      1 0.96969697 0.5000000 1.0000000 0.00000000 0.6860489
+98      1 0.97979798 0.5000000 1.0000000 0.00000000 0.6860489
+99      1 0.98989899 0.5000000 1.0000000 0.00000000 0.6860489
+100     1 1.00000000 0.5000000 1.0000000 0.00000000 0.6860489
+         AUCSD      SensSD     SpecSD  AccuracySD
+1   0.06339949 0.032813112 0.07294721 0.031497291
+2   0.06638225 0.025894083 0.10432083 0.038351085
+3   0.07601837 0.034839979 0.06639423 0.037447157
+4   0.08173310 0.010283830 0.04221072 0.015083279
+5   0.08661335 0.007712872 0.02717883 0.009331956
+6   0.08938083 0.000000000 0.00000000 0.003961554
+7   0.09092336 0.000000000 0.00000000 0.003961554
+8   0.09085215 0.000000000 0.00000000 0.003961554
+9   0.08967735 0.000000000 0.00000000 0.003961554
+10  0.08967735 0.000000000 0.00000000 0.003961554
+11  0.08967735 0.000000000 0.00000000 0.003961554
+12  0.08967735 0.000000000 0.00000000 0.003961554
+13  0.09527686 0.000000000 0.00000000 0.003961554
+14  0.03073130 0.000000000 0.00000000 0.003961554
+15  0.00000000 0.000000000 0.00000000 0.003961554
+16  0.00000000 0.000000000 0.00000000 0.003961554
+17  0.00000000 0.000000000 0.00000000 0.003961554
+18  0.00000000 0.000000000 0.00000000 0.003961554
+19  0.00000000 0.000000000 0.00000000 0.003961554
+20  0.00000000 0.000000000 0.00000000 0.003961554
+21  0.00000000 0.000000000 0.00000000 0.003961554
+22  0.00000000 0.000000000 0.00000000 0.003961554
+23  0.00000000 0.000000000 0.00000000 0.003961554
+24  0.00000000 0.000000000 0.00000000 0.003961554
+25  0.00000000 0.000000000 0.00000000 0.003961554
+26  0.00000000 0.000000000 0.00000000 0.003961554
+27  0.00000000 0.000000000 0.00000000 0.003961554
+28  0.00000000 0.000000000 0.00000000 0.003961554
+29  0.00000000 0.000000000 0.00000000 0.003961554
+30  0.00000000 0.000000000 0.00000000 0.003961554
+31  0.00000000 0.000000000 0.00000000 0.003961554
+32  0.00000000 0.000000000 0.00000000 0.003961554
+33  0.00000000 0.000000000 0.00000000 0.003961554
+34  0.00000000 0.000000000 0.00000000 0.003961554
+35  0.00000000 0.000000000 0.00000000 0.003961554
+36  0.00000000 0.000000000 0.00000000 0.003961554
+37  0.00000000 0.000000000 0.00000000 0.003961554
+38  0.00000000 0.000000000 0.00000000 0.003961554
+39  0.00000000 0.000000000 0.00000000 0.003961554
+40  0.00000000 0.000000000 0.00000000 0.003961554
+41  0.00000000 0.000000000 0.00000000 0.003961554
+42  0.00000000 0.000000000 0.00000000 0.003961554
+43  0.00000000 0.000000000 0.00000000 0.003961554
+44  0.00000000 0.000000000 0.00000000 0.003961554
+45  0.00000000 0.000000000 0.00000000 0.003961554
+46  0.00000000 0.000000000 0.00000000 0.003961554
+47  0.00000000 0.000000000 0.00000000 0.003961554
+48  0.00000000 0.000000000 0.00000000 0.003961554
+49  0.00000000 0.000000000 0.00000000 0.003961554
+50  0.00000000 0.000000000 0.00000000 0.003961554
+51  0.00000000 0.000000000 0.00000000 0.003961554
+52  0.00000000 0.000000000 0.00000000 0.003961554
+53  0.00000000 0.000000000 0.00000000 0.003961554
+54  0.00000000 0.000000000 0.00000000 0.003961554
+55  0.00000000 0.000000000 0.00000000 0.003961554
+56  0.00000000 0.000000000 0.00000000 0.003961554
+57  0.00000000 0.000000000 0.00000000 0.003961554
+58  0.00000000 0.000000000 0.00000000 0.003961554
+59  0.00000000 0.000000000 0.00000000 0.003961554
+60  0.00000000 0.000000000 0.00000000 0.003961554
+61  0.00000000 0.000000000 0.00000000 0.003961554
+62  0.00000000 0.000000000 0.00000000 0.003961554
+63  0.00000000 0.000000000 0.00000000 0.003961554
+64  0.00000000 0.000000000 0.00000000 0.003961554
+65  0.00000000 0.000000000 0.00000000 0.003961554
+66  0.00000000 0.000000000 0.00000000 0.003961554
+67  0.00000000 0.000000000 0.00000000 0.003961554
+68  0.00000000 0.000000000 0.00000000 0.003961554
+69  0.00000000 0.000000000 0.00000000 0.003961554
+70  0.00000000 0.000000000 0.00000000 0.003961554
+71  0.00000000 0.000000000 0.00000000 0.003961554
+72  0.00000000 0.000000000 0.00000000 0.003961554
+73  0.00000000 0.000000000 0.00000000 0.003961554
+74  0.00000000 0.000000000 0.00000000 0.003961554
+75  0.00000000 0.000000000 0.00000000 0.003961554
+76  0.00000000 0.000000000 0.00000000 0.003961554
+77  0.00000000 0.000000000 0.00000000 0.003961554
+78  0.00000000 0.000000000 0.00000000 0.003961554
+79  0.00000000 0.000000000 0.00000000 0.003961554
+80  0.00000000 0.000000000 0.00000000 0.003961554
+81  0.00000000 0.000000000 0.00000000 0.003961554
+82  0.00000000 0.000000000 0.00000000 0.003961554
+83  0.00000000 0.000000000 0.00000000 0.003961554
+84  0.00000000 0.000000000 0.00000000 0.003961554
+85  0.00000000 0.000000000 0.00000000 0.003961554
+86  0.00000000 0.000000000 0.00000000 0.003961554
+87  0.00000000 0.000000000 0.00000000 0.003961554
+88  0.00000000 0.000000000 0.00000000 0.003961554
+89  0.00000000 0.000000000 0.00000000 0.003961554
+90  0.00000000 0.000000000 0.00000000 0.003961554
+91  0.00000000 0.000000000 0.00000000 0.003961554
+92  0.00000000 0.000000000 0.00000000 0.003961554
+93  0.00000000 0.000000000 0.00000000 0.003961554
+94  0.00000000 0.000000000 0.00000000 0.003961554
+95  0.00000000 0.000000000 0.00000000 0.003961554
+96  0.00000000 0.000000000 0.00000000 0.003961554
+97  0.00000000 0.000000000 0.00000000 0.003961554
+98  0.00000000 0.000000000 0.00000000 0.003961554
+99  0.00000000 0.000000000 0.00000000 0.003961554
+100 0.00000000 0.000000000 0.00000000 0.003961554</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lasso_logistic_mod</span><span class='op'>$</span><span class='va'>results</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>lambda</span><span class='op'>==</span><span class='va'>lasso_logistic_mod</span><span class='op'>$</span><span class='va'>bestTune</span><span class='op'>$</span><span class='va'>lambda</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>  alpha    lambda       AUC Sens Spec  Accuracy      AUCSD SensSD
+1     1 0.1111111 0.6753102    1    0 0.6860489 0.08967735      0
+  SpecSD  AccuracySD
+1      0 0.003961554</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>lasso_logistic_mod</span><span class='op'>$</span><span class='va'>finalModel</span>, xvar <span class='op'>=</span> <span class='st'>"lambda"</span>, label <span class='op'>=</span> <span class='cn'>TRUE</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>rainbow</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span>, ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.5</span>,<span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-34-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='va'>lasso_logistic_mod</span><span class='op'>$</span><span class='va'>finalModel</span><span class='op'>$</span><span class='va'>beta</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>,<span class='fl'>3</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;dB&quot;   &quot;nrgy&quot; &quot;year&quot;</code></pre>
+</div>
+<h3 id="trees-and-random-forest">Trees and Random Forest</h3>
+We fit trees and random forest to make predictions as well, using all other predictors to predict whether an observation is a popular song or not. The metrics we selected is Accuracy, so that the model would prioritize making accurate predictions.
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>253</span><span class='op'>)</span>
+<span class='va'>tree_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>IsPop</span> <span class='op'>~</span> <span class='va'>.</span><span class='op'>-</span><span class='va'>pop</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"rpart"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>cp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0.5</span>, length.out <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"cv"</span>, number <span class='op'>=</span> <span class='fl'>10</span>, selectionFunction <span class='op'>=</span> <span class='st'>"oneSE"</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"Accuracy"</span>,
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>tree_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-35-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tree_mod</span><span class='op'>$</span><span class='va'>results</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>cp</span><span class='op'>==</span><span class='va'>tree_mod</span><span class='op'>$</span><span class='va'>bestTune</span><span class='op'>$</span><span class='va'>cp</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>         cp  Accuracy    Kappa AccuracySD KappaSD
+1 0.1020408 0.7143012 0.181339 0.03461561 0.13422</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rf_mod</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span>
+    <span class='va'>IsPop</span> <span class='op'>~</span> <span class='va'>.</span><span class='op'>-</span><span class='va'>pop</span>,
+    data <span class='op'>=</span> <span class='va'>top_spotify_new</span>,
+    method <span class='op'>=</span> <span class='st'>"rf"</span>,
+    tuneGrid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>mtry <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>4</span>,<span class='fl'>5</span>,<span class='fl'>6</span>,<span class='fl'>7</span>,<span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>,
+    trControl <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"oob"</span>, selectionFunction <span class='op'>=</span> <span class='st'>"best"</span><span class='op'>)</span>,
+    metric <span class='op'>=</span> <span class='st'>"Accuracy"</span>,
+    ntree <span class='op'>=</span> <span class='fl'>750</span>, <span class='co'># To force fitting 1000 trees (can help with stability of results)</span>
+    na.action <span class='op'>=</span> <span class='va'>na.omit</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>rf_mod</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Untitled_files/figure-html5/unnamed-chunk-36-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rf_mod</span><span class='op'>$</span><span class='va'>results</span>
+</code></pre>
+</div>
+<pre><code>   Accuracy     Kappa mtry
+1 0.7524917 0.3347524    2
+2 0.7425249 0.3147939    3
+3 0.7342193 0.3007419    4
+4 0.7392027 0.3082283    5
+5 0.7342193 0.2961637    6
+6 0.7358804 0.2947911    7
+7 0.7375415 0.3026788    8</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rf_mod</span><span class='op'>$</span><span class='va'>finalModel</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+ randomForest(x = x, y = y, ntree = 750, mtry = min(param$mtry,      ncol(x))) 
+               Type of random forest: classification
+                     Number of trees: 750
+No. of variables tried at each split: 2
+
+        OOB estimate of  error rate: 26.08%
+Confusion matrix:
+     NO YES class.error
+NO  384  29  0.07021792
+YES 128  61  0.67724868</code></pre>
+</div>
+<p>Our model is better at identifying songs that are not popular. In our context, it helps us avoid bad songs, which is preferable than the more lenient alternative which is more likely to falsely categorize a song as popular.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>var_imp_rf</span> <span class='op'>&lt;-</span> <span class='fu'>randomForest</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/randomForest/man/importance.html'>importance</a></span><span class='op'>(</span><span class='va'>rf_mod</span><span class='op'>$</span><span class='va'>finalModel</span><span class='op'>)</span>
+
+<span class='co'># Sort by importance with dplyr's arrange()</span>
+<span class='va'>var_imp_rf</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+        predictor <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='va'>var_imp_rf</span><span class='op'>)</span>,
+        MeanDecreaseGini <span class='op'>=</span> <span class='va'>var_imp_rf</span><span class='op'>[</span>,<span class='st'>"MeanDecreaseGini"</span><span class='op'>]</span>
+    <span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>MeanDecreaseGini</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># Top 10</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>var_imp_rf</span>, <span class='fl'>10</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>      predictor MeanDecreaseGini
+year       year         34.01757
+val         val         29.91566
+dur         dur         29.62221
+nrgy       nrgy         29.08262
+bpm         bpm         27.71691
+dnce       dnce         26.28274
+acous     acous         24.00443
+live       live         23.57061
+spch       spch         18.39002
+dB           dB         15.18356</code></pre>
+</div>
+<p>It seems that the most important predictor, given contributions to decreasing the Gini index, is year, which is pretty interesting. This tells us that knowing what year the song is released would offer us much insight into whether the song is likely to be popular.</p>
+<h2 id="classification-analysis-results--variable-importance">Classification Analysis (Results- Variable Importance)</h2>
+<p>For our logistic regression model, we utilized a LASSO logistic regression to gain insight on variable importance. The results demonstrate that dnce, and bpm are the most important variables for predicting the popularity of a song. These results are sensible because it is plausible that more upbeat songs that you can dance to will be valuable traits that may lead a song to be more popular.</p>
+<p>In our random forest model, it shows that year is by far the most important variable for predicting song popularity, which also corresponds to the most important variable as determined by the variable importance measure of a single decision tree. This is because it lowers to Gini index the most on average for all the trees. Year is not very insightful, though, because it is possible that the popular songs featured in this dataset came more from particular years than others. It doesn’t really help us predict the future popularity of a song. More interestingly, the energy displayed by a song has the second most meaningful mean decrease in the Gini index. Again, this is sensible because the goal of a song often times is to portray energy to its listener, so it makes sense that songs that accomplish this goal would be more popular. 22</p>
+<h2 id="classification-analysis-summary">Classification analysis (Summary)</h2>
+<h3 id="compare-models">Compare models</h3>
+<p>Compare the 2 different classification models tried in light of evaluation metrics, variable importance, and data context:</p>
+<p>We have compared a logistic regression and a decision tree model. To complement the models, we have ran a LASSO logistic regression and a random forest. We are trying to predict whether a song will be relatively popular. We have created our own binary variable with a threshold of &gt; 75 in pop to be considered popular (IsPop = YES). In all models, the most important variable seemed to be year. In this context, songs released in a certain year seem to be the most popular. Other important variables were energy levels and dance-ibility, both of which intuitively make sense as they would be more commonly enjoyed among music listeners.</p>
+<h3 id="evaluation-metrics">Evaluation metrics</h3>
+<p>Display evaluation metrics for different models in a clean, organized way. This display should include both the estimated metric as well as its standard deviation. (This won’t be available from OOB error estimation. If using OOB, don’t worry about reporting the SD.):</p>
+<p>Logistic Regression Accuracy: 0.7124414 Logistic Regression Accuracy SD: 0.0291491</p>
+<p>Lasso Logistic Regression Accuracy: 0.6860489 Lasso Logistic Regression Accuracy SD: 0.003961554 Lasso Logistic Regression AUC: 0.6715804 Lasso Logistic Regression AUC SD: 0.07519223</p>
+<p>Decision Tree Accuracy: 0.7143012 Decision Tree Accuracy SD: 0.03461561</p>
+<p>Random Forest Accuracy: 0.7524917 Random Forest Confusion Matrix:</p>
+<pre><code>PREDICTED
+  NO YES class.error</code></pre>
+<p>NO 380 33 0.07990315 YES 122 67 0.64550265</p>
+<p>NIR: (413)/(413+189) = 68.6% The NIR is calculated using the whole training set.</p>
+<p>Broadly summarize conclusions from looking at these evaluation metrics and their measures of uncertainty:</p>
+<p>We can see that the model that gives us the least amount of variance is lasso logistic regression. However, we note that we are not trying to build the model with the smallest variance, as the variance is just a way to look at the uncertainty of in estimation of test performance, which is not so high when using lasso logistic regression. Random Forest seems to have the highest accuracy. With an OOB estimate error rate of 25.75%, this is reflective of our accuracy.</p>
+<h3 id="overall-most-preferable-model">Overall most preferable model</h3>
+<p>The overall most preferable model would be our random forest model. The accuracy in this model far outweighs all other models at an accuracy of 75.25% Random forests also provide out of bag error estimations, which give us an accountable measurement of error in our model.</p>
+<p>Interpretion of evaluation metric(s) for the final model in context. Does the model show an acceptable amount of error:</p>
+<p>With an overall accuracy of 75.2%, and a NIR of 68.6%, we believe this model shows an acceptable amount of error.</p>
+<p>If using OOB error estimation, display the test (OOB) confusion matrix, and use it to interpret the strengths and weaknesses of the final model:</p>
+<p>We can see that we have a sensitivity of (67)/(67+112) = 37.43% and a specificity of (380)/(380+33) = 92.01%. Our model is good at correctly predicting songs that won’t be as popular. However, our model is bad at correctly predicting songs that won’t be popular.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>PopularSongs</span> <span class='op'>&lt;-</span> <span class='va'>top_spotify_new</span><span class='op'>[</span><span class='va'>top_spotify_new</span><span class='op'>$</span><span class='va'>pop</span> <span class='op'>&gt;=</span> <span class='fl'>75</span>, <span class='op'>]</span>
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>PopularSongs</span><span class='op'>$</span><span class='va'>year</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 
+   9   10   10   16   12   24   23   25   32   28 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span><span class='op'>$</span><span class='va'>year</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 
+  51   53   35   71   58   95   79   65   64   31 </code></pre>
+</div>
+<p>We can see that although years are fairly balanced, the years when looking at popular songs seem to be skewed towards later years. This means makes sense as the more “popular” songs seem to be the more recent ones.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

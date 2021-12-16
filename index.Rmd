@@ -1,0 +1,21 @@
+---
+title: "Nicholas Di's Portfolio"
+description: |
+  Applied Mathmatics/Statistics and Economics Double Major at Macalester College 
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+# Learn more about publishing to GitHub Pages at:
+# https://rstudio.github.io/distill/publish_website.html#github-pages
+
+```
+
+![Alt text](ProfilePictureJobs.jpeg)
+
+Greetings, welcome to my portfolio! I am a double major in Economics and Applied Math/Statistics at Macalester college. I am particularly interested in Econometrics and Probability/Statistics theory. Outside of school, I enjoy going to the gym, reading, and skiing!
