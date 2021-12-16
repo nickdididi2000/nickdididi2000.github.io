@@ -6,7 +6,7 @@
       "description": "Nick Di's projects!",
       "author": [],
       "contents": "\nThis website is intended to share my experiences and projects regarding Applied Mathematics and Statistics!\n\n\n\n",
-      "last_modified": "2021-12-16T15:13:39-06:00"
+      "last_modified": "2021-12-16T15:15:20-06:00"
     },
     {
       "path": "index.html",
@@ -14,14 +14,14 @@
       "description": "Applied Mathmatics/Statistics and Economics Double Major at Macalester College \n",
       "author": [],
       "contents": "\nPicture of Nicholas DiGreetings, welcome to my portfolio! I am a double major in Economics and Applied Math/Statistics at Macalester college. I am particularly interested in Econometrics and Probability/Statistics theory. Outside of school, I enjoy going to the gym, reading, and skiing!\n\n\n\n",
-      "last_modified": "2021-12-16T15:12:31-06:00"
+      "last_modified": "2021-12-16T15:14:14-06:00"
     },
     {
       "path": "projects.html",
       "title": "Projects",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-12-16T15:12:33-06:00"
+      "last_modified": "2021-12-16T15:14:15-06:00"
     }
   ],
   "collections": ["posts/posts.json"]
