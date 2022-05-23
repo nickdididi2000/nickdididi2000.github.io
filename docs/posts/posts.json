@@ -3,13 +3,18 @@
     "path": "posts/S&P_Bayes_Project/",
     "title": "Bayes Finance Project",
     "description": "Using Bayes Methods to predict future earnings!",
-    "author": [],
+    "author": [
+      {
+        "name": "Nicholas Di, Nolan Meyer, and Duc Ngo",
+        "url": {}
+      }
+    ],
     "date": "2021-12-11",
     "categories": [],
-    "contents": "\nProject\nWelcome to our STAT 454: Bayesian Statistics capstone project. All of us group members have an interest in and connections to the financial world, whether that be through our majors or internships, which led us toward this topic. Financial information, like stock market prices, are known to be notoriously hard to predict. We wanted to take a Bayesian approach to try and tackle a similar situation: predicting the future earnings of S&P 500 companies. In this project we seek to model future earnings using other financial information about a company, like previous earnings and sales. We explore a few Bayesian hierarchical models, as well as a SARIMA model using the bayesforcast package to try and identify one that can provide insight and better predictions for future company’s earnings.\nProject Link\n\n\n\n",
+    "contents": "\nProject\nWelcome to our STAT 454: Bayesian Statistics capstone project. All of\nus group members have an interest in and connections to the financial\nworld, whether that be through our majors or internships, which led us\ntoward this topic. Financial information, like stock market prices, are\nknown to be notoriously hard to predict. We wanted to take a Bayesian\napproach to try and tackle a similar situation: predicting the future\nearnings of S&P 500 companies. In this project we seek to model\nfuture earnings using other financial information about a company, like\nprevious earnings and sales. We explore a few Bayesian hierarchical\nmodels, as well as a SARIMA model using the bayesforcast package to try\nand identify one that can provide insight and better predictions for\nfuture company’s earnings.\nProject\nLink\n\n\n\n",
     "preview": "https://wealthface.com/blog/wp-content/uploads/2021/05/SP500.jpg",
-    "last_modified": "2022-05-23T11:52:03-07:00",
-    "input_file": {}
+    "last_modified": "2022-05-23T15:08:09-07:00",
+    "input_file": "Bayes-Project.knit.md"
   },
   {
     "path": "posts/YouTube_Viz/",

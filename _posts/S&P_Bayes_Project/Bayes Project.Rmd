@@ -1,5 +1,6 @@
 ---
 title: "Bayes Finance Project"
+author: "Nicholas Di, Nolan Meyer, and Duc Ngo"
 description: | 
   Using Bayes Methods to predict future earnings!
 preview: https://wealthface.com/blog/wp-content/uploads/2021/05/SP500.jpg
