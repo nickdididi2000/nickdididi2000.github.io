@@ -1,5 +1,6 @@
 ---
 title: "YouTube Shiny App"
+author: "Nicholas Di and Eric Li"
 description: | 
   Interactive visualization for youtube viewing data!
 preview: https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6.jpg
@@ -16,7 +17,7 @@ This is a project for my introduction to Data Science class. I worked with Jiany
 ```{r}
 library(shiny)
 library(tidyverse)
-data <- read.csv("~/Documents/Intro To Data Science/USvideos.txt")
+data <- read.csv("USvideos.txt")
 data_cleaned<- data %>%
   filter(category_id %in% c("1", "2", "10", "15", "17", "19", "22", "23", "24", "26", "27", "28")) %>%
   mutate(time_string = toString(publish_time)) %>%
