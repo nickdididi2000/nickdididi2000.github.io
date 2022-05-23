@@ -1,5 +1,6 @@
 ---
 title: "Machine Learning Semester Project"
+author: "Nicholas Di and Amy Xu"
 description: | 
   We analyzed data from Spotify with the goal of predicting song popularity!
 preview: https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png
@@ -12,8 +13,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-# Project Work
 
 ## Data Context
 
@@ -51,10 +50,7 @@ top_spotify_new <- filter(top_spotify_new, bpm > 1)
 
 ## Initial investigation 1: ignoring nonlinearity (for now)
 
-Use ordinary least squares (OLS) regression, forward and/or backward selection, and LASSO to build initial models for your quantitative outcome as a function of the predictors of interest. (As part of data cleaning, exclude any variables that you don't want to consider as predictors.)
-
-- These models should not include any transformations to deal with nonlinearity. You'll explore this in the next investigation.
-- Note: If you have highly collinear/redundant variables, you might see the message "Reordering variables and trying again" and associated `warning()`s about linear dependencies being found. Sometimes stepwise selection is able to handle the collinearity/redundancy by modifying the order of the variables tried. If collinearity/redundancy cannot be handled and causes an error, try reducing `nvmax`.
+We ordinary least squares (OLS) regression, forward and/or backward selection, and LASSO to build initial models for our quantitative outcome as a function of the predictors of interest. 
 
 ### OLS Model
 
@@ -548,11 +544,9 @@ lasso_logistic_mod <- train(
     na.action = na.omit
 )
 
-lasso_logistic_mod
-
 plot(lasso_logistic_mod)
 ```
-```{r}
+```{r, eval = FALSE}
 lasso_logistic_mod$bestTune
 lasso_logistic_mod$results
 lasso_logistic_mod$results %>%
@@ -566,6 +560,7 @@ rownames(lasso_logistic_mod$finalModel$beta)[c(5,3,1)]
 ### Trees and Random Forest
 
 We fit trees and random forest to make predictions as well, using all other predictors to predict whether an observation is a popular song or not. The metrics we selected is Accuracy, so that the model would prioritize making accurate predictions. 
+
 ```{r}
 set.seed(253)
 tree_mod <- train(
