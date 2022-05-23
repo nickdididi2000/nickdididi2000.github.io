@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+<style>
+  div.csl-bib-body { }
+  div.csl-entry {
+    clear: both;
+    }
+  .hanging div.csl-entry {
+    margin-left:2em;
+    text-indent:-2em;
+  }
+  div.csl-left-margin {
+    min-width:2em;
+    float:left;
+  }
+  div.csl-right-inline {
+    margin-left:2em;
+    padding-left:1em;
+  }
+  div.csl-indent {
+    margin-left: 2em;
+  }
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Spatial Analysis Lead Levels</title>
+
+  <meta property="description" itemprop="description" content="Analyzing lead levels in Minneapolis/Saint Paul area through spatial correlation!"/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-05-11"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-05-11"/>
+  <meta name="article:author" content="Nicholas Di and Erin Franke"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Spatial Analysis Lead Levels"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Analyzing lead levels in Minneapolis/Saint Paul area through spatial correlation!"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Spatial Analysis Lead Levels"/>
+  <meta property="twitter:description" content="Analyzing lead levels in Minneapolis/Saint Paul area through spatial correlation!"/>
+
+  <!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_author=Minnesota Department Health"/>
+  <meta name="citation_reference" content="citation_="/>
+  <meta name="citation_reference" content="citation_title=Common sources of lead poisoning"/>
+  <meta name="citation_reference" content="citation_title=Lead poisoning;citation_publication_date=2022;citation_publisher=Mayo Foundation for Medical Education; Research"/>
+  <meta name="citation_reference" content="citation_title=Correlated data notes;citation_publication_date=2022;citation_author=Brianna Heggeseth"/>
+  <meta name="citation_reference" content="citation_title=Tidycensus: Load US census boundary and attribute data as ’tidyverse’ and ’sf’-ready data frames;citation_publication_date=2022;citation_author=Kyle Walker;citation_author=Matt Herman"/>
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","preview","date","output","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["Spatial Analysis Lead Levels"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Nicholas Di and Erin Franke"]}]}]},{"type":"character","attributes":{},"value":["Analyzing lead levels in Minneapolis/Saint Paul area through spatial correlation!\n"]},{"type":"character","attributes":{},"value":["https://assets.nrdc.org/sites/default/files/styles/full_content--retina/public/media-uploads/breakingnews_newarkwater_lawsuit_12716367_1076318232400357_1222393660715498598_o_main.jpg?itok=33uB_PJ0"]},{"type":"character","attributes":{},"value":["5-11-2022"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["Library.bib"]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["DataShapefiles/ChildhoodLeadTractData/_README_ChildhoodLeadTract.txt","DataShapefiles/ChildhoodLeadTractData/ChildhoodLeadTract_2015_TO_2019_TestYears.csv","DataShapefiles/lead_spatial.RData","DataShapefiles/Lead_tracts.csv","DataShapefiles/shp_water_lakes_rivers/LakesAndRivers.cpg","DataShapefiles/shp_water_lakes_rivers/LakesAndRivers.dbf","DataShapefiles/shp_water_lakes_rivers/LakesAndRivers.prj","DataShapefiles/shp_water_lakes_rivers/LakesAndRivers.sbn","DataShapefiles/shp_water_lakes_rivers/LakesAndRivers.sbx","DataShapefiles/shp_water_lakes_rivers/LakesAndRivers.shp","DataShapefiles/shp_water_lakes_rivers/LakesAndRivers.shp.xml","DataShapefiles/shp_water_lakes_rivers/LakesAndRivers.shx","DataShapefiles/shp_water_lakes_rivers/metadata/metadata.html","DataShapefiles/shp_water_lakes_rivers/metadata/metadata.xml","DataShapefiles/SpatialCleaning.R","DataShapefiles/tl_2018_27_tract/tl_2018_27_tract.cpg","DataShapefiles/tl_2018_27_tract/tl_2018_27_tract.dbf","DataShapefiles/tl_2018_27_tract/tl_2018_27_tract.prj","DataShapefiles/tl_2018_27_tract/tl_2018_27_tract.shp","DataShapefiles/tl_2018_27_tract/tl_2018_27_tract.shp.ea.iso.xml","DataShapefiles/tl_2018_27_tract/tl_2018_27_tract.shp.iso.xml","DataShapefiles/tl_2018_27_tract/tl_2018_27_tract.shx","DataShapefiles/tl_2019_27_prisecroads/tl_2019_27_prisecroads.cpg","DataShapefiles/tl_2019_27_prisecroads/tl_2019_27_prisecroads.dbf","DataShapefiles/tl_2019_27_prisecroads/tl_2019_27_prisecroads.prj","DataShapefiles/tl_2019_27_prisecroads/tl_2019_27_prisecroads.shp","DataShapefiles/tl_2019_27_prisecroads/tl_2019_27_prisecroads.shp.ea.iso.xml","DataShapefiles/tl_2019_27_prisecroads/tl_2019_27_prisecroads.shp.iso.xml","DataShapefiles/tl_2019_27_prisecroads/tl_2019_27_prisecroads.shx","LeadLevels_files/anchor-4.2.2/anchor.min.js","LeadLevels_files/bowser-1.9.3/bowser.min.js","LeadLevels_files/distill-2.2.21/template.v2.js","LeadLevels_files/figure-html5/unnamed-chunk-10-1.png","LeadLevels_files/figure-html5/unnamed-chunk-10-2.png","LeadLevels_files/figure-html5/unnamed-chunk-13-1.png","LeadLevels_files/figure-html5/unnamed-chunk-13-2.png","LeadLevels_files/figure-html5/unnamed-chunk-13-3.png","LeadLevels_files/figure-html5/unnamed-chunk-14-1.png","LeadLevels_files/figure-html5/unnamed-chunk-15-1.png","LeadLevels_files/figure-html5/unnamed-chunk-15-2.png","LeadLevels_files/figure-html5/unnamed-chunk-16-1.png","LeadLevels_files/figure-html5/unnamed-chunk-16-2.png","LeadLevels_files/figure-html5/unnamed-chunk-17-1.png","LeadLevels_files/figure-html5/unnamed-chunk-2-1.png","LeadLevels_files/figure-html5/unnamed-chunk-20-1.png","LeadLevels_files/figure-html5/unnamed-chunk-21-1.png","LeadLevels_files/figure-html5/unnamed-chunk-22-1.png","LeadLevels_files/figure-html5/unnamed-chunk-22-2.png","LeadLevels_files/figure-html5/unnamed-chunk-23-1.png","LeadLevels_files/figure-html5/unnamed-chunk-3-1.png","LeadLevels_files/figure-html5/unnamed-chunk-4-1.png","LeadLevels_files/figure-html5/unnamed-chunk-5-1.png","LeadLevels_files/figure-html5/unnamed-chunk-7-1.png","LeadLevels_files/figure-html5/unnamed-chunk-8-1.png","LeadLevels_files/figure-html5/unnamed-chunk-8-2.png","LeadLevels_files/figure-html5/unnamed-chunk-9-1.png","LeadLevels_files/header-attrs-2.13/header-attrs.js","LeadLevels_files/jquery-3.6.0/jquery-3.6.0.js","LeadLevels_files/jquery-3.6.0/jquery-3.6.0.min.js","LeadLevels_files/jquery-3.6.0/jquery-3.6.0.min.map","LeadLevels_files/popper-2.6.0/popper.min.js","LeadLevels_files/tippy-6.2.7/tippy-bundle.umd.min.js","LeadLevels_files/tippy-6.2.7/tippy-light-border.css","LeadLevels_files/tippy-6.2.7/tippy.css","LeadLevels_files/tippy-6.2.7/tippy.umd.min.js","LeadLevels_files/webcomponents-2.0.0/webcomponents.js","Library.bib","README_files/figure-gfm/unnamed-chunk-10-1.png","README_files/figure-gfm/unnamed-chunk-10-2.png","README_files/figure-gfm/unnamed-chunk-11-1.png","README_files/figure-gfm/unnamed-chunk-11-2.png","README_files/figure-gfm/unnamed-chunk-13-1.png","README_files/figure-gfm/unnamed-chunk-13-2.png","README_files/figure-gfm/unnamed-chunk-13-3.png","README_files/figure-gfm/unnamed-chunk-14-1.png","README_files/figure-gfm/unnamed-chunk-14-2.png","README_files/figure-gfm/unnamed-chunk-14-3.png","README_files/figure-gfm/unnamed-chunk-15-1.png","README_files/figure-gfm/unnamed-chunk-15-2.png","README_files/figure-gfm/unnamed-chunk-16-1.png","README_files/figure-gfm/unnamed-chunk-16-2.png","README_files/figure-gfm/unnamed-chunk-17-1.png","README_files/figure-gfm/unnamed-chunk-17-2.png","README_files/figure-gfm/unnamed-chunk-18-1.png","README_files/figure-gfm/unnamed-chunk-2-1.png","README_files/figure-gfm/unnamed-chunk-20-1.png","README_files/figure-gfm/unnamed-chunk-21-1.png","README_files/figure-gfm/unnamed-chunk-22-1.png","README_files/figure-gfm/unnamed-chunk-22-2.png","README_files/figure-gfm/unnamed-chunk-23-1.png","README_files/figure-gfm/unnamed-chunk-3-1.png","README_files/figure-gfm/unnamed-chunk-4-1.png","README_files/figure-gfm/unnamed-chunk-5-1.png","README_files/figure-gfm/unnamed-chunk-7-1.png","README_files/figure-gfm/unnamed-chunk-8-1.png","README_files/figure-gfm/unnamed-chunk-8-2.png","README_files/figure-gfm/unnamed-chunk-9-1.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="LeadLevels_files/header-attrs-2.13/header-attrs.js"></script>
+  <script src="LeadLevels_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="LeadLevels_files/popper-2.6.0/popper.min.js"></script>
+  <link href="LeadLevels_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="LeadLevels_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="LeadLevels_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="LeadLevels_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="LeadLevels_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="LeadLevels_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="LeadLevels_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Spatial Analysis Lead Levels","description":"Analyzing lead levels in Minneapolis/Saint Paul area through spatial correlation!","authors":[{"author":"Nicholas Di and Erin Franke","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-11T00:00:00.000-07:00","citationText":"Franke, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Spatial Analysis Lead Levels</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Analyzing lead levels in Minneapolis/Saint Paul area through
+spatial correlation!</p></p>
+</div>
+
+<div class="d-byline">
+  
+  Nicholas Di and Erin Franke
+  
+<br/>5-11-2022
+</div>
+
+<div class="d-article">
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h1 id="introduction">Introduction</h1>
+<p>When raising a child, parents go through lots of stress to keep their
+children safe and healthy. From using car seats to getting children
+vaccinated to working on speech and mobility development and beyond,
+there is a lot to think about. But one aspect that may be overlooked in
+providing safe and healthy environment for a child is lead. Lead in
+paint, soil, air, or water is invisible to the naked eye and has no
+smell <span class="citation" data-cites="cdcPrevention">(<a
+href="#ref-cdcPrevention" role="doc-biblioref"><span>“Prevent Children’s
+Exposure to Lead”</span> 2021</a>)</span>. However, children can be
+exposed to lead in a variety of manners, including swallowing house dust
+or soil contaminated by lead paint or drinking water delivered through
+lead-based pipes, faucets, and plumbing fixtures. Exposure to this
+hidden element can seriously harm a child’s health, including damage to
+the child’s brain and nervous system, slowed growth and development, as
+well as learning, hearing, speech, and behavior problems <span
+class="citation" data-cites="cdcPrevention">(<a
+href="#ref-cdcPrevention" role="doc-biblioref"><span>“Prevent Children’s
+Exposure to Lead”</span> 2021</a>)</span>. If exposed to especially high
+levels of lead, children can face a brain condition known as
+encephalopathy, severe neurological damage, comas, and even death <span
+class="citation" data-cites="leadoverview">(<a href="#ref-leadoverview"
+role="doc-biblioref"><span>“Annual Elevated Blood Lead Levels”</span>
+2020</a>)</span>. Thus, without a question it is crucial to keep lead
+exposure to a minimum when raising a child.</p>
+<p>In this project, we analyzed elevated blood lead levels in the
+<strong>7 county Twin Cities metropolitan area</strong> using public
+data provided by the <strong>Minnesota Department of Health</strong>
+over the period of 2015-2019 <span class="citation"
+data-cites="mdhdata">(<a href="#ref-mdhdata"
+role="doc-biblioref">Health, n.d.</a>)</span>. To protect the privacy of
+individuals, the smallest granularity we were able to obtain this data
+was on the census tract level, meaning for each of the 691 census tracts
+in the Twin Cities metropolitan area we obtained information on how many
+children were tested and how many of those tests resulted in elevated
+blood lead levels. To have <strong>elevated blood lead levels
+(EBLLs)</strong> means that a child has a confirmed result <strong>at or
+above 5 micrograms of lead per deciliter of blood (mcg/dL)</strong>
+<span class="citation" data-cites="leadoverview">(<a
+href="#ref-leadoverview" role="doc-biblioref"><span>“Annual Elevated
+Blood Lead Levels”</span> 2020</a>)</span>. Children under 6 years of
+age are tested. The Minnesota Department of Health identifies children
+living in the Minneapolis and Saint Paul city limits as children at a
+higher risk for lead exposure and recommends these children to receive
+blood lead testing at 1 and 2 years of age. This recommendation is
+warranted given that in 2019, between 1-2% of children in Minneapolis or
+St. Paul had EBLLs, which is double the statewide average and higher
+than any other region of Minnesota <span class="citation"
+data-cites="leadoverview">(<a href="#ref-leadoverview"
+role="doc-biblioref"><span>“Annual Elevated Blood Lead Levels”</span>
+2020</a>)</span>. Interestingly, the MDH has found children living in
+the Metro area but not living in the cities of Minneapolis or St. Paul
+are at a lower risk of lead exposure than the Greater Minnesota
+(non-Metro) are. Only about 0.3% of these children have elevated blood
+lead levels whereas about 0.8% of children living in MN outside the
+metro area have elevated blood lead levels. As a result, to best explore
+this contrast between Minneapolis-Saint Paul and the suburban region,
+this project will solely focus on EBLL data from the 7 county Twin
+Cities metro area. This region is shown in navy on the road map of
+Minnesota below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
+<h1 id="research-goal">Research Goal</h1>
+<p>Keeping the health consequences of lead exposure to children in the
+front of our minds, our research focuses on investigating what is
+correlated with a census tract having a noticeably high proportion of
+children testing with elevated blood lead levels. We defined a tract to
+be a “high lead tract” if at least 1% of the tests in the tract resulted
+in elevated blood lead levels (meaning 5+ mcg lead/dL). This left us
+with 106 “high lead” tracts and 585 “safe” tracts. The location of these
+“high lead” tracts in the Twin Cities metropolitan area can be seen
+below in red. It is clear that the majority of them fall in the
+Minneapolis-Saint Paul city limits.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<p>The reason why this research question is important is because
+understanding what is correlated with tracts having high lead levels can
+help the Minnesota Department of Health, organizations, and families
+protect children from lead exposure. For example, it wouldn’t be
+unreasonable to expect tracts with older homes to have higher lead
+levels, as these homes are more likely to have been built when science
+did not know the harms of lead pipes and paint. On March 28, 2022, Saint
+Paul Mayor Melvin Carter announced a $14.5 million American Rescue Plan
+investment to remove thousands of lead pipes across the city <span
+class="citation" data-cites="saintpaul">(<a href="#ref-saintpaul"
+role="doc-biblioref">n.d.</a>)</span>. If home age appears a strong
+indicator of high lead levels, identifying tracts with old homes, high
+lead levels, and lots of young children can alert the city to replace
+their pipes first. In our research we also might search for a
+relationship between testing, income, and lead levels. If we are to find
+certain income groups getting tested more or less than others holding
+other variables constant, we can shed light on that and advocate for
+resources to get specific tracts the testing they need and deserve given
+their exposure.</p>
+<p>To help us understand what is correlated with a tract being “high
+lead”, we will need more than just the information provided by the MDH
+of tract lead levels. Using the <strong>tidycensus</strong> <span
+class="citation" data-cites="tidycensus">(<a href="#ref-tidycensus"
+role="doc-biblioref">Walker and Herman 2022</a>)</span> package in R, we
+can access a plethora of information on each census tract including its
+estimated mean age, mean income, population, proportion of family
+households, home age, and so much more. We begin by exploring the
+relationship between many of these variables and testing as well as
+EBLLs.</p>
+<h1 id="exploratory-data-analysis">Exploratory Data Analysis</h1>
+<h2 id="estimated-home-age-and-eblls">Estimated Home Age and EBLLs</h2>
+<p>One of the first variables we decided to explore was estimated home
+age. Using the tidycensus package, we were able to access the number of
+residences in each census tract built prior to 1950, between 1950-1959,
+1960-1969, etc. We made these variables proportions by dividing the
+number of homes built in each time period by the total number of homes
+in the census tract. Most revealing was the proportion of homes built
+prior to 1950 - as seen in the map below, the Minneapolis-Saint Paul
+city limits are largely composed of these older homes while the tracts
+on the outskirts of the city have few very homes built before 1950.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>Given this visualization and our knowledge of history, it is clear
+that home age likely plays a strong role in lead exposure in children.
+But it can’t be the only factor. In the map below, we again identify
+tracts with at least 1% of tests registering with elevated blood lead
+levels. These tracts are colored red and pink, though <em>in the pink
+tracts less than 25% of homes were built before 1950</em>. We see these
+pink tracts generally are located outside the MSP city limits in more
+recently developed suburban areas.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p>Comparing these pink tracts we have denoted as “high lead” tracts
+that contain less than 25% of homes built before 1950 to tracts we have
+denoted as having safe lead levels, there are a few things to notice.
+Our first thought was that perhaps these pink tracts were still
+significantly older than the safe lead level tracks and were just built
+largely in the 1960s and 70s. Lead-based paint and lead-contaminated
+dust are the most common sources of lead poisoning, and paint containing
+lead was not banned in the United States until 1978 <span
+class="citation" data-cites="washHealth">(<a href="#ref-washHealth"
+role="doc-biblioref"><span>“Common Sources of Lead Poisoning,”</span>
+n.d.</a>)</span>. Therefore, any home built prior to 1978 could
+certainly serve as an exposure threat to children. It ended up that on
+average 56.1% percent of the homes in the pink tracts were built before
+1979 compared to 54.8% of homes in the safe lead tracts. With such a
+small difference, there has to be something else correlated with a
+higher proportion of tests with EBLLs in particular tracts. Looking into
+other variables, we found the pink high lead tracts have a slightly
+higher population density at about 2 people/1000 <span
+class="math inline">\(\text{m}^2\)</span> than the safe lead tracts at
+1.4 people/1000 <span class="math inline">\(\text{m}^2\)</span>.
+Additionally, these pink high lead tracts have an estimated median
+income of $63,431, whereas the safe lead tracts have an estimated median
+income of almost $87,661. Lead exposure can also come through occupation
+(people exposed to lead through jobs in fields such as auto repair,
+mining, pipe fitting, battery manufacturing, painting, and construction
+can bring it home on their clothing), soil, pottery, herbal and folk
+remedies, the ingredient tamarind in candy, and cosmetics <span
+class="citation" data-cites="mayo">(<a href="#ref-mayo"
+role="doc-biblioref"><span>“Lead Poisoning”</span> 2022</a>)</span>.
+Given the significant difference in median income between the pink high
+lead tracts and the safe lead tracts, it is possible that residents from
+the pink high lead tracts live a different lifestyle than residents in
+the safe lead tracts that causes them to be exposed to lead at a higher
+rate. Exactly how this lead exposure is happening is a mystery that we
+cannot currently solve given the data we have, but the identification of
+these somewhat unexpected “high lead” tracts is crucial as it can help
+direct resources and information toward these tracts in order to reduce
+lead exposure.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="who-is-getting-tested">Who is getting tested?</h2>
+<p>A large factor of obtaining high lead percentages is related to how
+often an area is tested. As more tests are issued, it is more likely we
+will observe a high lead percentage since the census tract is taking
+precautions and responding to factors that already cause EBLLs. It is
+interesting that there is a population within “high lead” census tracts
+of tracts with newer homes that aren’t getting tested at a high rate. We
+defined a “high rate” of testing to be when the number of tests in the
+tract is less than the estimated number of children who are 0 to 5 age.
+These specific census tracts are shown in yellow on the map below and
+seem to be located outside of the cities. We are unsure exactly why this
+is, but perhaps it is a result of poor news and communication in terms
+of safely precautions for high lead levels.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<p>Doing some further investigation using our binary variables
+indicative of high lead and high testing as well as an estimated tract
+home age variable, we note some interesting patterns. As we noted with
+the map above, there are several tracts with on average newer homes that
+have over 1% of tests with EBLLs but are not getting tested at a high
+rate. Again, this may be the result of ignorance or delayed news.
+Additionally, among the census tracts that have a high testing ratio,
+tracts denoted as “high lead” tend to have a significantly higher
+estimated home age, which is intuitive as older homes tend to have lead
+pipes. Furthermore, looking at the relationship between estimated tract
+median income and testing, we see higher income census tracts are
+getting tested <em>less</em> compared to lower income census tracts.
+This is intuitive as lower income census tracts may be more risk in
+terms of living in older houses and thus face higher lead exposure.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-8-1.png" width="45%" /><img src="LeadLevels_files/figure-html5/unnamed-chunk-8-2.png" width="45%" /></p>
+</div>
+<h2 id="modeling">Modeling</h2>
+<p>In the upcoming section, we will be modeling the binary outcome of
+whether a census tract is considered to be “high lead” or not. As a
+reminder, we denoted a tract as “high lead” if over 1% of tests
+contained elevated blood lead levels. The majority of these tracts are
+located in the Twin Cities.</p>
+<h2 id="lasso">Lasso</h2>
+<p>We use LASSO logistic regression to distinguish important variables
+in predicting census tracts with high lead concentrations. After tuning
+for the best penalty, we discovered that income, proportions of homes
+built before 1950, testing ratio (number of tests/child aged 0 to 5),
+number of tests total, and median age of the census tract are important
+variables in modeling the variance of high lead levels. However, it is
+difficult to account for spatial correlation using LASSO, so we will not
+be interpreting the output and standard errors. Instead, we will take
+the important variables LASSO identified and fit a random effect model.
+The one exception to this is we will drop variable indicating the total
+number of tests and soley use testing ratio, as it is better indicative
+of whether the number of tests a tract receives is appropriate for their
+population. This random effect model will account for spatial
+correlation. Spatial correlation is very important in our study as
+census tracts that are close together will share many similar
+characteristics in regards to income, community, and more. Leaving this
+unaccounted for will result in correlated residuals.</p>
+<h2 id="matern-random-effect-models">Matern Random Effect Models</h2>
+<p>Essentially, a Matern random effects model takes into account the
+correlation between points via the euclidean distance between
+coordinates. Our random effect model accounts for spatial correlation by
+incorporating the X and Y coordinates of the centroid, or center, of
+each census tract. We are able to do so by creating a numeric factor
+representing the coordinates of sampled locations. We fit a constant nu
+(smoothness parameter) for easier computational purposes. We use a nu
+value of 0.5, which means the Matern correlation is equivalent to
+spatial exponential decay. Because we have the matern correlation
+coefficient, we do assume isotropic, meaning that the covariance
+function depends only on the computational distance.</p>
+<p>We use this model as it is an alternative way to account for spatial
+correlation, by imposing a correlation structure on the random effect so
+that each census tract are spatially correlated. In absence of the
+random effect, neighboring census tracts will have spatially correlated
+residuals. When two regions are farther away, we expect the correlation
+between them to get lower. Rho is a measure of range correlation,
+therefore a higher value of rho implies more spatial correlation being
+captured by the model.</p>
+<p>We fit two different models, one with our designated important
+variables from LASSO and another with an interaction between the
+proportion of homes built before 1950 and a categorical income variable.
+This interaction suggests that income plays a different role among high
+lead levels conditioned on proportion of hold homes. Perhaps if we are
+at a high income level and have high proportion of old homes, we may see
+reduced probability of high lead levels due to the ability to
+renovate.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Now that we have our two models, we can evaluate them. We decided to
+use a threshold of 70% to predict if a census tract is to be considered
+in the high lead category or not. This means that if the logistic
+regression gives us a predicted probability of .70 or higher, we will
+make a hard prediction that the census area is high lead. We chose a
+threshold of .70 as it is gives us the best sensitivity. In the context
+of EBLL, a threshold of 0.70 gives us the most accuracy in correctly
+determining a census tract with high lead levels.</p>
+<p>The signs of all coefficients make sense. As income increases, the
+odds ratio decreases by 0.852 for every 1000 dollar increase in median
+income holding other variables constant. This is in check with our
+understanding as the more income a household has, the more likely they
+will be able to remodel and replace lead pipes. Additionally, the more
+income a census tract has, the more newer houses we may see. The
+proportion of homes built before 1950 is the most statistically
+significant coefficient. As per the first model, a percentage increase
+in a proportion of homes built before 1950 will increase odds ratio of a
+tract being high lead by 1.25 holding other variables constant. Finally,
+the coefficient on the test ratio variable is also positive, indicating
+an increase in odds of a census tract being high lead as their test
+ratio increases. This is intuitive as tracts that are testing more are
+likely doing so because they face higher exposure.</p>
+<p>Our interaction terms in the second model were all non-significant.
+Meaning, under the model, category of income did not impact high lead
+differently despite being conditioned on the proportion of houses built
+before 1950. Although all statistically insignificant, income classes
+that suffered the most from greater houses built before 1950 were the
+census tracts with lowest median income.</p>
+<p>Why does our prediction have 100% accuracy? Spatial random effect
+will help improve the prediction because it is using neighboring
+information to account for that spatial correlation, doing so more in
+the mean structure and actually change the prediction, conditioned on
+random effects and getting more precise and improved conditions, rather
+than marginal mean prediction. Hence why we have a 100% prediction
+accuracy for both models, because of the random effect that is able to
+capture variations that are unobservant.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-13-1.png" width="45%" /><img src="LeadLevels_files/figure-html5/unnamed-chunk-13-2.png" width="45%" /><img src="LeadLevels_files/figure-html5/unnamed-chunk-13-3.png" width="45%" /></p>
+</div>
+<h1
+id="modeling-the-percent-of-children-by-census-tract-with-eblls">Modeling
+the percent of children by census tract with EBLLs</h1>
+<p>Thus far, we have developed a model to predict whether or not a
+census tract will have at least 1% of tests return with an indication of
+EBLLs. But its important to acknowledge that not all census tracts that
+we have denoted as “high lead” have the same proportion of tests
+indicating EBLLs. For the 106 “high lead” tracts, the distribution of
+the proportion of tests indicating EBLLs is shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<p>In order to better understand this distribution and what is
+correlated with certain tracts having a higher percentage of tests with
+EBLLs than others, we will build a model for this percentage using
+solely the 106 “high lead” tracts. Similar to our logistic model
+building process to predict whether or not a tract is “high lead”, we
+will begin with a LASSO regression model. Variables that remain in the
+model after the shrinkage process can be thought of as most important at
+helping us identify why certain tracts have a higher percentage of tests
+with EBLLs than others.</p>
+<p>Using 10-fold cross validation on our 106 census tracts, the LASSO
+modeling process identified tract population, the proportion of homes
+built between 1950 and 1969, the proportion of homes built before 1950,
+and the estimated mean receipt of supplemental security income (SSI) for
+households with children under 18 as the most important predictors of
+percentage of tests with EBLLs. Interestingly, population and amount of
+SSI both showed a negative relationship with percentage of tests with
+EBLLs, meaning more highly populated tracts tend to have a lower
+proportion of tests with EBLLs holding other variables constant.
+Additionally, tracts receiving more SSI per household tend to have a
+lower proportion of tests with EBLLs holding other variables constant.
+These relationships are shown in the plots below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-16-1.png" width="45%" /><img src="LeadLevels_files/figure-html5/unnamed-chunk-16-2.png" width="45%" /></p>
+</div>
+<p>The reasoning for this phenomena could be that such higher populated
+and impoverished tracts are viewed “higher risk” for lead exposure and
+have received greater resources to prevent it thus far.</p>
+<p>Now that we have our model, we can evaluate it. The model appears
+solid with a RMSE of about 1.5%, meaning on average our prediction of a
+tract’s proportion of tests with EBLLs was either too high or too low by
+about 1.5%. While this is amount of error is relatively small, our model
+must also have residuals that do not have spatial autocorrelation. As we
+have discussed, spatial autocorrelation means residuals in one census
+tract are related to the residuals in the census tracts around it, which
+is problematic because we violate the assumption of independence of
+residuals and jeopardize the validity of hypothesis tests. We can test
+for spatial autocorrelation with something called the Moran’s I test. In
+order to run the Moran’s I test, we must decide in what way we want to
+define census tracts as “close”. In other words, we must define a
+<strong>neighborhood structure</strong>. There are many options when
+defining a neighborhood structure. We can define tracts as neighbors if
+they touch at all, even just at one point such as a corner. This is
+called the Queen neighborhood structure. Another option is the Rook
+neighborhood structure, which defines tracts as neighbors if they share
+an edge (more than just a corner). Neighbors can also be defined using
+distance. The KNN method calculates the distance between the centers (or
+centroids) of each census tract, and then defines a neighborhood based
+on K nearest tracts, distanced based on the centers <span
+class="citation" data-cites="heggeseth_2022">(<a
+href="#ref-heggeseth_2022" role="doc-biblioref">Heggeseth
+2022</a>)</span>. Because we are only looking at census tracts with high
+lead levels, some tracts do not touch and thus we will use the KNN
+structure with 4 neighbors. 4 neighbors gives a nice balance between not
+having too many neighbors (which makes census tracts almost always
+correlated) and not having too few neighbors, making it harder to pick
+up on spatial correlation. The KNN(4) structure is shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Using the Moran’s I test with the KNN(4) structure shown above, there
+is very strong evidence to reject our null hypothesis of no spatial
+correlation between neighboring tracts. We thus conclude that census
+tracts closer together tend to have similar percentages of tests with
+EBLLs than census tracts further apart. Given this, we will need to use
+a model that accounts for this spatial autocorrelation. Two models that
+can potentially accomplish this are the <strong>simultaneous
+autoregressive model (SAR)</strong> and the <strong>conditional
+autoregressive model (CAR)</strong>. These models are fit in a similar
+way to an ordinary least squares model as we predict percent of tests
+with EBLLs using our selected variables, however, we add a component to
+the model that allows us to use surrounding neighborhood values at
+varying weights to estimate percentage of tests with EBLLs for each
+tract. After fitting both a CAR and SAR model using the four variables
+selected by LASSO and the KNN(4) neighborhood structure, we compared
+them using BIC and the Moran’s I test. From the Moran’s I test we
+learned the SAR model yielded strong evidence in support of independent
+residuals. This evidence was significantly weaker for the CAR model,
+implying remaining spatial autocorrelation in the residuals. The BIC (a
+criterion used for model selection) was also superior for the SAR model
+in comparison to the CAR model, and thus we decided to proceed with the
+SAR structure. While we tested multiple other SAR models with different
+combinations of explanatory variables, the model with the four variables
+selected by LASS0 proved our best model with the lowest average
+prediction error (about 1.4%).</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>While the average predictor error of our model is relatively small at
+1.4%, one obvious downfall of this model is that it did not predict any
+census tract to have a percent of tests with EBLLs above 5.6%, as seen
+below. In reality - as shown in the dotplot earlier in this modeling
+section - seven tracts had a percent of tests with EBLLs over 6% and two
+tracts had levels over 10%. Thus, our model does not quite capture as
+large of a distribution in tract percentages as well as we might have
+liked.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-20-1.png" width="624" /></p>
+</div>
+<p>Despite this, our model does indeed do a good job of not
+systematically over or under-predicting particular areas of the Twin
+Cities metropolitan area. We see that tracts both inside and outside
+city limits have a mix of positive and negative residuals and there are
+several areas where percent of tests with EBLLs are over predicted in
+one tract and under predicted in its neighboring tract. Given the strong
+evidence that spatial autocorrelation was accounted for from the Moran’s
+I test, this is not surprising.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-21-1.png" width="624" /></p>
+</div>
+<p>The biggest takeaway from our model is what we can learn about lead
+exposure patterns using it. Takeaways are generally similar to the LASSO
+regression model we fit, but we now have more certainty in our
+coefficient estimates and their significance given we are not breaking
+the assumption of independent residuals. The two significant
+coefficients on the <span class="math inline">\(\alpha=0.05\)</span>
+level in our model are tract population and the proportion of homes
+built from 1950 to 1969 in each tract. With regard to population, we
+estimate for every additional 1000 people residing in a tract that the
+proportion of tests with EBLLs falls on average 0.4%, holding other
+variables constant. Given that census tracts are intended to have
+similar populations (ideally ~4000 people), this might not seem
+practically significant at first. However, the 106 “high lead” tracts
+have populations ranging from about 2,000 to over 10,000 people per
+tract, with the majority falling in the 3000 to 6000 range. Thus,
+comparing a 6,000 resident to 3,000 resident tract, we’d expect the
+6,000 resident tract to have a percent of tests with EBLLs about 1.2%
+lower than that of the 3,000 resident tract, which is a considerable
+difference. When looking at our second significant variable, we learn
+that with every 10% increase in the proportion of homes built between
+1950 and 1969 we can expect the percent of tests with EBLLs to decrease
+about 0.4%, holding other variables constant. This relationship is shown
+in the graph below on the left and is rather interesting when contrasted
+to the graph on the right, which displays proportion of homes built
+before 1950 versus percent of tests with EBLLs for “high lead” tracts.
+The key takeaway here is that as tracts tend to have more homes built
+between 1950-1969, <strong>their percent of tests with EBLLs tends to
+fall</strong>, while as tracts tend to have more homes built prior to
+1950 their <strong>percent of tests with EBLLs tends to rise</strong>.
+Given that lead paint was not banned in the United States until 1978,
+this contrasting relationship is surprising and implies lead paint is
+not the sole factor causing tracts to have a high percent of tests with
+EBLLs.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-22-1.png" width="45%" /><img src="LeadLevels_files/figure-html5/unnamed-chunk-22-2.png" width="45%" /></p>
+</div>
+<p>To learn a little more about what might be happening, we created the
+following graph which shows the remaining home age distribution for high
+lead tracts based on the proportion of homes built from 1950-1969. We
+see that tracts with very few homes (less than 20%) built from 1950-1969
+are composed on average by over 50% of homes built before 1950. These
+tracts also have the smallest proportion of homes built from 1970-1989.
+As the proportion of home built 1950-1969 increases, the proportion of
+homes built before 1950 in the tract decreases and the proportion of
+homes built 1970-1989 increases. This implies overall higher average
+home age and helps to explain why we see that relationship we see in our
+model.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="LeadLevels_files/figure-html5/unnamed-chunk-23-1.png" width="624" /></p>
+</div>
+<p>The SSI and proportion of homes built before 1950 variables are both
+insignificant in this model, though have coefficient directions that
+make intuitive sense given what we have discussed thus far. Holding
+other variables constant, as the proportion of homes in a tract built
+prior to 1950 increases, the percent of tests with EBLLs in that tract
+increases. Additionally, as discussed when interpreting the LASSO model,
+tracts receiving more SSI tend to have a lower percentage of tests with
+EBLLs holding other variables constant.</p>
+<h1 id="limitations">Limitations</h1>
+<p>One of the main limitations in our analysis was data. While we are
+incredibly thankful to have access to public lead data and demographics
+on the census tract level, we had been hoping to complete a
+spatial-temporal analysis looking at the percent of tests with EBLLs in
+each tract each year dating back to the early 2000s. Unfortunately, the
+Minnesota Department of Health did not have this data on hand. An
+additional goal of our was to look at building-specific data available
+through ArcGIS on lead piping for the St. Paul Regional Water Services
+(SPRWS) area and incorporate it into our analysis. However, we ran out
+of time to learn how to web scrape this and so this will be a task for
+the near future. One other limitation related to the data for this
+project is that many of the variables we used are estimates. For
+example, mean tract age is estimated from ACS and census data. Home
+values come from government valuations which is done for tax purposes.
+The fact that there is likely a fair amount of error in these estimates
+should be taken into account when interpreting model coefficients. Also
+related to the topic of modeling is that fact that no neighborhood
+structure we choose is going to be perfect. For example, we chose to use
+the KNN(4) neighborhood structure for our models, which defines four
+neighbors for every tract using distances between tract centroids.
+However, it is possible that tracts could be similar in other ways.
+Tracts close in distance could be incredibly different due to a highway
+running between them, while tracts further apart but both bordering the
+river could actually be more similar.</p>
+<p>Furthermore, our models will not be the best to predict new data
+outside of our dataset. If we have a new census tract added, it will be
+difficult to account for the spatial correlation. The new observation
+may be farther away in distance that it will become independent and we
+will not gain the extra predictive ability. However, we can use the
+distributions from the matern random effect models to attempt in making
+a prediction for a new area. Unfortunately, we are not able to explain
+everything.</p>
+<h1 id="conclusions">Conclusions</h1>
+<p>Throughout our research report, we focused on what seems to be
+correlated to high lead levels. We anlyzed data from the
+<strong>7-county Twin Cities metropolitan area</strong> using public
+data provided by the <strong>Minnesota Department of Health</strong>
+over the period of 2015-2019 <span class="citation"
+data-cites="mdhdata">(<a href="#ref-mdhdata"
+role="doc-biblioref">Health, n.d.</a>)</span>. We fit LASSO models to
+pick out “important” variables and utilize different spatial correlation
+regressions to obtain accurate standard errors on the coefficients.</p>
+<p>Overall, the age of homes in the tract and median income of census
+tracts seem to be the most important factors when looking at the
+variation in high lead levels. This is intuitive as old houses,
+mentioned earlier, tend to have older pipes, more dust, paint chips, all
+of which have a causal effect leading to high lead levels. Among houses
+with high lead levels, as tract population increases and proportions of
+homes built between 1950-1969 increases we see that the percent of tests
+returning EBLLs decreases holding other variables constant.</p>
+<p>Furthermore among census tracts with high lead exposure, there is a
+specific subgroup of tracts that do not test often (test less than once
+per child) and have a new home age. This is potentially dangerous as
+families living in these census tracts may go on about their routine
+thinking living in a newer household is safe when in reality there may
+be other factors that contribute to high lead exposure. This is
+especially concerning as testing rates tend to be lower and the percent
+of tests with EBLLs are higher in these census tracts. For future
+research, it will be worthwhile to investigate which census tracts are
+getting tested more often than others and look into other observable
+factors that may capture the culture within a census tract with regards
+to lead levels.</p>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p>We thank the Minnesota Department of Health and creators of the
+tidycensus package for providing publicly available data that made our
+work possible. We also give a big thank you to our professor Brianna
+Heggeseth for teaching us the mapping and modeling techniques used in
+this analysis, as well as for providing support and resources throughout
+this project.</p>
+<h1 id="references">References</h1>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-saintpaul" class="csl-entry" role="doc-biblioentry">
+n.d. <em>Saint Paul Minnesota</em>. <a
+href="https://www.stpaul.gov/news/saint-paul-announces-145-million-investment-replace-lead-pipes">https://www.stpaul.gov/news/saint-paul-announces-145-million-investment-replace-lead-pipes</a>.
+</div>
+<div id="ref-leadoverview" class="csl-entry" role="doc-biblioentry">
+<span>“Annual Elevated Blood Lead Levels.”</span> 2020. <em>Childhood
+Lead Exposure: Annual Blood Lead Levels - MN Data</em>. <a
+href="https://data.web.health.state.mn.us/lead_annual_level">https://data.web.health.state.mn.us/lead_annual_level</a>.
+</div>
+<div id="ref-washHealth" class="csl-entry" role="doc-biblioentry">
+<span>“Common Sources of Lead Poisoning.”</span> n.d. <em>Washington
+State Department of Health</em>. <a
+href="https://doh.wa.gov/you-and-your-family/healthy-home/home-contaminants/lead/common-sources-lead-poisoning">https://doh.wa.gov/you-and-your-family/healthy-home/home-contaminants/lead/common-sources-lead-poisoning</a>.
+</div>
+<div id="ref-mdhdata" class="csl-entry" role="doc-biblioentry">
+Health, Minnesota Department of. n.d. <em>Childhood Lead Exposure Map:
+MNPH Data Access - MN Dept. Of Health</em>. <a
+href="https://mndatamaps.web.health.state.mn.us/interactive/leadtract.html">https://mndatamaps.web.health.state.mn.us/interactive/leadtract.html</a>.
+</div>
+<div id="ref-heggeseth_2022" class="csl-entry" role="doc-biblioentry">
+Heggeseth, Brianna. 2022. <span>“Correlated Data Notes.”</span>
+<em>Brianna C. Heggeseth</em>. <a
+href="https://bcheggeseth.github.io/CorrelatedData/index.html">https://bcheggeseth.github.io/CorrelatedData/index.html</a>.
+</div>
+<div id="ref-mayo" class="csl-entry" role="doc-biblioentry">
+<span>“Lead Poisoning.”</span> 2022. <em>Mayo Clinic</em>. Mayo
+Foundation for Medical Education; Research. <a
+href="https://www.mayoclinic.org/diseases-conditions/lead-poisoning/symptoms-causes/syc-20354717">https://www.mayoclinic.org/diseases-conditions/lead-poisoning/symptoms-causes/syc-20354717</a>.
+</div>
+<div id="ref-cdcPrevention" class="csl-entry" role="doc-biblioentry">
+<span>“Prevent Children’s Exposure to Lead.”</span> 2021. <em>Centers
+for Disease Control and Prevention</em>. Centers for Disease Control;
+Prevention. <a
+href="https://www.cdc.gov/nceh/features/leadpoisoning/index.html">https://www.cdc.gov/nceh/features/leadpoisoning/index.html</a>.
+</div>
+<div id="ref-tidycensus" class="csl-entry" role="doc-biblioentry">
+Walker, Kyle, and Matt Herman. 2022. <em>Tidycensus: Load US Census
+Boundary and Attribute Data as ’Tidyverse’ and ’Sf’-Ready Data
+Frames</em>. <a
+href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>.
+</div>
+</div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
+</div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
