@@ -1,0 +1,19 @@
+---
+title: "Causal Inference Research"
+author: "Nicholas Di and Professor Myint"
+description: | 
+  Building causal diagram through abstracts!
+preview: https://miro.medium.com/max/512/1*TETnr1maS79Cn3yNveXfFw.png
+date: 8-01-2019
+output:
+  distill::distill_article:
+    self_contained: false
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Research Poster
+
+![First Year Summer Research!](Research_Poster.jpg){width=120%}
+

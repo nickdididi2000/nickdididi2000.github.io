@@ -61,5 +61,22 @@
     "preview": "https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png",
     "last_modified": "2022-05-23T14:36:38-07:00",
     "input_file": {}
+  },
+  {
+    "path": "posts/CausalDiagram/",
+    "title": "Causal Inference Research",
+    "description": "Building causal diagram through abstracts!",
+    "author": [
+      {
+        "name": "Nicholas Di and Professor Myint",
+        "url": {}
+      }
+    ],
+    "date": "2019-08-01",
+    "categories": [],
+    "contents": "\nResearch Poster\n\n\n\n\n",
+    "preview": "https://miro.medium.com/max/512/1*TETnr1maS79Cn3yNveXfFw.png",
+    "last_modified": "2022-05-24T11:18:34-07:00",
+    "input_file": {}
   }
 ]
