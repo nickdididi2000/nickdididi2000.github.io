@@ -1,0 +1,25 @@
+---
+title: "Economics Independent Research"
+author: "Nicholas Di"
+description: | 
+  Honors Thesis, published and won best undergraduate paper award at Minnesota Economics Association 2022 Conference!
+preview: https://a28.asmdc.org/sites/a28.asmdc.org/files/2020-08/coronavirusunemp2ealert.png
+date: 5-15-2022
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+# Abstract
+
+Despite their importance in the social safety net, Unemployment Insurance (UI) benefits
+are expected to increase unemployment duration. I find that males, on average, face a greater
+drop in unemployment than females when (UI) is no longer offered in their respective state.
+Male’s unemployment rate dropped more by a magnitude of 0.7 percent compared to female’s
+which consists of about 11.5 percent of male unemployment during UI. Females who were
+married, were in lower family income brackets, or had children saw smaller changes in
+unemployment when UI programs were exhausted.
+
+[Link to Award](https://mea.sites.grinnell.edu/annual-meetings/undergraduate-award-winners/)
+
+[Link To Paper](https://drive.google.com/file/d/1mu5zalfmR6x9ZhgRcxH6Ey8aAp22TVcs/view?usp=sharing)
