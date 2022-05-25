@@ -65,6 +65,7 @@ OLS models are incredibly useful and form the basis of many other models, but th
   Lasso is an adjustment to the linear regression framework. In a lasso model, the goal is the same as for OLS model: minimize the RSS. However, we add an additional penalty term, shown in red below, that limits the values of the coefficients [@Springer]. Specifically, lasso is defined as: 
   
   $$\text{argmin}_{\beta_j}\sum_{i=1}^n ( y_i +\beta_0 - \sum_{j=1}^p \beta_jx_{ij} )^2 + \color{red}{\lambda \sum_{j=1}^p |\beta_j|}$$
+  
 When minimizing this quantity as a whole, we are minimizing each component -- both the RSS and the penalty term. Minimizing the penalty term, for a given $\lambda$, has the effect of reducing the values of the coefficients towards zero [@Springer]. The constant $\lambda$ allows us to control how much the coefficients are shrunk towards zero and is thus considered a tuning parameter for lasso models. Large $\lambda$ values weight the penalty term heavily, so the coefficient values must be very small to minimize the overall function. Small $\lambda$ values reduce the importance of the penalty term allowing the coefficients to be larger. In the extreme, if $\lambda$ is infinitely large, the coefficients would all become zero; if $\lambda$ is zero, the coefficients would be the OLS solution [@Springer]. We discuss how to choose $\lambda$ in the next section.  
 
   There is an alternate formulation of lasso that reveals how it is a constrained optimization problem. In this formulation, we define lasso as: 
@@ -729,6 +730,7 @@ In spite of the results of our simulation, it is important to recognize that las
 In the real world, lasso is commonly used to handle genetic data because the number of potential predictors is often large relative to the number of observations and there is often little prior knowledge to inform variable selection (Ranstam & Cook 1). Lasso also has applications in economics and finance, helping to predict events like corporate bankruptcy. Besides these specific fields of application, lasso is also implementable in any situation where multiple linear regression would apply. Multiple linear regression has wide-ranging applications, but to provide a specific example, it is often used in medical research. Researchers may want to test whether there is a relationship between various categorical variables (e.g., drug treatment group, patient sex), quantitative variables (e.g., patient age, cardiac output), and a quantitative outcome (e.g., blood pressure). Multiple linear regression allows researchers to test for this relationship, as well as quantify its direction and strength. Lasso regression may come into play in scenarios where multicollinearity exists (e.g., patient height and weight), there are a large number of predictors (and it is likely some are uninformative), and when it is important to have less-variable predictions for model coefficients. 
 
 ## Link to Simulation Download 
-(Here)[https://www.file.io/x91v/download/defpNYydHfVd]
+
+[Here](https://drive.google.com/drive/folders/1yofRmpLm_sarUtlkGlucpnTjlIlnBx33?usp=sharing)
 
 ## References
