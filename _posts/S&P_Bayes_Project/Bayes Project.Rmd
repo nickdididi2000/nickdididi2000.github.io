@@ -1,5 +1,5 @@
 ---
-title: "Bayes Finance Project"
+title: "Bayes Hierarchical Models"
 author: "Nicholas Di, Nolan Meyer, and Duc Ngo"
 description: | 
   Using Bayes Methods to predict future earnings!

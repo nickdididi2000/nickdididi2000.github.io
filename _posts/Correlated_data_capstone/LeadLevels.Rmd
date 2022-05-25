@@ -2,7 +2,7 @@
 title: "Spatial Analysis of Lead Levels in Twin Cities Area"
 author: "Nicholas Di and Erin Franke"
 description: | 
-  Analyzing lead levels in Minneapolis/Saint Paul area through spatial correlation!
+  Analyzing lead levels in Minneapolis/Saint Paul area through spatial data!
 preview: https://assets.nrdc.org/sites/default/files/styles/full_content--retina/public/media-uploads/breakingnews_newarkwater_lawsuit_12716367_1076318232400357_1222393660715498598_o_main.jpg?itok=33uB_PJ0
 date: 5-11-2022
 output:
