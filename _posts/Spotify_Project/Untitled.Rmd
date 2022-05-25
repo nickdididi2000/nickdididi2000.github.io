@@ -23,6 +23,7 @@ The data were extracted from: http://organizeyourmusic.playlistmachinery.com/, a
 ## Research questions
 
 Regression: How can we predict the energy level of a song based on all other predictors?
+
 Classification: How can we predict whether the song is amongst the most popular based on all other predictors?
 
 ```{r, warning=FALSE}
@@ -295,7 +296,6 @@ for (pred in predictors) {
 }
 ```
 
-- Compare estimated test performance across methods. Which method(s) might you prefer?
 
  Model         Training MAE         MAESD
 ------------ ---------------- -----------------
@@ -310,15 +310,9 @@ Compare insights from variable importance analyses from the different methods (s
 
 Across all models, the "top" 3 predictors for song energy level are acous (Acousticness- the higher the value the more acoustic the song is), dB(Loudness, the higher the value, the louder the song), and val(Valence, the higher the value, the more positive mood for the song). This is mostly consistent with our expectation, as when the song is louder, and more positive, the song has a higher energy level. It is a bit surprising that when a song is more acoustic, it is less energetic.
 
-- Note that if some (but not all) of the indicator terms for a categorical predictor are selected in the final models, the whole predictor should be treated as selected.
-
 ## Investigation 2: Accounting for nonlinearity
 
-Update your stepwise selection model(s) and LASSO model to use natural splines for the quantitative predictors.
-
-- You'll need to update the model formula from `y ~ .` to something like `y ~ cat_var1 + ns(quant_var1, df) + ...`.
-- It's recommended to use few knots (e.g., 2 knots = 3 degrees of freedom).
-- Note that `ns(x,3)` replaces `x` with 3 transformations of `x`. Keep this in mind when setting `nvmax` in stepwise selection.
+Update your stepwise selection model(s) and LASSO model to use natural splines for the quantitative predictors:
 
 ```{r}
 ggplot(top_spotify_new, aes(x = val, y = nrgy)) +
@@ -623,34 +617,44 @@ In our random forest model, it shows that year is by far the most important vari
 
 ### Compare models
 
-Compare the 2 different classification models tried in light of evaluation metrics, variable importance, and data context:
-
 We have compared a logistic regression and a decision tree model. To complement the models, we have ran a LASSO logistic regression and a random forest. We are trying to predict whether a song will be relatively popular. We have created our own binary variable with a threshold of > 75 in pop to be considered popular (IsPop = YES). In all models, the most important variable seemed to be year. In this context, songs released in a certain year seem to be the most popular. Other important variables were energy levels and dance-ibility, both of which intuitively make sense as they would be more commonly enjoyed among music listeners. 
 
 ### Evaluation metrics
 
-Display evaluation metrics for different models in a clean, organized way. This display should include both the estimated metric as well as its standard deviation. (This won’t be available from OOB error estimation. If using OOB, don’t worry about reporting the SD.):
-
 Logistic Regression Accuracy:           0.7124414
+
 Logistic Regression Accuracy SD:        0.0291491
 
+
 Lasso Logistic Regression Accuracy:     0.6860489
+
 Lasso Logistic Regression Accuracy SD:  0.003961554
+
 Lasso Logistic Regression AUC:          0.6715804
+
 Lasso Logistic Regression AUC SD:       0.07519223
 
+
 Decision Tree Accuracy:                 0.7143012
+
 Decision Tree Accuracy SD:              0.03461561
 
+
 Random Forest Accuracy:                 0.7524917
-Random Forest Confusion Matrix: 
+
+Random Forest Confusion Matrix:         NA
     
     PREDICTED
+    
       NO YES class.error
+      
 NO  380  33  0.07990315
+
 YES 122  67  0.64550265
 
+
 NIR: (413)/(413+189) = 68.6%
+
 The NIR is calculated using the whole training set. 
 
 Broadly summarize conclusions from looking at these evaluation metrics and their measures of uncertainty:
@@ -660,8 +664,6 @@ We can see that the model that gives us the least amount of variance is lasso lo
 ### Overall most preferable model
 
 The overall most preferable model would be our random forest model. The accuracy in this model far outweighs all other models at an accuracy of 75.25% Random forests also provide out of bag error estimations, which give us an accountable measurement of error in our model. 
-
-Interpretion of evaluation metric(s) for the final model in context. Does the model show an acceptable amount of error:
 
 With an overall accuracy of 75.2%, and a NIR of 68.6%, we believe this model shows an acceptable amount of error. 
 

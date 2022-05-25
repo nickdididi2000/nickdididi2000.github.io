@@ -1510,8 +1510,9 @@ the popularity of the songs, and what elements would contribute to this
 popularity.</p>
 <h2 id="research-questions">Research questions</h2>
 <p>Regression: How can we predict the energy level of a song based on
-all other predictors? Classification: How can we predict whether the
-song is amongst the most popular based on all other predictors?</p>
+all other predictors?</p>
+<p>Classification: How can we predict whether the song is amongst the
+most popular based on all other predictors?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Load data and required packages</span>
@@ -2037,10 +2038,6 @@ underpredicting here!</p>
 </div>
 <p><img src="Untitled_files/figure-html5/unnamed-chunk-20-1.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-2.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-3.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-4.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-5.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-6.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-7.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-8.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-9.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-10.png" width="624" /><img src="Untitled_files/figure-html5/unnamed-chunk-20-11.png" width="624" /></p>
 </div>
-<ul>
-<li>Compare estimated test performance across methods. Which method(s)
-might you prefer?</li>
-</ul>
 <table>
 <thead>
 <tr class="header">
@@ -2086,25 +2083,10 @@ This is mostly consistent with our expectation, as when the song is
 louder, and more positive, the song has a higher energy level. It is a
 bit surprising that when a song is more acoustic, it is less
 energetic.</p>
-<ul>
-<li>Note that if some (but not all) of the indicator terms for a
-categorical predictor are selected in the final models, the whole
-predictor should be treated as selected.</li>
-</ul>
 <h2 id="investigation-2-accounting-for-nonlinearity">Investigation 2:
 Accounting for nonlinearity</h2>
 <p>Update your stepwise selection model(s) and LASSO model to use
-natural splines for the quantitative predictors.</p>
-<ul>
-<li>You’ll need to update the model formula from <code>y ~ .</code> to
-something like
-<code>y ~ cat_var1 + ns(quant_var1, df) + ...</code>.</li>
-<li>It’s recommended to use few knots (e.g., 2 knots = 3 degrees of
-freedom).</li>
-<li>Note that <code>ns(x,3)</code> replaces <code>x</code> with 3
-transformations of <code>x</code>. Keep this in mind when setting
-<code>nvmax</code> in stepwise selection.</li>
-</ul>
+natural splines for the quantitative predictors:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>top_spotify_new</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>val</span>, y <span class='op'>=</span> <span class='va'>nrgy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
@@ -2742,8 +2724,6 @@ be more popular. 22</p>
 <h2 id="classification-analysis-summary">Classification analysis
 (Summary)</h2>
 <h3 id="compare-models">Compare models</h3>
-<p>Compare the 2 different classification models tried in light of
-evaluation metrics, variable importance, and data context:</p>
 <p>We have compared a logistic regression and a decision tree model. To
 complement the models, we have ran a LASSO logistic regression and a
 random forest. We are trying to predict whether a song will be
@@ -2755,23 +2735,24 @@ Other important variables were energy levels and dance-ibility, both of
 which intuitively make sense as they would be more commonly enjoyed
 among music listeners.</p>
 <h3 id="evaluation-metrics">Evaluation metrics</h3>
-<p>Display evaluation metrics for different models in a clean, organized
-way. This display should include both the estimated metric as well as
-its standard deviation. (This won’t be available from OOB error
-estimation. If using OOB, don’t worry about reporting the SD.):</p>
-<p>Logistic Regression Accuracy: 0.7124414 Logistic Regression Accuracy
-SD: 0.0291491</p>
-<p>Lasso Logistic Regression Accuracy: 0.6860489 Lasso Logistic
-Regression Accuracy SD: 0.003961554 Lasso Logistic Regression AUC:
-0.6715804 Lasso Logistic Regression AUC SD: 0.07519223</p>
-<p>Decision Tree Accuracy: 0.7143012 Decision Tree Accuracy SD:
-0.03461561</p>
-<p>Random Forest Accuracy: 0.7524917 Random Forest Confusion Matrix:</p>
+<p>Logistic Regression Accuracy: 0.7124414</p>
+<p>Logistic Regression Accuracy SD: 0.0291491</p>
+<p>Lasso Logistic Regression Accuracy: 0.6860489</p>
+<p>Lasso Logistic Regression Accuracy SD: 0.003961554</p>
+<p>Lasso Logistic Regression AUC: 0.6715804</p>
+<p>Lasso Logistic Regression AUC SD: 0.07519223</p>
+<p>Decision Tree Accuracy: 0.7143012</p>
+<p>Decision Tree Accuracy SD: 0.03461561</p>
+<p>Random Forest Accuracy: 0.7524917</p>
+<p>Random Forest Confusion Matrix: NA</p>
 <pre><code>PREDICTED
-  NO YES class.error</code></pre>
-<p>NO 380 33 0.07990315 YES 122 67 0.64550265</p>
-<p>NIR: (413)/(413+189) = 68.6% The NIR is calculated using the whole
-training set.</p>
+
+  NO YES class.error
+  </code></pre>
+<p>NO 380 33 0.07990315</p>
+<p>YES 122 67 0.64550265</p>
+<p>NIR: (413)/(413+189) = 68.6%</p>
+<p>The NIR is calculated using the whole training set.</p>
 <p>Broadly summarize conclusions from looking at these evaluation
 metrics and their measures of uncertainty:</p>
 <p>We can see that the model that gives us the least amount of variance
@@ -2787,8 +2768,6 @@ model</h3>
 The accuracy in this model far outweighs all other models at an accuracy
 of 75.25% Random forests also provide out of bag error estimations,
 which give us an accountable measurement of error in our model.</p>
-<p>Interpretion of evaluation metric(s) for the final model in context.
-Does the model show an acceptable amount of error:</p>
 <p>With an overall accuracy of 75.2%, and a NIR of 68.6%, we believe
 this model shows an acceptable amount of error.</p>
 <p>If using OOB error estimation, display the test (OOB) confusion
