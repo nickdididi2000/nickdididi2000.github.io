@@ -5,7 +5,7 @@
       "title": "More about me!",
       "author": [],
       "contents": "\nUpdated May 24, 2022\nPresenting My Economics Honors\nThesisI am currently a senior at Macalester College who will be graduating\nin December 2022. Throughout Macalester I’ve had the opportunity to not\nonly be a student under amazing professors, but also be a teaching\nassistant for Introduction to Statistical Modeling (STAT 155),\nIntroduction to Computer Science (COMP 123), Principles of Economics\n(ECON 119), Statistical Machine Learning (STAT 253) and be a\nsupplemental instructor for Econometrics (ECON 381). All of my\nexperiences helped me find my passion for understanding concepts at a\ndeep level. Being a teaching assistant and supplemental instructor\ntaught me how one of the best ways to master a topic is to understand\nthe ins and outs through the process of teaching. Perhaps I may find\nmyself to be a professor one day!\nIn the summer of 2019, I spent my time with Professor Myint\nconducting Causal Inference research. In this research project, we used\nthe PLoS and Semnantic MEDLINE outputs in hopes of creating a causal\ndiagram by building a correlation matrix through R and running it\nthrough Tetrad, a casual search program. This was my first research\nproject and I was astonished by how research projects can push you to\nlearn and develop on a self autonomy basis while learning to collaborate\nwith others.\nSummer of 2020, I was a business analyst intern at U.S. Bank’s wealth\nmanagement division. I familiarized myself working in a corporate\nenvironment and learned how to effectively integrate my workstyle into\nan agile team.\nBetween my summers, I decided to take a semester of leave to work at\nNutriKarma, a start up based in New York. My official position was lead\nbusiness developer, however, while working and project managing\ndifferent tasks, I discovered my passion for the technical and\nanalytical side of operations\nSummer of 2021, I interned at Ernst & Young’s Quantitative\nEconomics and Statistics (QUEST) team. I was able to enhance my\nanalytical skills through using SAS, STATA and R. Working in a\nconsulting environment also enhanced my interpersonal skills,\nspecifically learning to effectively communicate quantitative analysis\ninto information that can be used in business decisions.\nIn the 2021-2022 school year, I picked up an independent research\nproject under the guideance of Professor Damon. Through a year’s length\nof hard work, I managed to publish an economics paper that won the best\nundergraduate paper award at the Minnesota Economics Association\nconference.\nThis upcoming summer I will be at Brattle Group as a research\nassistant!\n\n\n\n",
-      "last_modified": "2022-05-25T10:31:15-07:00"
+      "last_modified": "2022-05-24T22:41:33-07:00"
     },
     {
       "path": "index.html",
@@ -13,21 +13,21 @@
       "description": "Applied Mathmatics/Statistics and Economics (Honors) Double Major at Macalester College \n",
       "author": [],
       "contents": "\nPicture of Nicholas DiGreetings, welcome to my portfolio! I am a double major in Economics\nand Applied Math/Statistics at Macalester college. I am particularly\ninterested in Econometrics, Casual Inference, and Probability/Statistics\ntheory. Outside of school, I enjoy going to the gym, poetry, and\nskiing!\n\n\n\n",
-      "last_modified": "2022-05-25T10:31:17-07:00"
+      "last_modified": "2022-05-24T22:41:36-07:00"
     },
     {
       "path": "projects.html",
       "title": "Projects",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-05-25T10:31:18-07:00"
+      "last_modified": "2022-05-24T22:41:38-07:00"
     },
     {
       "path": "resume.html",
       "title": "More about me!",
       "author": [],
       "contents": "\nResume\n\n\n\n",
-      "last_modified": "2022-05-25T10:31:19-07:00"
+      "last_modified": "2022-05-24T22:41:40-07:00"
     }
   ],
   "collections": ["posts/posts.json"]
