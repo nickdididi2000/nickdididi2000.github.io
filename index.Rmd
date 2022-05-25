@@ -1,7 +1,7 @@
 ---
 title: "Nicholas Di's Portfolio"
 description: |
-  Applied Mathmatics/Statistics and Economics Double Major at Macalester College 
+  Applied Mathmatics/Statistics and Economics (Honors) Double Major at Macalester College 
 site: distill::distill_website
 ---
 

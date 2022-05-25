@@ -1,0 +1,19 @@
+---
+title: "More about me!"
+---
+
+**Updated May 24, 2022**
+
+![Presenting My Economics Honors Thesis](NickHonors.jpg)
+
+
+I am currently a senior at Macalester College who will be graduating in December 2022. Throughout Macalester I've had the opportunity to not only be a student under amazing professors, but also be a teaching assistant for Introduction to Statistical Modeling (STAT 155), Introduction to Computer Science (COMP 123), Principles of Economics (ECON 119), Statistical Machine Learning (STAT 253) and be a supplemental instructor for Econometrics (ECON 381). All of my experiences helped me find my passion for understanding concepts at a deep level. Being a teaching assistant and supplemental instructor taught me how one of the best ways to master a topic is to understand the ins and outs through the process of teaching. Perhaps I may find myself to be a professor one day!  
+
+In the summer of 2019, I spent my time with Professor Myint conducting Causal Inference research. In this research project, we used the PLoS and Semnantic MEDLINE outputs in hopes of creating a causal diagram by building a correlation matrix through R and running it through Tetrad, a casual search program. This was my first research project and I was astonished by how research projects can push you to learn and develop on a self autonomy basis while learning to collaborate with others. 
+
+Summer of 2020, I was a business analyst intern at U.S. Bank’s wealth management division. I familiarized myself working in a corporate environment and learned how to effectively integrate my workstyle into an agile team. 
+
+Summer of 2021, I interned at Ernst & Young’s Quantitative Economics and Statistics (QUEST) team. I was able to enhance my analytical skills through using SAS, STATA and R. Working in a consulting environment also enhanced my interpersonal skills, specifically learning to effectively communicate quantitative analysis into information that can be used in business decisions. 
+
+This upcoming summer I will be at Brattle Group as a research assistant! 
+

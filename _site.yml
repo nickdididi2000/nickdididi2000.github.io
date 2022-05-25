@@ -7,10 +7,12 @@ navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
+    - text: "About Me"
       href: about.html
     - text: "Projects"
       href: projects.html
+    - text: "Resume"
+      href: resume.html
     - icon: fa fa-linkedin
       href: https://www.linkedin.com/in/nicholas-di-96322a170/
       
