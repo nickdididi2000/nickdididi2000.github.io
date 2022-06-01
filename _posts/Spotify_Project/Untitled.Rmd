@@ -2,7 +2,7 @@
 title: "Machine Learning Semester Project"
 author: "Nicholas Di and Amy Xu"
 description: | 
-  This project was conducted for the  course: STAT 253 Statistical Machine Learning. We analyzed data from Spotify with the goal of predicting song popularity!
+  This project was conducted for the course: STAT 253 Statistical Machine Learning. We analyzed data from Spotify with the goal of predicting song popularity!
 preview: https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png
 date: 05-01-2020
 output:

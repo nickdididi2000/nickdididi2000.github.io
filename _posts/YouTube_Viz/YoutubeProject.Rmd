@@ -2,7 +2,7 @@
 title: "YouTube Shiny App"
 author: "Nicholas Di and Eric Li"
 description: | 
-  Interactive visualization for youtube viewing data!
+  This project was conducted for the course: STAT 112 Introduction to Data Science. We made an interactive visualization for youtube viewing data!
 preview: https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6.jpg
 date: 07-01-2021
 output:
