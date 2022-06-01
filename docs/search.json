@@ -5,7 +5,7 @@
       "title": "More about me!",
       "author": [],
       "contents": "\nUpdated May 31, 2022\n I am currently a senior\nat Macalester College and will be graduating in December 2022.\nThroughout Macalester I’ve had the opportunity to not only be a student\nunder amazing professors, but to be a teaching assistant for\nIntroduction to Statistical Modeling (STAT 155), Introduction to\nComputer Science (COMP 123), Principles of Economics (ECON 119), and\nStatistical Machine Learning (STAT 253), as well as a supplemental\ninstructor for Econometrics (ECON 381). All of my experiences helped me\nfind my passion for understanding concepts at a deep level. Being a\nteaching assistant and supplemental instructor taught me that one of the\nbest ways to master a topic, and understand its ins and outs, is through\nthe process of teaching. Perhaps I will find myself to be a professor\none day!\nIn the summer of 2019, I conducted Causal Inference research with\nProfessor Leslie Myint in collaboration with Professor Devavani\nChatterjea in Biology. In this research project, we used the PLoS and\nSemnantic MEDLINE outputs in hopes of creating a diagram to better\nunderstand causal relationships between agents in Professor Chattergea’s\nwork regarding vulvodynia. We did so by using journal abstracts to build\na correlation matrix and run it through Tetrad, a casual search program.\nThis was my first research project and I was astonished by how it pushed\nme to develop self autonomy and independent research skills while\nlearning to collaborate on an interdisciplinary team.\nIn the summer of 2020, I interned as a business analyst at U.S.\nBank’s wealth management division. Here I learned how to navigate a\ncorporate environment and to effectively integrate my working style into\nan agile team.\nBetween my summers, I took a semester of leave to work at NutriKarma,\na startup based in New York. My official position was “lead business\ndeveloper.” However, while managing different projects, I discovered my\npassion for the technical and analytical side of operations.\nDuring the summer of 2021, I interned on Ernst & Young’s\nQuantitative Economics and Statistics (QUEST) team. Here I enhanced my\nanalytical skills through using R, STATA, and SAS. Working in a\nconsulting environment also enhanced my interpersonal skills,\nspecifically learning to effectively communicate quantitative analysis\ninto information that can be used in business decisions.\nIn the 2021-2022 school year, I picked up an independent research\nproject under the guidance of Professor Amy Damon. My project looked to\nexplore the gendered impact of COVID-19, particularly in the context of\nUnemployment Insurance expiring. I managed to publish the thesis and\nalso win the best undergraduate paper award at the 2022 Minnesota\nEconomics Association conference.\nThis upcoming summer I will be a research assistant at Brattle\nGroup!!\n\n\n\n",
-      "last_modified": "2022-05-31T17:52:34-07:00"
+      "last_modified": "2022-05-31T21:32:39-07:00"
     },
     {
       "path": "index.html",
@@ -13,21 +13,21 @@
       "description": "Applied Mathematics/Statistics and Economics (Honors) Double Major at Macalester College \n",
       "author": [],
       "contents": "\nPicture of Nicholas DiGreetings, welcome to my portfolio! I am a double major in Economics\nand Applied Math/Statistics at Macalester college. I am particularly\ninterested in Econometrics, Causal Inference, and Probability/Statistics\ntheory. Outside of school, I enjoy going to the gym, poetry, and\nskiing!\n\n\n\n",
-      "last_modified": "2022-05-31T17:52:35-07:00"
+      "last_modified": "2022-05-31T21:32:41-07:00"
     },
     {
       "path": "projects.html",
       "title": "Projects",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-05-31T17:52:37-07:00"
+      "last_modified": "2022-05-31T21:32:42-07:00"
     },
     {
       "path": "resume.html",
       "title": "More about me!",
       "author": [],
       "contents": "\nResume\n\n\n\n",
-      "last_modified": "2022-05-31T17:52:38-07:00"
+      "last_modified": "2022-05-31T21:32:43-07:00"
     }
   ],
   "collections": ["posts/posts.json"]
