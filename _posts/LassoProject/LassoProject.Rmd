@@ -2,7 +2,7 @@
 title: "Lasso Regression & Simulation"
 author: "Nicholas Di, Ellery Island, and Will Orser"
 description: | 
-  Simulation to visualize bias variance tradeoff with penalized regressions!
+  This project was conducted for the capstone course: STAT 455 Mathematical Statistics. We wrote a report and created a simulation to visualize the bias variance tradeoff with penalized regressions!
 preview: https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/featured_hue76a1f1ce8c01e6382d5577465b6e9e2_44866_680x500_fill_q90_lanczos_smart1.jpg
 date: 05-05-2022
 output:

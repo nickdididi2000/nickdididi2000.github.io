@@ -2,7 +2,7 @@
 title: "Causal Inference Research"
 author: "Nicholas Di and Professor Myint"
 description: | 
-  Building causal diagram through abstracts!
+  2019 Summer research project funded by the Jr. Faculty-Hub Summer Research Fund. We built a causal diagram through abstracts!
 preview: https://miro.medium.com/max/512/1*TETnr1maS79Cn3yNveXfFw.png
 date: 8-01-2019
 output:

@@ -2,7 +2,7 @@
 title: "Bayes Hierarchical Models"
 author: "Nicholas Di, Nolan Meyer, and Duc Ngo"
 description: | 
-  Using Bayes Methods to predict future earnings!
+  This project was conducted for the capstone course: STAT 454 Bayesian Statistics. We utilized Bayes Methods to predict future company earnings!
 preview: https://wealthface.com/blog/wp-content/uploads/2021/05/SP500.jpg
 date: 12-11-2021
 output:
