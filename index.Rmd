@@ -1,7 +1,7 @@
 ---
 title: "Nicholas Di's Portfolio"
 description: |
-  Applied Mathematics/Statistics and Economics (Honors) Double Major at Macalester College 
+  Perspective Statistics PhD Canidate  
 site: distill::distill_website
 ---
 
@@ -18,4 +18,4 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ![Picture of Nicholas Di](ProfilePictureJobs.jpeg)
 
-Greetings, welcome to my portfolio! I am a double major in Economics and Applied Math/Statistics at Macalester college. I am particularly interested in Econometrics, Causal Inference, and Machine Learning/Statistics theory. Outside of school, I enjoy weightlifting, hiking, and skiing!
+Greetings, welcome to my portfolio! I am a perspective PhD in Statistics! I graduated from Macalester College with a double major in Economics (Honors) and Applied Math/Statistics. I am particularly interested in Econometrics, Causal Inference, and Machine Learning/Statistics theory. Outside of school, I enjoy weightlifting, hiking, and skiing!
