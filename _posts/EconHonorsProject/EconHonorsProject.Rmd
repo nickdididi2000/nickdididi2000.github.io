@@ -3,7 +3,7 @@ title: "Economics Independent Research"
 author: "Nicholas Di"
 description: | 
   Honors Thesis, published and won best undergraduate paper award at Minnesota Economics Association 2022 Conference!
-preview: https://a28.asmdc.org/sites/a28.asmdc.org/files/2020-08/coronavirusunemp2ealert.png
+preview: https://media.istockphoto.com/id/878268796/photo/unemployment-claim-form-on-an-office-table.jpg?s=612x612&w=0&k=20&c=mGQYtO9B-Gi5B4MQPHLfgvYT3KE9HNjtlVhejOCUDr8=
 date: 5-15-2022
 output:
   distill::distill_article:
