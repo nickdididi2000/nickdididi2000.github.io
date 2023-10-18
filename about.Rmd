@@ -2,10 +2,10 @@
 title: "More about me!"
 ---
 
-**Updated Apriol 2, 2023**
+**Updated October 17, 2023**
 
 ![Presenting My Economics Honors Thesis](NickHonors.jpg)
-I am a prospective Statistics PhD candidate! I obtained my undergraduate degree from Macalester College. Throughout Macalester I’ve had the opportunity to not only be a student under amazing professors, but to be a teaching assistant for Introduction to Statistical Modeling (STAT 155), Introduction to Computer Science (COMP 123), Principles of Economics (ECON 119), and Statistical Machine Learning (STAT 253), as well as a supplemental instructor for Econometrics (ECON 381). All of my experiences helped me find my passion for understanding concepts at a deep level. Being a teaching assistant and supplemental instructor taught me that one of the best ways to master a topic, and understand its ins and outs, is through the process of teaching. Perhaps I will find myself to be a professor one day!
+I am currently a PhD Student in Statistics at Rice University! I obtained my undergraduate degree from Macalester College. Throughout Macalester I’ve had the opportunity to not only be a student under amazing professors, but to be a teaching assistant for Introduction to Statistical Modeling (STAT 155), Introduction to Computer Science (COMP 123), Principles of Economics (ECON 119), and Statistical Machine Learning (STAT 253), as well as a supplemental instructor for Econometrics (ECON 381). All of my experiences helped me find my passion for understanding concepts at a deep level. Being a teaching assistant and supplemental instructor taught me that one of the best ways to master a topic, and understand its ins and outs, is through the process of teaching. Perhaps I will find myself to be a professor one day!
 
 In the summer of 2019, I conducted Causal Inference research with Professor Leslie Myint in collaboration with Professor Devavani Chatterjea in Biology. In this research project, we used the PLoS and Semnantic MEDLINE outputs in hopes of creating a diagram to better understand causal relationships between agents in Professor Chattergea’s work regarding vulvodynia. We did so by using journal abstracts to build a correlation matrix and run it through Tetrad, a causal search program. This was my first research project and I was astonished by how it pushed me to develop self autonomy and independent research skills while learning to collaborate on an interdisciplinary team.
 
@@ -19,5 +19,6 @@ In the 2021-2022 school year, I picked up an independent research project under 
 
 Summer of 2022 I was a research analyst at Brattle Group! I supported leading academics in building advanced econometric models to determine liability and estimated damages in litigation that were tailored to the data and institutional contexts of the projects. 
 
-At my last semester of College, I am working part time with Dr. Brian Caffo at Johns Hopkins and self-learning and researching Causal Inference methods. 
+After graduation in December 2022, I worked fulltime in D.C as a economic consultant at EY and then went backpacking around Asia! 
+
 
